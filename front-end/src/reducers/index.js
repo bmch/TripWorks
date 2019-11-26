@@ -1,7 +1,7 @@
 import {FETCH_DATA_LOADING,FETCH_DATA_LOADING_SUCCESS,FETCH_DATA_LOADING_FAILURE} from '../constants';
 import { combineReducers } from 'redux';
 
-
+import flights from './flights'
 
 export const holidays = (state = [],action) => {
     switch(action.type) {
@@ -31,6 +31,7 @@ export const itemLoadingError = (state = "",action) => {
 }
 
 export const rootReducer = combineReducers({
+    flights,
     holidays,
     itemLoading,
     itemLoadingError

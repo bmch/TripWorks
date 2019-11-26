@@ -5,7 +5,7 @@ const app = new koa();
 const cors = require('cors');
 const bodyParser = require('koa-bodyparser');
 const router = require('./router');
-//require models here
+require('./db')
 
 const config = require('./config/config');
 
