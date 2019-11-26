@@ -16,12 +16,13 @@ const UserInput = ({handleSubmit}) => {
   }
 
   const renderInput = ({ input, meta }) => {
-    console.log(meta);  
     const divError = ` field ${ meta.touched && meta.error ? 'error' : ''}`;
-    // const typeChecker = `${meta.active && (input.name === 'goDate' || 'backDate') ? 'date' : 'text'}`
+ 
+    const type = (input.name==='goDate'||input.name==='backDate') ? 'date':'text'
+    
     return (
       <div className={divError}>
-       <input { ...input } autoComplete="off" className="input" type="text"/>
+       <input { ...input } autoComplete="off" className="input" type={type}/>
         {renderError(meta)}
       </div>
     );
@@ -47,7 +48,7 @@ const UserInput = ({handleSubmit}) => {
         <div className="to">
           <div >
             <Field
-              name="destination"
+              name="destination1"
               component={renderInput}
               type="text"
               placeholder="To"
@@ -55,24 +56,23 @@ const UserInput = ({handleSubmit}) => {
           </div>
         </div>
           <div className="Wrapper">
-            <div className="go">
+            <div className="to">
+              <div >
+                <Field
+                  name="destination2"
+                  component={renderInput}
+                  type="text"
+                  placeholder="To"
+                />
+              </div>
+          </div>
+          <div className="go">
               <div >
                 <Field
                   name="goDate"
                   component={renderInput}
                   type="date"
                   placeholder="go"
-                  className="datepicker"
-                />
-              </div>
-          </div>
-          <div className="back">
-              <div >
-                <Field
-                  name="backDate"
-                  component={renderInput}
-                  type="date"
-                  placeholder="back"
                   className="datepicker"
                 />
               </div>
@@ -113,5 +113,6 @@ const inputValidator = values => {
 
 export default reduxForm({
   form: 'userInput',
-  validate: inputValidator
+  validate: inputValidator,
+  destroyOnUnmount: false
 })(UserInput);

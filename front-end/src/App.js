@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import UserInput from './components/userInput/userInput';
+import { useSelector } from "react-redux";
+import TripResults from "./containers/TripResults/index";
 
 
 const App = () => {
@@ -7,6 +9,7 @@ const App = () => {
     return (
       <div>
       <UserInput />
+      <TripResults />
       </div>
     );
 };
