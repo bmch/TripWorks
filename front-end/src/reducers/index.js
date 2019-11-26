@@ -3,6 +3,8 @@ import { combineReducers } from 'redux';
 import {reducer as formReducer } from 'redux-form';
 
 
+import flights from './flights'
+
 export const holidays = (state = [],action) => {
     switch(action.type) {
         case FETCH_DATA_LOADING_SUCCESS:
@@ -31,6 +33,7 @@ export const itemLoadingError = (state = "",action) => {
 }
 
 export const rootReducer = combineReducers({
+    flights,
     holidays,
     itemLoading,
     itemLoadingError,

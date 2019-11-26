@@ -14,10 +14,10 @@ const flightCont = require('./controllers/flightsController');
 router
   // .post('/login', userCont.signIn)
   .post('/register', userCont.createUser)
-  .post('/postWeather', weatherCont.creatWeather) 
-  .post('/postHotels', hotelCont.createHotel) 
+  // .post('/postWeather', weatherCont.creatWeather) 
+  // .post('/postHotels', hotelCont.createHotel) 
   .post('/postFlights', flightCont.createFlight) 
-  .post('/postPictures', picCont.createPicture); 
+  // .post('/postPictures', picCont.createPicture); 
 
 
   module.exports = router; 
