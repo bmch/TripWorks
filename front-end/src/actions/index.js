@@ -1,4 +1,4 @@
-import {FETCH_DATA_LOADING_SUCCESS, FETCH_DATA_LOADING_FAILURE, FETCH_DATA_LOADING} from '../constants';
+import {FETCH_DATA_LOADING_SUCCESS, FETCH_DATA_LOADING_FAILURE, FETCH_DATA_LOADING, ADD_FORM} from '../constants';
 
 export const fetchData = (url) => {
     return (dispatch) => {
@@ -38,5 +38,11 @@ export const fetchDataFailure = (error) => {
     return {
         type: FETCH_DATA_LOADING_FAILURE,
         error
+    }
+}
+
+export const AddForm = () => {
+    return {
+        type: ADD_FORM,
     }
 }

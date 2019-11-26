@@ -1,6 +1,6 @@
 import {FETCH_DATA_LOADING,FETCH_DATA_LOADING_SUCCESS,FETCH_DATA_LOADING_FAILURE} from '../constants';
 import { combineReducers } from 'redux';
-
+import {reducer as formReducer } from 'redux-form';
 
 
 export const holidays = (state = [],action) => {
@@ -33,7 +33,8 @@ export const itemLoadingError = (state = "",action) => {
 export const rootReducer = combineReducers({
     holidays,
     itemLoading,
-    itemLoadingError
+    itemLoadingError,
+    form: formReducer,
 });
 
 export default rootReducer;
