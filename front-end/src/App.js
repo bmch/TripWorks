@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import TripResults from './containers/TripResults';
+import React from 'react';
+import UserInput from './components/userInput/userInput';
+
 
 const App = () => {
- 
+
     return (
       <div>
-        <TripResults />
+      <UserInput />
       </div>
     );
-}
+};
 
 export default App;
