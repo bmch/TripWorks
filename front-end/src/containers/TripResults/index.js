@@ -7,17 +7,21 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDataFlights } from "../../actions/flights";
+import { fetchHotelData } from "../../actions/hotels";
 
 
-const TripResults = () => {
+const TripResults = () => {  
+    const form = useSelector(state => state.form.userInput.values); 
+    const hotels = useSelector(state => state.cityId);
 
     const flights = useSelector(state => state.flights);
     const dispatch = useDispatch();
 
 
     useEffect( () => {
-        console.log('action dispatched');
+        // console.log('action dispatched');
         dispatch(fetchDataFlights())
+        dispatch(fetchHotelData())
       
 	})
 
@@ -25,7 +29,8 @@ const TripResults = () => {
   return (
     <div>
         <div>TEST</div>
-        <div>{ JSON.stringify(flights) }</div>   
+        {/* <div>{ JSON.stringify(flights) }</div>    */}
+        <div>{hotels}</div>
     </div>
   );
 };

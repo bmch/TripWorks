@@ -13,7 +13,7 @@ export default {
     }
     else if (service === 'JSON') {
 
-      console.log('Getting flights from local JSON files')
+      // console.log('Getting flights from local JSON files')
       return await abuDhabi;
     }
   },
