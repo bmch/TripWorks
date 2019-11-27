@@ -1,23 +1,21 @@
-import {FETCH_DATA_SUCCESS, FETCH__ERROR, FETCH_DATA_PENDING} from '../constants';
+import {FETCH_DATA_LOADING_SUCCESS, FETCH_DATA_LOADING_FAILURE, FETCH_DATA_LOADING } from '../constants';
 
-// import flights from './flights'
-
-function fetchDataPending() {
+function fetchDataloading() {
   return {
-      type: FETCH_DATA_PENDING
+      type: FETCH_DATA_LOADING
   }
 }
 
-function fetchDataSuccess(data) {
+function fetchDataLoadingSuccess (data) {
   return {
-      type: FETCH_DATA_SUCCESS,
-      data: data
+      type: FETCH_DATA_LOADING_SUCCESS,
+      data
   }
 }
 
-function fetchDataError(error) {
+function fetchDataLoadingError(error) {
   return {
-      type: FETCH__ERROR,
-      error: error
+      type: FETCH_DATA_LOADING_FAILURE,
+      error
   }
 }
