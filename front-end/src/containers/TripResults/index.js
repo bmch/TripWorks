@@ -1,50 +1,33 @@
-import React from 'react';
-import {bindActionCreators} from 'redux';
-import { connect } from 'react-redux';
-import {fetchData, fetchDataLoading, fetchDataFailure} from '../../actions';
-import { rootURL } from '../../constants';
+// import React from 'react';
+// import {bindActionCreators} from 'redux';
+// import { connect } from 'react-redux';
+// import {fetchData, fetchDataFlights} from '../../actions';
+// import { rootURL } from '../../constants';
 
-class TripResults extends React.Component {
-    componentDidMount() {
-        this.props.fetchData(rootURL)
-    }
-    
-    render() {
-   
-    const { holidays,itemLoading } = this.props
-    
-    const display =  holidays.map(function(item, i){
-            return <li key={i}>{item.title}</li>
-          })
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDataFlights } from "../../actions/flights";
 
-        if(!holidays.length || itemLoading) {
-            return <p> Loading......</p>
-        }
-        return (
-            <div>
-                <ul>
-                    {display}
-                </ul>
-            </div>
-        )
-    }
-}
 
-const mapStateToProps = (state) => {
-    return {
-        holidays: state.holidays,
-        itemLoading: state.itemLoading,
-        itemLoadingError: state.itemLoadingError
-    }
-}
+const TripResults = () => {
 
-const mapDispatchToProps = dispatch => bindActionCreators(
-    {
-        fetchData,
-        fetchDataLoading,
-        fetchDataFailure
-    },
-    dispatch
-)
+    const flights = useSelector(state => state.flights);
+    const dispatch = useDispatch();
 
-export default connect(mapStateToProps,mapDispatchToProps)(TripResults);
+
+    useEffect( () => {
+        console.log('action dispatched');
+        dispatch(fetchDataFlights())
+      
+	})
+
+
+  return (
+    <div>
+        <div>TEST</div>
+        <div>{ JSON.stringify(flights) }</div>   
+    </div>
+  );
+};
+
+export default TripResults;

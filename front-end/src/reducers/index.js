@@ -1,7 +1,20 @@
 import {FETCH_DATA_LOADING,FETCH_DATA_LOADING_SUCCESS,FETCH_DATA_LOADING_FAILURE} from '../constants';
 import { combineReducers } from 'redux';
+import {reducer as formReducer } from 'redux-form';
 
 
+import flights from './flights'
+
+export const weather = (state = [], action) => {
+    // console.log(action)
+    switch(action.type) {
+        case 'SET_WEATHER':
+            console.log(action.data)
+            return action.data
+        default:
+            return state;
+    }
+  }
 
 export const holidays = (state = [],action) => {
     switch(action.type) {
@@ -31,9 +44,12 @@ export const itemLoadingError = (state = "",action) => {
 }
 
 export const rootReducer = combineReducers({
+    flights,
     holidays,
     itemLoading,
-    itemLoadingError
+    itemLoadingError,
+    form: formReducer,
+    weather
 });
 
 export default rootReducer;
