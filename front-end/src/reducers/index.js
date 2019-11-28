@@ -1,4 +1,4 @@
-import { FETCH_DATA_LOADING, FETCH_DATA_LOADING_SUCCESS, FETCH_DATA_LOADING_FAILURE } from '../constants';
+import { FETCH_DATA_LOADING, FETCH_DATA_LOADING_SUCCESS, FETCH_DATA_LOADING_FAILURE, SET_WEATHER, SET_WEATHER_TWO } from '../constants';
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
@@ -8,7 +8,7 @@ import flights from './flights'
 export const weather = (state = {}, action) => {
     // console.log(action)
     switch (action.type) {
-        case 'SET_WEATHER':
+        case SET_WEATHER:
             // console.log(action.data)
             return action.data
         default:
@@ -19,7 +19,7 @@ export const weather = (state = {}, action) => {
 export const weatherTwo = (state = {}, action) => {
     // console.log(action)
     switch (action.type) {
-        case 'SET_WEATHER_TWO':
+        case SET_WEATHER_TWO:
             return action.data
         default:
             return state;

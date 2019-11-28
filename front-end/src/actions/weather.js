@@ -1,20 +1,18 @@
 import { getWeather } from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/services/weather/weather-api.js'
-import { useDispatch, useSelector } from 'react-redux';
-import { goBack } from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/components/userInput/userInput.js';
-
 
 export const fetchDataWeather = (city) => (dispatch, getState) => {
   return getWeather(city).then(weather => {
 
-    const {goDate, backDate} = getState().form.userInput.values
+    const { goDate, backDate } = getState().form.userInput.values
 
-    
     for (let i = 0; i < weather.data.length; i++) {
-      console.log(goDate);
-      
-      if (weather.data[i].valid_date === goDate) {  
+      // console.log(goDate);
+
+      if (weather.data[i].valid_date === goDate) {
+
         // for (let j = i; j < weather.data.length; j++) {
-        //   if (weather.data[i].valid_date !== dateSelected.backDate) {
+        //   if (weather.data[i].valid_date !== backDate) {
+
             dispatch({
               type: 'SET_WEATHER',
               data: {
@@ -26,21 +24,26 @@ export const fetchDataWeather = (city) => (dispatch, getState) => {
                 forecast: weather.data
               }
             })
-        //   }
-        // }
-      }
+          }
+      //   }
+      // }
     }
   })
 }
 
 export const fetchDataWeatherTwo = (city) => (dispatch, getState) => {
-  
+
   return getWeather(city).then(weather => {
-    const dateSelected = getState()
+    const { goDate, backDate } = getState().form.userInput.values
+
     for (let i = 0; i < weather.data.length; i++) {
-      if (weather.data[i].valid_date === dateSelected.goDate) {
+      // console.log(goDate);
+
+      if (weather.data[i].valid_date === goDate) {
+
         // for (let j = i; j < weather.data.length; j++) {
-        //   if (weather.data[i].valid_date !== dateSelected.backDate) {
+        //   if (weather.data[j].valid_date !== backDate) {
+
             dispatch({
               type: 'SET_WEATHER_TWO',
               data: {
@@ -58,3 +61,12 @@ export const fetchDataWeatherTwo = (city) => (dispatch, getState) => {
     }
   })
 }
+
+ // for (let j = i; j < weather.data.length; j++) {
+        //   if (weather.data[i].valid_date !== dateSelected.backDate) {
+
+        // const dateSelected = getState()
+    // for (let i = 0; i < weather.data.length; i++) {
+    //   if (weather.data[i].valid_date === dateSelected.goDate) {
+        // for (let j = i; j < weather.data.length; j++) {
+        //   if (weather.data[i].valid_date !== dateSelected.backDate) {

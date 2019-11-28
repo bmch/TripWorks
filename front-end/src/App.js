@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Weather from './components/weather/weather';
 import UserInput from './components/userInput/userInput';
 import TripResults from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/containers/TripResults/index.js'
@@ -12,6 +12,7 @@ function App() {
       {/* <WeatherResults /> */}
       {/* <TripResults /> */}
       <UserInput />
+      
       {/* <Weather /> */}
     </div>
   );

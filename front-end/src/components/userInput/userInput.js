@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import './userInput.css'
 import { fetchDataWeather, fetchDataWeatherTwo } from '../../actions/weather';
-import { getWeather } from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/services/weather/weather-api.js';
 import Weather from '../weather/weather';
-
-
+import WCont from '../weather/wCont';
 
 const UserInput = ({ handleSubmit }) => {
 
@@ -32,25 +30,23 @@ const UserInput = ({ handleSubmit }) => {
       </div>
     );
   }
-  const weather = useSelector(state => state.weather);
-  // const weatherData = useSelector(state => state.weather.data);
+  
   const dispatch = useDispatch();
-
-
-  //  export default goBack = useSelector(state => state.form.userInput.values.goDate);
-
 
   const onSubmit = (formValues) => {
     
     dispatch(fetchDataWeather(formValues.destination1))
     if (formValues.destination2) {
       dispatch(fetchDataWeatherTwo(formValues.destination2))
-    }
+    } 
+    console.log(formValues.goDate)
+    return <WCont formValuesGo={formValues.goDate} formValuesBack={formValues.backDate}/>
+    console.log(formValues.goDate)
   }
-  // const gooDate = formValues.goDate
-  // const baackDate = formValues.backDate
-  // console.log(gooDate)
-  // console.log(baackDate)
+
+  // if (flag=true) {
+  //   return 
+  // }
 
   return (
     <div className="container">
@@ -116,6 +112,7 @@ const UserInput = ({ handleSubmit }) => {
         </div>
       </form>
       <Weather />
+      
     </div>
   )
 };
@@ -130,7 +127,6 @@ const inputValidator = values => {
   }
   return errors;
 };
-
 
 export default reduxForm({
   form: 'userInput',
