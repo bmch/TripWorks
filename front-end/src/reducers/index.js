@@ -1,23 +1,33 @@
-import {FETCH_DATA_LOADING,FETCH_DATA_LOADING_SUCCESS,FETCH_DATA_LOADING_FAILURE} from '../constants';
+import { FETCH_DATA_LOADING, FETCH_DATA_LOADING_SUCCESS, FETCH_DATA_LOADING_FAILURE } from '../constants';
 import { combineReducers } from 'redux';
-import {reducer as formReducer } from 'redux-form';
+import { reducer as formReducer } from 'redux-form';
 
 
 import flights from './flights'
 
-export const weather = (state = [], action) => {
+export const weather = (state = {}, action) => {
     // console.log(action)
-    switch(action.type) {
+    switch (action.type) {
         case 'SET_WEATHER':
-            console.log(action.data)
+            // console.log(action.data)
             return action.data
         default:
             return state;
     }
-  }
+}
 
-export const holidays = (state = [],action) => {
-    switch(action.type) {
+export const weatherTwo = (state = {}, action) => {
+    // console.log(action)
+    switch (action.type) {
+        case 'SET_WEATHER_TWO':
+            return action.data
+        default:
+            return state;
+    }
+}
+
+export const holidays = (state = [], action) => {
+    switch (action.type) {
         case FETCH_DATA_LOADING_SUCCESS:
             return action.data
         default:
@@ -25,19 +35,19 @@ export const holidays = (state = [],action) => {
     }
 }
 
-export const itemLoading = (state = false,action) => {
-    switch(action.type) {
+export const itemLoading = (state = false, action) => {
+    switch (action.type) {
         case FETCH_DATA_LOADING:
-                return action.status
+            return action.status
         default:
             return state;
     }
-} 
+}
 
-export const itemLoadingError = (state = "",action) => {
-    switch(action.type) {
+export const itemLoadingError = (state = "", action) => {
+    switch (action.type) {
         case FETCH_DATA_LOADING_FAILURE:
-                return action.itemLoadingError
+            return action.itemLoadingError
         default:
             return state;
     }
@@ -49,7 +59,8 @@ export const rootReducer = combineReducers({
     itemLoading,
     itemLoadingError,
     form: formReducer,
-    weather
+    weather,
+    weatherTwo
 });
 
 export default rootReducer;
