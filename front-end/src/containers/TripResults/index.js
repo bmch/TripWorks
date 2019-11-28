@@ -13,23 +13,22 @@ import { fetchHotelData } from "../../actions/hotels";
 const TripResults = () => {  
     const form = useSelector(state => state.form.userInput.values); 
     const hotels = useSelector(state => state.cityId);
-
     const flights = useSelector(state => state.flights);
-    const dispatch = useDispatch();
 
+    const dispatch = useDispatch();
 
     useEffect( () => {
         // console.log('action dispatched');
         dispatch(fetchDataFlights())
-        dispatch(fetchHotelData())
-      
-	})
+        // dispatch(fetchHotelData())
+	} , [])
 
 
   return (
     <div>
-        <div>TEST</div>
-        {/* <div>{ JSON.stringify(flights) }</div>    */}
+        <div>Results</div>
+        <div>{form}</div>
+        <div>{ JSON.stringify(flights) }</div>   
         <div>{hotels}</div>
     </div>
   );
