@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/pickers": "^3.2.8",
+    "dotenv": "^8.2.0",
     "eslint": "^6.7.0",
     "eslint-config-react-app": "^5.0.2",
     "eslint-plugin-flowtype": "^4.4.1",
