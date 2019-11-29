@@ -1,5 +1,15 @@
 import {FETCH_DATA_LOADING_SUCCESS, FETCH_DATA_LOADING_FAILURE, FETCH_DATA_LOADING } from '../constants';
 
+import flightAction from './flights'
+import hotelAction from './hotels'
+
+function bigGiantAction() {
+
+  flightAction(data)
+  hotelAction(data)
+
+}
+
 function fetchDataloading() {
   return {
       type: FETCH_DATA_LOADING
