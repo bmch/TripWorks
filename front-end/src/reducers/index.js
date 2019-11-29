@@ -9,6 +9,18 @@ import { reducer as formReducer } from 'redux-form';
 import flights from './flights';
 import getCityId from './hotels';
 
+<<<<<<< HEAD
+import flights from './flights';
+import getCityId from './hotels';
+
+export const holidays = (state = [],action) => {
+    switch(action.type) {
+        case FETCH_DATA_LOADING_SUCCESS:
+            return action.data
+        default:
+            return state;
+    }
+=======
 export const weather = (state = {}, action) => {
   switch (action.type) {
     case SET_WEATHER:
@@ -16,6 +28,7 @@ export const weather = (state = {}, action) => {
     default:
       return state;
   }
+>>>>>>> 78aa0547646ca82a5b51952cb860e2b9efafd4d5
 }
 
 export const weatherTwo = (state = {}, action) => {
@@ -55,6 +68,14 @@ export const itemLoadingError = (state = '', action) => {
 };
 
 export const rootReducer = combineReducers({
+<<<<<<< HEAD
+    flights,
+    getCityId,
+    holidays,
+    itemLoading,
+    itemLoadingError,
+    form: formReducer,
+=======
   flights,
   getCityId,
   holidays,
@@ -63,6 +84,7 @@ export const rootReducer = combineReducers({
   form: formReducer,
   weather,
   weatherTwo
+>>>>>>> 78aa0547646ca82a5b51952cb860e2b9efafd4d5
 });
 
 export default rootReducer;

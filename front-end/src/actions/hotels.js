@@ -14,5 +14,5 @@ export const fetchHotelData = formData => dispatch => {
       data: hotelList
     });
     return Promise.resolve();
-  });
+   });
 };
