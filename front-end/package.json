@@ -7,13 +7,7 @@
     "@material-ui/core": "^4.7.0",
     "@material-ui/icons": "^4.5.1",
     "@material-ui/pickers": "^3.2.8",
-<<<<<<< HEAD
-    "@material-ui/styles": "^4.6.0",
-    "@types/date-fns": "^2.6.0",
-    "date-fns": "^2.8.1",
-=======
     "dotenv": "^8.2.0",
->>>>>>> 78aa0547646ca82a5b51952cb860e2b9efafd4d5
     "eslint": "^6.7.0",
     "eslint-config-react-app": "^5.0.2",
     "eslint-plugin-flowtype": "^4.4.1",
