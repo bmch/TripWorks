@@ -1,5 +1,4 @@
 import ApiClient from '../services/__mock__/ApiClient';
-
 import { useSelector } from 'react-redux';
 
 export const fetchHotelData = formData => dispatch => {
@@ -15,5 +14,5 @@ export const fetchHotelData = formData => dispatch => {
       data: hotelList
     });
     return Promise.resolve();
-  });
+   });
 };

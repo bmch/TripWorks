@@ -10,6 +10,9 @@ import flights from './flights';
 import getCityId from './hotels';
 
 
+
+
+
 export const weather = (state = {}, action) => {
   switch (action.type) {
     case SET_WEATHER:
@@ -17,6 +20,7 @@ export const weather = (state = {}, action) => {
     default:
       return state;
   }
+
 }
 
 export const weatherTwo = (state = {}, action) => {
@@ -56,6 +60,7 @@ export const itemLoadingError = (state = '', action) => {
 };
 
 export const rootReducer = combineReducers({
+
   flights,
   getCityId,
   holidays,
@@ -64,6 +69,6 @@ export const rootReducer = combineReducers({
   form: formReducer,
   weather,
   weatherTwo
-});
+
 
 export default rootReducer;
