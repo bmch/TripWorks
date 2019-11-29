@@ -1,13 +1,32 @@
 import {
   FETCH_DATA_LOADING,
   FETCH_DATA_LOADING_SUCCESS,
-  FETCH_DATA_LOADING_FAILURE
+  FETCH_DATA_LOADING_FAILURE, SET_WEATHER, SET_WEATHER_TWO
 } from '../constants';
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
 import flights from './flights';
 import getCityId from './hotels';
+
+
+export const weather = (state = {}, action) => {
+  switch (action.type) {
+    case SET_WEATHER:
+      return action.data
+    default:
+      return state;
+  }
+}
+
+export const weatherTwo = (state = {}, action) => {
+  switch (action.type) {
+    case SET_WEATHER_TWO:
+      return action.data
+    default:
+      return state;
+  }
+}
 
 export const holidays = (state = [], action) => {
   switch (action.type) {
@@ -42,7 +61,9 @@ export const rootReducer = combineReducers({
   holidays,
   itemLoading,
   itemLoadingError,
-  form: formReducer
+  form: formReducer,
+  weather,
+  weatherTwo
 });
 
 export default rootReducer;

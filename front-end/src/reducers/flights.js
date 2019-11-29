@@ -1,3 +1,7 @@
+// initalState = {
+//   forecast: []
+// }
+
 export const flights = (state = [], action) => {
   // console.log(action)
   switch(action.type) {

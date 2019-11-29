@@ -9,7 +9,7 @@ const App = () => {
     return (
       <div>
       <UserInput />
-      <TripResults />
+      {/* <TripResults /> */}
       </div>
     );
 };
