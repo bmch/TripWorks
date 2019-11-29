@@ -1,0 +1,15 @@
+.result {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  padding: 10px;
+
+  height: 80px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+
+  border: 1px solid lightblue;
+  -webkit-box-shadow: 11px 6px 24px 12px rgba(0, 0, 0, 0.37);
+  -moz-box-shadow: 11px 6px 24px 12px rgba(0, 0, 0, 0.37);
+  box-shadow: 11px 6px 24px 12px rgba(0, 0, 0, 0.37);
+}
