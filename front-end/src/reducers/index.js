@@ -9,7 +9,6 @@ import { reducer as formReducer } from 'redux-form';
 import flights from './flights';
 import getCityId from './hotels';
 
-
 export const weather = (state = {}, action) => {
   switch (action.type) {
     case SET_WEATHER:

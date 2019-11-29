@@ -1,5 +1,4 @@
 import ApiClient from '../services/__mock__/ApiClient';
-
 import { useSelector } from 'react-redux';
 
 export const fetchHotelData = formData => dispatch => {

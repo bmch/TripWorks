@@ -1,6 +1,6 @@
 const BASE_URL = 'https://apidojo-booking-v1.p.rapidapi.com/';
 const GET_CITYID_URL = 'locations/auto-complete?languagecode=en-us&text=';
-
+​
 export default {
   // getAllHotels: dest_id => {
   //   return fetchRequest(GET_PROPERTY_LIST_URL + dest_id);
@@ -8,10 +8,7 @@ export default {
   // destructure form data
   getCityIdByName: ({ destination1, goDate, backDate }) => {
     return fetchRequest(GET_CITYID_URL + destination1)
-      .then(objContainsID => [
-        objContainsID[0].dest_id,
-        objContainsID[0].dest_type
-      ])
+      .then(res => [res[0].dest_id, res[0].dest_type])
       .then(([id, type]) => {
         const GET_PROPERTY_LIST_URL = `properties/list?price_filter_currencycode=USD&travel_purpose=leisure&order_by=popularity&languagecode=en-us&search_type=${type}&offset=0&dest_ids=${id}&guest_qty=1&arrival_date=${goDate}&departure_date=${backDate}&room_qty=1`;
         return fetchRequest(GET_PROPERTY_LIST_URL);
@@ -22,7 +19,7 @@ export default {
       });
   }
 };
-
+​
 //TODO: add this to env file
 const options = {
   headers: {
@@ -30,7 +27,7 @@ const options = {
     'x-rapidapi-key': process.env.REACT_APP_RAPID_API_KEY
   }
 };
-
+​
 const fetchRequest = url => {
   console.log('TCL: fetchRequest -> url', url);
   return fetch(`${BASE_URL}${url}`, options)
