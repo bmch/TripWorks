@@ -11,11 +11,9 @@ import PackageResult from './components/packageResult/packageResult'
 const App = () => {
 
     return (
-      <div className="App">
-        <UserInput />  
-        {/* <Result />  */}
-        {/* <SignIn/> */}
-        {/* <PackageResult /> */}
+      <div>
+      <UserInput />
+      {/* <TripResults /> */}
       </div>
     );
 };

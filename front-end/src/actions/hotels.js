@@ -1,15 +1,18 @@
 import ApiClient from '../services/__mock__/ApiClient';
+import { useSelector } from 'react-redux';
 
-import { useSelector } from 'react-redux'
+export const fetchHotelData = formData => dispatch => {
+  // const destination1 = useSelector(state => state.form.userInput.values);
 
-export const fetchHotelData = (data) => (dispatch) => {
-  // const destination1 = useSelector(state => state.form.userInput.values); 
-  
-   ApiClient.getCityIdByName().then((hotelList) => {
+  // dispatch(fetchDataLoading(true));
+
+  ApiClient.getCityIdByName(formData).then(hotelList => {
+    //  dispatch(fetchDataLoading(false));
+    //  dispatch(fetchDataSuccess(hotelList));
     dispatch({
       type: 'GET_CITY_ID',
       data: hotelList
-    })
+    });
     return Promise.resolve();
    });
 };

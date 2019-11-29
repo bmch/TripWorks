@@ -1,14 +1,18 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import './userInput.css'
+import { fetchDataWeather, fetchDataWeatherTwo } from '../../actions/weather';
+import Weather from '../weather/weather';
+import WCont from '../weather/wCont';
 import './userInput.css';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
 import { connect } from 'react-redux';
 
-
 const UserInput = ({ handleSubmit }) => {
   const dispatch = useDispatch();
+
   const renderError = ({ error, touched }) => {
     if (touched && error) {
       return (
@@ -18,10 +22,13 @@ const UserInput = ({ handleSubmit }) => {
       );
     }
   };
+
   const renderInput = ({ input, meta }) => {
     const divError = ` field ${meta.touched && meta.error ? 'error' : ''}`;
+
     const type =
       input.name === 'goDate' || input.name === 'backDate' ? 'date' : 'text';
+
     return (
       <div className={divError}>
         <input {...input} autoComplete="off" className="input" type={type} />
@@ -29,11 +36,21 @@ const UserInput = ({ handleSubmit }) => {
       </div>
     );
   };
+
   const onSubmit = formValues => {
     console.log(formValues);
-    dispatch(fetchHotelData());
-    this.props.history.push('/TripResults');
-  };
+    // dispatch(fetchHotelData(formValues));
+    dispatch(fetchDataWeather(formValues.destination1))
+    if (formValues.destination2) {
+      dispatch(fetchDataWeatherTwo(formValues.destination2))
+    }
+    
+  }
+
+
+ 
+
+  
   return (
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)} className="error">
@@ -57,8 +74,10 @@ const UserInput = ({ handleSubmit }) => {
             />
           </div>
         </div>
-        <div className="Wrapper">
-          <div className="to">
+
+        {/* <div className="Wrapper"><div></div> */}
+        <div className="to">
+          <div >
             <div>
               <Field
                 name="destination2"
@@ -68,7 +87,10 @@ const UserInput = ({ handleSubmit }) => {
               />
             </div>
           </div>
-          <div className="go">
+        </div>
+
+        <div className="go">
+          <div>
             <div>
               <Field
                 name="goDate"
@@ -79,7 +101,10 @@ const UserInput = ({ handleSubmit }) => {
               />
             </div>
           </div>
-          <div className="back">
+        </div>
+
+        <div className="back">
+          <div>
             <div>
               <Field
                 name="backDate"
@@ -91,15 +116,22 @@ const UserInput = ({ handleSubmit }) => {
             </div>
           </div>
         </div>
+
         <div className="field">
           <div className="control">
             <button className="input">Submit</button>
           </div>
         </div>
+
       </form>
+
+      <Weather />
+      <WCont />
     </div>
   );
 };
+
+
 const inputValidator = values => {
   const errors = {};
   if (!values.departure) {
@@ -110,8 +142,10 @@ const inputValidator = values => {
   }
   return errors;
 };
+
 export default reduxForm({
   form: 'userInput',
   validate: inputValidator,
   destroyOnUnmount: false
 })(UserInput);
+
