@@ -1,29 +1,17 @@
-import React, { Component, useState } from 'react';
-import Weather from './components/weather/weather';
+import React, { useEffect } from 'react';
 import UserInput from './components/userInput/userInput';
-import TripResults from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/containers/TripResults/index.js'
-import WeatherResults from './containers/TripResults/weathTest';
+import { useSelector } from "react-redux";
+import TripResults from "./containers/TripResults/index";
 
 
-function App() {
-  // const [flag, setFlag] = useState(false);
+const App = () => {
 
-  // const flurg = () => {
-  //   if (flag === true) {
-
-  //   }
-  // }
-
-  return (
-    <div>
-      {/* <WeatherResults /> */}
-      {/* <TripResults /> */}
+    return (
+      <div>
       <UserInput />
-      
-      {/* <Weather /> */}
-    </div>
-  );
-
-}
+      {/* <TripResults /> */}
+      </div>
+    );
+};
 
 export default App;

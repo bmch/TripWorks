@@ -6,7 +6,6 @@ export const fetchDataWeather = (city) => (dispatch, getState) => {
     const { goDate, backDate } = getState().form.userInput.values
 
     for (let i = 0; i < weather.data.length; i++) {
-      // console.log(goDate);
 
       if (weather.data[i].valid_date === goDate) {
 

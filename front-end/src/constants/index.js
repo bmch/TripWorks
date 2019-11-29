@@ -6,4 +6,4 @@ export const ADD_FORM = 'ADD_FORM';
 export const SET_WEATHER = 'SET_WEATHER';
 export const SET_WEATHER_TWO = 'SET_WEATHER_TWO';
 
-export const rootURL = 'https://jsonplaceholder.typicode.com/todos';
+// export const rootURL = 'https://jsonplaceholder.typicode.com/todos';
