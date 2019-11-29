@@ -8,6 +8,7 @@ import WCont from '../weather/wCont';
 
 const UserInput = ({ handleSubmit }) => {
 
+  
   const renderError = ({ error, touched }) => {
     if (touched && error) {
       return (
@@ -31,6 +32,8 @@ const UserInput = ({ handleSubmit }) => {
     );
   }
   
+  // let go = formValues.goDate
+  // let back = formValues.backDate
   const dispatch = useDispatch();
 
   const onSubmit = (formValues) => {
@@ -39,9 +42,10 @@ const UserInput = ({ handleSubmit }) => {
     if (formValues.destination2) {
       dispatch(fetchDataWeatherTwo(formValues.destination2))
     } 
-    console.log(formValues.goDate)
-    return <WCont formValuesGo={formValues.goDate} formValuesBack={formValues.backDate}/>
-    console.log(formValues.goDate)
+    // const wContComp = setTimeout(function(){ return <WCont /> }, 5000);
+    // console.log(formValues.goDate)
+    
+    // console.log(formValues.goDate)
   }
 
   // if (flag=true) {
@@ -112,7 +116,7 @@ const UserInput = ({ handleSubmit }) => {
         </div>
       </form>
       <Weather />
-      
+      <WCont />
     </div>
   )
 };

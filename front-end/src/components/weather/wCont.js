@@ -10,7 +10,7 @@ import Weather from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/c
 
 const WCont = ({ formValuesGo, formValuesBack }) => {
   // const { goDate, backDate } = getState().form.userInput.values
-  // const goDate = useSelector(state => state.form.userInput);
+  // const goDate = useSelector(state => state.form.userInput.values.goDate);
   // console.log("go date", goDate.values);
   // const backDate = useSelector(state => state.form.userInput.values.backDate);
   
@@ -24,7 +24,7 @@ const WCont = ({ formValuesGo, formValuesBack }) => {
   
 
   const weather = useSelector(state => state.weather.forecast);
-  // const weatherTwo = useSelector(state => state.weatherTwo.forecast);
+  const weatherTwo = useSelector(state => state.weatherTwo.forecast);
   // console.log(goDate)
   // console.log(backDate)
   // console.log(goDate)
@@ -44,7 +44,7 @@ const WCont = ({ formValuesGo, formValuesBack }) => {
   // const forecastComponent = filtW && filtW.map((e) => <Forecast e={e} />)
 
   const forecastComponent = weather && weather.map((e) => <Forecast e={e} />)
-  // const forecastComponentTwo = weatherTwo && weatherTwo.map((e) => <ForecastTwo e={e}/>)
+  const forecastComponentTwo = weatherTwo && weatherTwo.map((e) => <ForecastTwo e={e}/>)
 
   // console.log(forecastComponent)
 
@@ -54,9 +54,9 @@ const WCont = ({ formValuesGo, formValuesBack }) => {
         {forecastComponent}
       {/* </div> */}
       {/* <br /> */}
-      {/* <div>
+      {/* <div> */}
         {forecastComponentTwo}
-      </div> */}
+      {/* </div> */}
     </>
   );
 

@@ -6,6 +6,13 @@ import WeatherResults from './containers/TripResults/weathTest';
 
 
 function App() {
+  // const [flag, setFlag] = useState(false);
+
+  // const flurg = () => {
+  //   if (flag === true) {
+
+  //   }
+  // }
 
   return (
     <div>
