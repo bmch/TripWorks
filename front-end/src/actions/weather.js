@@ -3,50 +3,36 @@ import { getWeather } from '/Users/erincostello/Desktop/Tripz/TripWorks/front-en
 export const fetchDataWeather = (city) => (dispatch, getState) => {
   return getWeather(city).then(weather => {
 
+    let theForecast;
+
     const { goDate, backDate } = getState().form.userInput.values
 
-    for (let i = 0; i < weather.data.length; i++) {
+    const forecast = weather.data.filter(el => new Date(el.valid_date).getTime() >= new Date(goDate).getTime() && new Date(el.valid_date).getTime() <= new Date(backDate).getTime())
 
-      if (weather.data[i].valid_date === goDate) {
+    theForecast = forecast
 
-        dispatch({
-          type: 'SET_WEATHER',
-          data: {
-            city: weather.city_name,
-            icon: weather.data[i].weather.icon,
-            weather: weather.data[i].temp,
-            desc: weather.data[i].weather.description,
-            date: weather.data[i].valid_date,
-            forecast: weather.data
-          }
-        })
-      }
-    }
-  })
-}
+    dispatch({
+      type: 'SET_WEATHER',
+      data: theForecast
+    
+    })
+})}
 
 export const fetchDataWeatherTwo = (city) => (dispatch, getState) => {
-
   return getWeather(city).then(weather => {
+
+    let theForecast;
+
     const { goDate, backDate } = getState().form.userInput.values
 
-    for (let i = 0; i < weather.data.length; i++) {
+    const forecast = weather.data.filter(el => new Date(el.valid_date).getTime() >= new Date(goDate).getTime() && new Date(el.valid_date).getTime() <= new Date(backDate).getTime())
 
-      if (weather.data[i].valid_date === goDate) {
+    theForecast = forecast
 
-        dispatch({
-          type: 'SET_WEATHER_TWO',
-          data: {
-            city: weather.city_name,
-            icon: weather.data[i].weather.icon,
-            weather: weather.data[i].temp,
-            desc: weather.data[i].weather.description,
-            date: weather.data[i].valid_date,
-            forecast: weather.data
-          }
-        })
-      }
-    }
-  })
-}
+    dispatch({
+      type: 'SET_WEATHER_TWO',
+      data: theForecast
+    
+    })
+})}
 
