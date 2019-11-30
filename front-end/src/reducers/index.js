@@ -3,11 +3,13 @@ import {
   FETCH_DATA_LOADING_SUCCESS,
   FETCH_DATA_LOADING_FAILURE
 } from '../constants';
+
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
 import flights from './flights';
 import getCityId from './hotels';
+import photos from './photos';
 
 export const holidays = (state = [], action) => {
   switch (action.type) {
@@ -40,6 +42,7 @@ export const rootReducer = combineReducers({
   flights,
   getCityId,
   holidays,
+  photos,
   itemLoading,
   itemLoadingError,
   form: formReducer

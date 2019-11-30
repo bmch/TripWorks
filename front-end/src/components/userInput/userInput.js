@@ -4,6 +4,7 @@ import './userInput.css';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
+import { fetchPhotos } from '../../actions/photos';
 import { connect } from 'react-redux';
 
 const UserInput = ({ handleSubmit }) => {
@@ -35,7 +36,8 @@ const UserInput = ({ handleSubmit }) => {
 
   const onSubmit = formValues => {
     console.log(formValues);
-    dispatch(fetchHotelData(formValues));
+    //  dispatch(fetchHotelData(formValues));
+    dispatch(fetchPhotos(formValues));
     // this.props.history.push('/TripResults');
   };
 

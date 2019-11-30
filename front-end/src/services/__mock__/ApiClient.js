@@ -8,10 +8,7 @@ export default {
   // destructure form data
   getCityIdByName: ({ destination1, goDate, backDate }) => {
     return fetchRequest(GET_CITYID_URL + destination1)
-      .then(objContainsID => [
-        objContainsID[0].dest_id,
-        objContainsID[0].dest_type
-      ])
+      .then(res => [res[0].dest_id, res[0].dest_type])
       .then(([id, type]) => {
         const GET_PROPERTY_LIST_URL = `properties/list?price_filter_currencycode=USD&travel_purpose=leisure&order_by=popularity&languagecode=en-us&search_type=${type}&offset=0&dest_ids=${id}&guest_qty=1&arrival_date=${goDate}&departure_date=${backDate}&room_qty=1`;
         return fetchRequest(GET_PROPERTY_LIST_URL);
