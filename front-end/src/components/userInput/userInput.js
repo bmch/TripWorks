@@ -5,6 +5,8 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
 import { connect } from 'react-redux';
+import { bigGiantAction } from '../../actions/index'
+
 
 const UserInput = ({ handleSubmit }) => {
   const dispatch = useDispatch();
@@ -35,7 +37,7 @@ const UserInput = ({ handleSubmit }) => {
 
   const onSubmit = formValues => {
     console.log(formValues);
-    dispatch(fetchHotelData(formValues));
+    dispatch(bigGiantAction());
     // this.props.history.push('/TripResults');
   };
 
@@ -106,19 +108,19 @@ const UserInput = ({ handleSubmit }) => {
   );
 };
 
-const inputValidator = values => {
-  const errors = {};
-  if (!values.departure) {
-    errors.departure = 'departure city is required';
-  }
-  if (!values.destination) {
-    errors.destination = 'destination city is required';
-  }
-  return errors;
-};
+// const inputValidator = values => {
+//   const errors = {};
+//   if (!values.departure) {
+//     errors.departure = 'departure city is required';
+//   }
+//   if (!values.destination) {
+//     errors.destination = 'destination city is required';
+//   }
+//   return errors;
+// };
 
 export default reduxForm({
   form: 'userInput',
-  validate: inputValidator,
+  // validate: inputValidator,
   destroyOnUnmount: false
 })(UserInput);
