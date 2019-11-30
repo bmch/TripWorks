@@ -1,7 +1,7 @@
 
 export const getCityId = (state = [], action) => {
   switch(action.type) {
-      case 'GET_CITY_ID':
+      case 'SET_HOTELS':
           return action.data
       default:
           return state;

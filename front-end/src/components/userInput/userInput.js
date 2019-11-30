@@ -9,6 +9,8 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
 import { connect } from 'react-redux';
+import { bigGiantAction } from '../../actions/index'
+
 
 const UserInput = ({ handleSubmit }) => {
   const dispatch = useDispatch();
@@ -39,6 +41,11 @@ const UserInput = ({ handleSubmit }) => {
 
   const onSubmit = formValues => {
     console.log(formValues);
+<<<<<<< HEAD
+    dispatch(bigGiantAction());
+    // this.props.history.push('/TripResults');
+  };
+=======
     // dispatch(fetchHotelData(formValues));
     dispatch(fetchDataWeather(formValues.destination1))
     if (formValues.destination2) {
@@ -49,6 +56,7 @@ const UserInput = ({ handleSubmit }) => {
 
 
  
+>>>>>>> 7b6bc05f04dedb592c9c063cd9de244fba4f4252
 
   
   return (
@@ -131,6 +139,18 @@ const UserInput = ({ handleSubmit }) => {
   );
 };
 
+<<<<<<< HEAD
+// const inputValidator = values => {
+//   const errors = {};
+//   if (!values.departure) {
+//     errors.departure = 'departure city is required';
+//   }
+//   if (!values.destination) {
+//     errors.destination = 'destination city is required';
+//   }
+//   return errors;
+// };
+=======
 
 const inputValidator = values => {
   const errors = {};
@@ -142,10 +162,11 @@ const inputValidator = values => {
   }
   return errors;
 };
+>>>>>>> 7b6bc05f04dedb592c9c063cd9de244fba4f4252
 
 export default reduxForm({
   form: 'userInput',
-  validate: inputValidator,
+  // validate: inputValidator,
   destroyOnUnmount: false
 })(UserInput);
 

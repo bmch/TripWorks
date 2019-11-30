@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 
 // import React from 'react';
 // import {bindActionCreators} from 'redux';
@@ -5,13 +7,32 @@
 // import {fetchData, fetchDataFlights} from '../../actions';
 // import { rootURL } from '../../constants';
 
+>>>>>>> 7b6bc05f04dedb592c9c063cd9de244fba4f4252
 import React, { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { fetchDataFlights } from "../../actions/flights";
-import { fetchHotelData } from "../../actions/hotels";
-
+// import { fetchDataFlights } from "../../actions/flights";
+// import { fetchHotelData } from "../../actions/hotels";
+// import 'TripResults.css'
 
 const TripResults = () => {  
+<<<<<<< HEAD
+
+  // const destination = useSelector(state => state.form.userInput.values); 
+  // console.log(destination);
+  const hotelAPIresults = useSelector(state => state.getCityId);
+    // const form = useSelector(state => state.form.userInput.values); 
+    //const hotels = useSelector(state => state.cityId);
+    // const flights = useSelector(state => state.flights);
+    // const dispatch = useDispatch();
+
+  // console.log('hotel api results', hotelAPIresults);
+  // if (!hotelAPIresults.length) {
+  //   return <p> Loading......</p>;
+  // }
+  // const listHotels = hotelAPIresults.result.map(hotel => (
+  //   <div key={hotel.id}>{hotel.address}</div>
+  // ));
+=======
   const destination = useSelector(state => state.form.userInput.values); 
   console.log(destination);
 
@@ -49,6 +70,7 @@ const TripResults = () => {
   console.log(hotelAPIresults);
   // const LoadingStatus = useSelector(state => state. )
 ​
+>>>>>>> 7b6bc05f04dedb592c9c063cd9de244fba4f4252
   return (
     <div>
       <div>
@@ -80,7 +102,10 @@ const TripResults = () => {
             </div>
           ))}
       </div>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7b6bc05f04dedb592c9c063cd9de244fba4f4252
     </div>
   );
 };
