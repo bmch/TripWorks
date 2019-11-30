@@ -7,27 +7,27 @@ function Forecast(props) {
   // const weatherTwo = useSelector(state => state.weatherTwo.forcast);
 
   return (
-    
-    <div className="testWeather">
-      
-      <div className="weatherOne">
+
+    <div style={{ width: '100%' }}>
+      {/* <Paper component="div" display="inline" p={1} m={1} bgcolor="background.paper">
         <h1>Forecast Destination 1</h1>
-        {/* <p>{e.city}</p> */} */}
         <p>{props.e.valid_date}</p>
         <p>{props.e.weather.icon}</p>
         <p>{props.e.temp}</p>
         <p>{props.e.weather.description}</p>
-        {/* <p>{weather.data && weather.data.forcast[5].wind_cdir_full}</p>
-      </div>
-      {/* <div className="weatherTwo">
-        <h1>Forecast Destination 2</h1>
-        <p>{e.date}</p>
-        <p>{e.icon}</p>
-        <p>{e.weather}</p>
-        <p>{e.desc}</p>
-      </div> */}
+      </Paper> */}
     </div>
-    </div>
+
+    // <div className="testWeather">
+
+    //   <div className="weatherOne">
+    //     <h1>Forecast Destination 1</h1>
+    //     <p>{props.e.valid_date}</p>
+    //     <p>{props.e.weather.icon}</p>
+    //     <p>{props.e.temp}</p>
+    //     <p>{props.e.weather.description}</p>
+    // </div>
+    // </div>
   );
 }
 

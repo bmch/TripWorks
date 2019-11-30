@@ -5,27 +5,38 @@ import ForecastTwo from './forecastTwo';
 import { fetchDataWeather } from '../../actions/weather';
 import { useSelector } from 'react-redux'
 import Weather from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/components/weather/weather.js'
+import Paper from "@material-ui/core/Paper";
 
 
 
 const WCont = ({ formValuesGo, formValuesBack }) => {
-  // const { goDate, backDate } = getState().form.userInput.values
-  // const goDate = useSelector(state => state.form.userInput.values.goDate);
-  // console.log("go date", goDate.values);
-  // const backDate = useSelector(state => state.form.userInput.values.backDate);
-  
-  // const goDate= formValuesGo
-  // const backDate= formValuesBack
-  // console.log(goDate)
-  // console.log(backDate)
 
-  // const startDate = new Date(goDate)
-  // const endDate = new Date(backDate)
+  const weather = useSelector(state => state.weather);
+  const weatherTwo = useSelector(state => state.weatherTwo);
   
+  console.log(weather&&weather)
+  
+  // const forecastComponent = weather && weather.map((e) => <Forecast e={e} />)
+  // const forecastComponentTwo = weatherTwo && weatherTwo.map((e) => <ForecastTwo e={e}/>)
+  // console.log(weather&&weather)
+  // console.log(forecastComponent)
 
-  const weather = useSelector(state => state.weather.forecast);
-  const weatherTwo = useSelector(state => state.weatherTwo.forecast);
-  // console.log(goDate)
+  return (
+    <>    
+{/*     
+        {forecastComponent} 
+        {forecastComponentTwo}   */}
+    </>
+  );
+
+}
+
+export default WCont;
+
+
+
+
+// console.log(goDate)
   // console.log(backDate)
   // console.log(goDate)
   // console.log("this should be an array of the weather forc", weather);
@@ -43,26 +54,25 @@ const WCont = ({ formValuesGo, formValuesBack }) => {
   
   // const forecastComponent = filtW && filtW.map((e) => <Forecast e={e} />)
 
-  const forecastComponent = weather && weather.map((e) => <Forecast e={e} />)
-  const forecastComponentTwo = weatherTwo && weatherTwo.map((e) => <ForecastTwo e={e}/>)
 
-  // console.log(forecastComponent)
 
-  return (
-    <>
-      {/* <div> */}
-        {forecastComponent}
-      {/* </div> */}
-      {/* <br /> */}
-      {/* <div> */}
-        {forecastComponentTwo}
-      {/* </div> */}
-    </>
-  );
 
-}
 
-export default WCont;
+
+ // const { goDate, backDate } = getState().form.userInput.values
+  // const goDate = useSelector(state => state.form.userInput.values.goDate);
+  // console.log("go date", goDate.values);
+  // const backDate = useSelector(state => state.form.userInput.values.backDate);
+  
+  // const goDate= formValuesGo
+  // const backDate= formValuesBack
+  // console.log(goDate)
+  // console.log(backDate)
+
+  // const startDate = new Date(goDate)
+  // const endDate = new Date(backDate)
+
+
 
 
 // const forecastComponent = weather && weather.map((e) => {

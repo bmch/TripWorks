@@ -1,4 +1,8 @@
 import { getWeather } from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/services/weather/weather-api.js'
+// import { getClimate } from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/services/weather/weather-api.js'
+import climate from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/containers/TripResults/climate.json';
+// const Climate = require('/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/containers/TripResults/climate.json')
+// const Data = () => JSON.parse(JSON.stringify(Climate));
 
 
 export const fetchDataWeather = (city) => (dispatch, getState) => {
@@ -15,9 +19,10 @@ export const fetchDataWeather = (city) => (dispatch, getState) => {
     dispatch({
       type: 'SET_WEATHER',
       data: theForecast
-    
+
     })
-})}
+  })
+}
 
 export const fetchDataWeatherTwo = (city) => (dispatch, getState) => {
   return getWeather(city).then(weather => {
@@ -33,9 +38,41 @@ export const fetchDataWeatherTwo = (city) => (dispatch, getState) => {
     dispatch({
       type: 'SET_WEATHER_TWO',
       data: theForecast
-    
+
     })
-})}
+  })
+}
+
+// export const fetchAvg = () => (dispatch, getState) => {
+//   // return getClimate().then(climate => {
+//     const { goDate, backDate, destination1 } = getState().form.userInput.values
+    
+//     // console.log(climate[0].city)
+//     // let month = new Date(goDate).getMonth() + 1
+//     // console.log(destination1)
+//     let avg;
+
+//     for (let i = 0; i < climate.length; i++) {
+
+//       if (climate[i].city === destination1) {
+//         console.log(climate[i].city)
+//         console.log(climate[i].monthlyAvg)
+//         for (let j = 0; j < climate[i].monthlyAvg.length; j++) {
+//           avg = climate[i].monthlyAvg[(new Date(goDate).getMonth() + 1)]
+//         }
+//       }
+//       return avg
+//     }
+//     // const avg = Climate.forEach(el => city === el.city ? Climate.monthlyAvg : "no data available")
+
+//     dispatch({
+//       type: 'SET_CLIMATE_AVG',
+//       data: avg
+
+//     })
+//   // })
+// }
+
 // export const fetchDataWeather = (city) => (dispatch, getState) => {
 //   return getWeather(city).then(weather => {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import './userInput.css'
-import { fetchDataWeather, fetchDataWeatherTwo } from '../../actions/weather';
+import { fetchDataWeather, fetchDataWeatherTwo, fetchAvg } from '../../actions/weather';
 import Weather from '../weather/weather';
 import WCont from '../weather/wCont';
 import './userInput.css';
@@ -9,7 +9,9 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
 import { connect } from 'react-redux';
+import Test from './test'
 
+// fetchDataWeatherTwo
 const UserInput = ({ handleSubmit }) => {
   const dispatch = useDispatch();
 
@@ -37,22 +39,28 @@ const UserInput = ({ handleSubmit }) => {
     );
   };
 
+
+
   const onSubmit = formValues => {
-    console.log(formValues);
+    // const today = Date.now()
+    // const sixteen = 86400000 * 16
+    // // console.log(formValues);
+
+    // if (new Date(formValues.goDate).getTime() > (today + sixteen)) {
+    //   dispatch(fetchAvg())
+    // }
     // dispatch(fetchHotelData(formValues));
     dispatch(fetchDataWeather(formValues.destination1))
     if (formValues.destination2) {
       dispatch(fetchDataWeatherTwo(formValues.destination2))
     }
+
     
   }
 
-
- 
-
-  
   return (
     <div className="container">
+      {/* <Test /> */}
       <form onSubmit={handleSubmit(onSubmit)} className="error">
         <div className="from">
           <div>
@@ -124,8 +132,7 @@ const UserInput = ({ handleSubmit }) => {
         </div>
 
       </form>
-
-      <Weather />
+      {/* <Weather /> */}
       <WCont />
     </div>
   );

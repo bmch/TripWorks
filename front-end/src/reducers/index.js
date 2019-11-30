@@ -1,7 +1,10 @@
 import {
   FETCH_DATA_LOADING,
   FETCH_DATA_LOADING_SUCCESS,
-  FETCH_DATA_LOADING_FAILURE, SET_WEATHER, SET_WEATHER_TWO
+  FETCH_DATA_LOADING_FAILURE, 
+  SET_WEATHER, 
+  SET_WEATHER_TWO,
+  SET_CLIMATE_AVG
 } from '../constants';
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
@@ -27,6 +30,15 @@ export const weatherTwo = (state = {}, action) => {
       return state;
   }
 }
+
+// export const climateAvg = (state = {}, action) => {
+//   switch (action.type) {
+//     case SET_CLIMATE_AVG:
+//       return action.data
+//       default:
+//         return state;
+//   }
+// }
 
 export const holidays = (state = [], action) => {
   switch (action.type) {
@@ -63,7 +75,8 @@ export const rootReducer = combineReducers({
   itemLoadingError,
   form: formReducer,
   weather,
-  weatherTwo
+  weatherTwo,
+  // climateAvg
 });
 
 export default rootReducer;

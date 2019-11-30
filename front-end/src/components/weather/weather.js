@@ -1,11 +1,27 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import WCont from './wCont'
+import Forecast from './forecast';
 
 function Weather() {
 
   const weather = useSelector(state => state.weather);
   const weatherTwo = useSelector(state => state.weatherTwo);
+  // const weatherF = useSelector(state => state.weather.forecast);
+  // const goDate = useSelector(state => state.form.userInput.values.goDate);
+  // const backDate = useSelector(state => state.form.userInput.values.backDate)
+
+  // const startDate = new Date(goDate)
+  // const endDate = new Date(backDate)
+
+  // const filtW = weather && weather.filter(function(w) {
+  //   var date = new Date(w.valid_date);
+  //   return (date >= startDate && date <= endDate);
+  // });
+
+  // const forecastComponent = filtW && filtW.map((e) => <Forecast e={e} />)
+
+  // const forecastComponent = weatherF && weatherF.map((e) => <Forecast e={e} />)
 
   return (
     <div className="testWeather">
@@ -26,6 +42,7 @@ function Weather() {
         <p>{ weatherTwo.weather}</p>
         <p>{ weatherTwo.desc}</p>
         {/* <p>{weatherTwo.data && weatherTwo.data.forcast[5].wind_cdir_full}</p> */}
+        {/* {forecastComponent} */}
       </div>
       <WCont />
     </div>

@@ -3,3 +3,8 @@ export const getWeather = (city) => {
    return fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&key=${API_KEY}`)
     .then(response => response.json())
 }
+
+// export const getClimate = () => {
+//     return fetch('/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/containers/TripResults/climate.json')
+//     .then(response => response.json())
+// }
