@@ -10,6 +10,7 @@ import flights from './flights';
 import getCityId from './hotels';
 
 
+
 export const weather = (state = {}, action) => {
   switch (action.type) {
     case SET_WEATHER:
@@ -17,6 +18,31 @@ export const weather = (state = {}, action) => {
     default:
       return state;
   }
+}
+
+export const weatherTwo = (state = {}, action) => {
+  switch (action.type) {
+    case SET_WEATHER_TWO:
+      return action.data
+    default:
+      return state;
+  }
+}
+
+export const holidays = (state = [], action) => {}
+
+
+
+
+
+export const weather = (state = {}, action) => {
+  switch (action.type) {
+    case SET_WEATHER:
+      return action.data
+    default:
+      return state;
+  }
+
 }
 
 export const weatherTwo = (state = {}, action) => {
@@ -37,25 +63,19 @@ export const holidays = (state = [], action) => {
   }
 };
 
-export const itemLoading = (state = false, action) => {
+
+export const fetchingTrips = (state = false, action) => {
   switch (action.type) {
-    case FETCH_DATA_LOADING:
+    case 'FETCHING_TRIPS_COMPLETED':
+      console.log('Updating state')
       return action.status;
     default:
       return state;
   }
 };
 
-export const itemLoadingError = (state = '', action) => {
-  switch (action.type) {
-    case FETCH_DATA_LOADING_FAILURE:
-      return action.itemLoadingError;
-    default:
-      return state;
-  }
-};
-
 export const rootReducer = combineReducers({
+
   flights,
   getCityId,
   holidays,
@@ -65,5 +85,6 @@ export const rootReducer = combineReducers({
   weather,
   weatherTwo
 });
+
 
 export default rootReducer;
