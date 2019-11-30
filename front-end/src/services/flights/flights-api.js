@@ -6,7 +6,8 @@ const service = 'madrid'
 
 const userInput = {
   startingLocation: 'BCN',
-  destinations: ['MAD'],
+  destinations: ['Madrid'],
+  airports: ['MAD'],
   leaveDate: '2019-12-07',
   returnDate: '2019-12-10'
 }
@@ -28,7 +29,7 @@ const APIOptions = (userInput, i) =>  {
       currency: 'EUR',
       locale: 'en-US',
       originPlace: `${userInput.startingLocation}-sky`,
-      destinationPlace: `${userInput.destinations[i]}-sky`,
+      destinationPlace: `${userInput.airports[i]}-sky`,
       outboundDate: '2019-12-07',
       adults: '1'
     }

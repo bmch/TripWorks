@@ -1,11 +1,17 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import './userInput.css'
+import { fetchDataWeather, fetchDataWeatherTwo } from '../../actions/weather';
+import Weather from '../weather/weather';
+import WCont from '../weather/wCont';
 import './userInput.css';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
 import { fetchPhotos } from '../../actions/photos';
 import { connect } from 'react-redux';
+import { bigGiantAction } from '../../actions/index'
+
 
 const UserInput = ({ handleSubmit }) => {
   const dispatch = useDispatch();
@@ -38,9 +44,19 @@ const UserInput = ({ handleSubmit }) => {
     console.log(formValues);
     //  dispatch(fetchHotelData(formValues));
     dispatch(fetchPhotos(formValues));
+    dispatch(bigGiantAction());
     // this.props.history.push('/TripResults');
   };
 
+    // dispatch(fetchHotelData(formValues));
+    dispatch(fetchDataWeather(formValues.destination1))
+    if (formValues.destination2) {
+      dispatch(fetchDataWeatherTwo(formValues.destination2))
+    }
+    
+  }
+
+  
   return (
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)} className="error">
@@ -64,8 +80,10 @@ const UserInput = ({ handleSubmit }) => {
             />
           </div>
         </div>
-        <div className="Wrapper">
-          <div className="to">
+
+        {/* <div className="Wrapper"><div></div> */}
+        <div className="to">
+          <div >
             <div>
               <Field
                 name="destination2"
@@ -75,7 +93,10 @@ const UserInput = ({ handleSubmit }) => {
               />
             </div>
           </div>
-          <div className="go">
+        </div>
+
+        <div className="go">
+          <div>
             <div>
               <Field
                 name="goDate"
@@ -86,7 +107,10 @@ const UserInput = ({ handleSubmit }) => {
               />
             </div>
           </div>
-          <div className="back">
+        </div>
+
+        <div className="back">
+          <div>
             <div>
               <Field
                 name="backDate"
@@ -98,12 +122,17 @@ const UserInput = ({ handleSubmit }) => {
             </div>
           </div>
         </div>
+
         <div className="field">
           <div className="control">
             <button className="input">Submit</button>
           </div>
         </div>
+
       </form>
+
+      <Weather />
+      <WCont />
     </div>
   );
 };
@@ -121,6 +150,7 @@ const inputValidator = values => {
 
 export default reduxForm({
   form: 'userInput',
-  validate: inputValidator,
+  // validate: inputValidator,
   destroyOnUnmount: false
 })(UserInput);
+

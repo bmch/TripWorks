@@ -1,8 +1,3 @@
-import './TripResults.css';
-import React, { useEffect } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { fetchDataFlights } from '../../actions/flights';
-import { fetchHotelData } from '../../actions/hotels';
 import { fetchPhotos } from '../../actions/photos';
 
 import hotels from './hotel.json';
@@ -21,6 +16,15 @@ const TripResults = () => {
 
   console.log('photos', photos);
 
+// import hotels from './hotel.json';
+​
+const TripResults = () => {
+  const destination = useSelector(state => state.form.userInput.values);
+  const form = useSelector(state => state.form.userInput.values);
+  const hotelAPIresults = useSelector(state => state.getCityId);
+  //const hotelAPIresults = hotels;
+  console.log(hotelAPIresults);
+  // const LoadingStatus = useSelector(state => state. )
   return (
     <div>
       {/* <div>
@@ -40,10 +44,10 @@ const TripResults = () => {
                 <div>
                   {hotel.price_breakdown &&
                     'Price: $' + hotel.price_breakdown.gross_price}
-                </div>
                 <div>
                   {hotel.facilities_review_score &&
-                    'Facilities review score: ' +
+                    'Fa
+                </div>cilities review score: ' +
                       hotel.facilities_review_score.rating}
                 </div>
               </div>
@@ -65,8 +69,8 @@ const TripResults = () => {
             </div>
           ))}
       </div>
+
     </div>
   );
 };
-
 export default TripResults;
