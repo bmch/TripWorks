@@ -14,18 +14,26 @@ const WCont = ({ formValuesGo, formValuesBack }) => {
   const weather = useSelector(state => state.weather);
   const weatherTwo = useSelector(state => state.weatherTwo);
   
-  console.log(weather&&weather)
-  
-  // const forecastComponent = weather && weather.map((e) => <Forecast e={e} />)
-  // const forecastComponentTwo = weatherTwo && weatherTwo.map((e) => <ForecastTwo e={e}/>)
+  const forecastComponent = weather && weather.map((e) => <Forecast e={e} />)
+  const forecastComponentTwo = weatherTwo && weatherTwo.map((e) => <ForecastTwo e={e}/>)
   // console.log(weather&&weather)
   // console.log(forecastComponent)
 
+  // if (!Array.isArray(weather)) {
+  //   return 'Loading'
+  // } 
+  console.log(weather)
+  // return (
+  //   weather.map((e) => <Forecast e={e} />)
+  //   weatherTwo.map((e) => <ForecastTwo e={e} />)
+  //   )
+
+
+
   return (
     <>    
-{/*     
-        {forecastComponent} 
-        {forecastComponentTwo}   */}
+        {forecastComponent}  
+        {forecastComponentTwo}  
     </>
   );
 
