@@ -14,6 +14,7 @@ const App = () => {
       <div>
       <UserInput />
       {/* <TripResults /> */}
+      <Result />
       </div>
     );
 };
