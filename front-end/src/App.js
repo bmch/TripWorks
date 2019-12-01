@@ -12,7 +12,8 @@ const App = () => {
 
     return (
       <div>
-      <UserInput />
+      {/* <UserInput /> */}
+      <PackageResult />
       {/* <TripResults /> */}
       </div>
     );

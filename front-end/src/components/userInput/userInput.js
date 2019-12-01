@@ -48,7 +48,7 @@ const UserInput = ({ handleSubmit }) => {
 
     dispatch(bigGiantAction());
     // this.props.history.push('/TripResults');
-  };
+  
 
     // dispatch(fetchHotelData(formValues));
     dispatch(fetchDataWeather(formValues.destination1))
@@ -140,7 +140,7 @@ const UserInput = ({ handleSubmit }) => {
       <Weather />
       <WCont />
     </div>
-  );
+  )
 };
 
 
