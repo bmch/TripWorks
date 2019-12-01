@@ -10,7 +10,8 @@ import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
 import { connect } from 'react-redux';
 import Test from './test'
-import AvgForecast from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/components/weather/AvgForecast.js'
+import AvgForecast from '../weather/avgForecast.js/index.js.js'
+import { bigGiantAction } from '../../actions/index'
 
 // fetchDataWeatherTwo
 const UserInput = ({ handleSubmit }) => {
@@ -46,7 +47,9 @@ const UserInput = ({ handleSubmit }) => {
     // const today = Date.now()
     // const sixteen = 86400000 * 16
     // // console.log(formValues);
-
+    dispatch(bigGiantAction());
+    // this.props.history.push('/TripResults');
+  
     // if (new Date(formValues.goDate).getTime() > (today + sixteen)) {
     //   dispatch(fetchAvg())
     // }
