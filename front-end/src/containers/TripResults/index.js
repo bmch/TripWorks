@@ -1,30 +1,15 @@
-import { fetchPhotos } from '../../actions/photos';
+import React, { useEffect } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
-import hotels from './hotel.json';
-import photoJSON from './photos.json';
+// import 'TripResults.css'
 
-const TripResults = () => {
-  const form = useSelector(state => state.form.userInput.values);
-  const photos = useSelector(state => state.photos);
+const TripResults = () => {  
 
-  // const hotelAPIresults = useSelector(state => state.getCityId);
-  const hotelAPIresults = hotels;
-  // console.log(hotelAPIresults);
-  // const LoadingStatus = useSelector(state => state. )
-
-  // const photos = photoJSON;
-
-  console.log('photos', photos);
-
-// import hotels from './hotel.json';
-​
-const TripResults = () => {
-  const destination = useSelector(state => state.form.userInput.values);
-  const form = useSelector(state => state.form.userInput.values);
   const hotelAPIresults = useSelector(state => state.getCityId);
-  //const hotelAPIresults = hotels;
-  console.log(hotelAPIresults);
-  // const LoadingStatus = useSelector(state => state. )
+    // const form = useSelector(state => state.form.userInput.values); 
+    //const hotels = useSelector(state => state.cityId);
+    // const flights = useSelector(state => state.flights);
+    // const dispatch = useDispatch();
   return (
     <div>
       {/* <div>
@@ -56,7 +41,7 @@ const TripResults = () => {
             </div>
           ))}
       </div> */}
-      <div>
+      {/* <div>
         {photos.results &&
           photos.results.map(img => (
             <div
@@ -68,9 +53,9 @@ const TripResults = () => {
               <div className="bottom-left">{form && form.destination1}</div>
             </div>
           ))}
-      </div>
-
+      </div> */}
     </div>
   );
 };
+
 export default TripResults;
