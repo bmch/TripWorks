@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import Weather from './weather'
-import Forecast from './forecast';
+import ForecastOne from './forecast';
 import ForecastTwo from './forecastTwo';
 import { fetchDataWeather } from '../../actions/weather';
 import { useSelector } from 'react-redux'
@@ -9,37 +9,26 @@ import Paper from "@material-ui/core/Paper";
 
 
 
-const WCont = ({ formValuesGo, formValuesBack }) => {
+const ContainerOne = () => {
 
   const weather = useSelector(state => state.weather);
-  const weatherTwo = useSelector(state => state.weatherTwo);
   
-  const forecastComponent = weather && weather.map((e) => <Forecast e={e} />)
-  const forecastComponentTwo = weatherTwo && weatherTwo.map((e) => <ForecastTwo e={e}/>)
-  // console.log(weather&&weather)
-  // console.log(forecastComponent)
-
-  // if (!Array.isArray(weather)) {
-  //   return 'Loading'
-  // } 
-  console.log(weather)
-  // return (
-  //   weather.map((e) => <Forecast e={e} />)
-  //   weatherTwo.map((e) => <ForecastTwo e={e} />)
-  //   )
-
-
-
+  const forecastComponentOne = weather && weather.map((e) => <ForecastOne e={e} />)
+  
   return (
     <>    
-        {forecastComponent}  
-        {forecastComponentTwo}  
+        {forecastComponentOne}        
     </>
   );
 
 }
 
-export default WCont;
+export default ContainerOne;
+
+// return (
+  //   weather.map((e) => <Forecast e={e} />)
+  //   weatherTwo.map((e) => <ForecastTwo e={e} />)
+  //   )
 
 
 

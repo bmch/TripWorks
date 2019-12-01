@@ -3,13 +3,14 @@ import { Field, reduxForm } from 'redux-form';
 import './userInput.css'
 import { fetchDataWeather, fetchDataWeatherTwo, fetchAvg } from '../../actions/weather';
 import Weather from '../weather/weather';
-import WCont from '../weather/wCont';
+import ContainerOne from '../weather/containerOne';
 import './userInput.css';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
 import { connect } from 'react-redux';
 import Test from './test'
+import AvgForecast from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/components/weather/AvgForecast.js'
 
 // fetchDataWeatherTwo
 const UserInput = ({ handleSubmit }) => {
@@ -133,7 +134,8 @@ const UserInput = ({ handleSubmit }) => {
 
       </form>
       {/* <Weather /> */}
-      <WCont />
+      <ContainerOne />
+      <AvgForecast />
     </div>
   );
 };

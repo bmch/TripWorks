@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import WCont from './wCont'
+import WCont from './containerOne'
 import Forecast from './forecast';
 
 function Weather() {
