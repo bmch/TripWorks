@@ -8,7 +8,17 @@ import { weather, weatherTwo } from './weather'
 export const fetchingTrips = (state = false, action) => {
   switch (action.type) {
     case 'FETCHING_TRIPS_COMPLETED':
-      console.log('Updating state')
+      console.log('Fetching complete')
+      return action.status;
+    default:
+      return state;
+  }
+};
+
+export const tripResults = (state = [], action) => {
+  switch (action.type) {
+    case 'TRIP_RESULTS_COMPLETED':
+      console.log('Results in store')
       return action.data;
     default:
       return state;
@@ -17,6 +27,7 @@ export const fetchingTrips = (state = false, action) => {
 
 export const rootReducer = combineReducers({
 
+  tripResults,
   flights,
   getCityId,
   fetchingTrips,

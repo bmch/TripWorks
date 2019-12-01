@@ -1,4 +1,4 @@
-import ApiClient from '../services/__mock__/ApiClient';
+import HotelsAPI from '../services/__mock__/ApiClient';
 import { useSelector } from 'react-redux';
 
 
@@ -9,7 +9,7 @@ export const fetchHotelData = (formData) => {
   console.log(formData)
   // dispatch(fetchDataLoading(true));
 
-  return ApiClient.getCityIdByName(formData).then(hotelList => {
+  return HotelsAPI(formData).then(hotelList => {
     //  dispatch(fetchDataLoading(false));
     //  dispatch(fetchDataSuccess(hotelList));
     // console.log(hotelList)

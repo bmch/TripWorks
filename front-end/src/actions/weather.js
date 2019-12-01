@@ -1,6 +1,6 @@
 import { getWeather } from '../services/weather/weather-api'
 
-export const fetchDataWeather = (destination, goDate, backDate) => {
+export const fetchDataWeather = ( {destination, goDate, backDate}) => {
 
   return getWeather(destination).then(weather => {
 

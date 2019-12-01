@@ -4,19 +4,22 @@ import flightAction from './flights'
 import { fetchHotelData } from './hotels'
 import { fetchDataFlights } from './flights'
 import { fetchDataWeather } from './weather'
+import { fetchPhotos } from './photos'
 
 const formData = {
   backDate: "2019-12-10",
   departure: "Barcelona",
+  depAirport: 'BCN',
   // destination: "Madrid",
-  destinations: ["Madrid", "Madrid"], 
+  destinations: ['Madrid', 'Paris', 'Rome'], 
+  airports: ['MAD', 'CDG', 'FCO'],
   // "Rome", "Paris", "Sydney", "Los Angeles", "Singapore"],
   goDate: "2019-12-07"
 }
 
 let resultsArray = [];
 
-function processResults({formData, hotels, flights, weather}) {
+function processResults({formData, hotels, flights, weather, photos}) {
 
   let days = weather.weatherForecast.length
   let lowestCombinedPrice = hotels[0].price_breakdown
@@ -33,40 +36,51 @@ function processResults({formData, hotels, flights, weather}) {
     weather: weather,
     day: days,
     priceScore: priceScore,
-    finalScore: 10 * (0.6 * priceScore + 0.4 * weather.weatherScore)
+    finalScore: 10 * (0.6 * priceScore + 0.4 * weather.weatherScore),
+    photos: photos
   }
 }
 
 const allAPIsAction = async (dispatch, formData) => {
-  const [hotels, flights, weather] = await Promise.all([
+  // flights, , weather, photos
+  const [hotels] = await Promise.all([
+    // fetchDataFlights(formData),
     fetchHotelData(formData),
-    fetchDataFlights(formData),
-    fetchDataWeather(formData.destination, formData.goDate, formData.backDate)
+    // fetchDataWeather(formData),
+    // fetchPhotos(formData)
   ])
-  console.log('Final results', hotels, flights, weather)
-  dispatch({
-    type: 'SET_FLIGHTS', 
-    data: flights,
-  })
-  dispatch({
-    type: 'SET_HOTELS',
-    data: hotels,
-  })
-  dispatch({
-    type: 'SET_WEATHER',
-    data: weather
-  })
-  return processResults({ formData, hotels, flights, weather })
+  console.log('Results for 1 destination', hotels)
+  // , hotels, weather, photos)
+  // dispatch({
+  //   type: 'SET_FLIGHTS', 
+  //   data: flights,
+  // })
+  // dispatch({
+  //   type: 'SET_HOTELS',
+  //   data: hotels,
+  // })
+  // dispatch({
+  //   type: 'SET_WEATHER',
+  //   data: weather
+  // })
+  return hotels
+  // return processResults({ formData, hotels, flights, weather, photos })
 }
 
 export const giantAction = () => async dispatch => {
-  let pendingPromises = formData.destinations.map(destination => 
-    allAPIsAction(dispatch, { ...formData, destination })
-  )
+
+  console.log('====================================')
+  let pendingPromises = formData.destinations.map( (destination, index) => {
+    let airport = formData.airports[index]
+    allAPIsAction(dispatch, { ...formData, destination, airport })
+  })
   const results = await Promise.all(pendingPromises);
   dispatch({
     type: 'FETCHING_TRIPS_COMPLETED',
     status: true,
+  })
+  dispatch({
+    type: 'TRIP_RESULTS_COMPLETED',
     data: results
   });
 }

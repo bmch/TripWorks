@@ -7,12 +7,15 @@ const Destination = ( {key, destination}) => {
   
   
   return (
+    <div>
+      <img src={destination.photos.ldscSmall[0]}/>
       <div className="resultBanner">
-        <h2>{destination.city}</h2>
-        <img src={destination.main_photo_url} />
-        <h2>Score: {destination.finalScore.toFixed(1)}/10</h2>
-        <h2>Total Price: €{destination.lowestCombinedPrice}</h2>
+        <h3>{destination.city}</h3>
+        <img src={destination.hotels[0].main_photo_url} />
+        <h3>Score: {destination.finalScore.toFixed(1)}/10</h3>
+        <h3>Total Price: €{destination.lowestCombinedPrice}</h3>
       </div>
+    </div>
   );
 }
 

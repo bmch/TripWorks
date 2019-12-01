@@ -1,15 +1,13 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import './userInput.css'
-import { fetchDataWeather, fetchDataWeatherTwo } from '../../actions/weather';
+
 import Weather from '../weather/weather';
 import WCont from '../weather/wCont';
 import './userInput.css';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { fetchDataFlights } from '../../actions/flights';
-import { fetchHotelData } from '../../actions/hotels';
 import { fetchPhotos } from '../../actions/photos';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { giantAction } from '../../actions/index'
 import { weatherAction } from '../../actions/index'
 
@@ -42,12 +40,12 @@ const UserInput = ({ handleSubmit }) => {
   };
 
   const onSubmit = formValues => {
-    console.log(formValues);
+
     dispatch(giantAction());
     // dispatch(weatherAction())
 
     // this.props.history.push('/TripResults')
-    dispatch(fetchPhotos(formValues));
+    // dispatch(fetchPhotos());
   };
 
   return (
@@ -73,8 +71,6 @@ const UserInput = ({ handleSubmit }) => {
             />
           </div>
         </div>
-
-        {/* <div className="Wrapper"><div></div> */}
         <div className="to">
           <div >
             <div>

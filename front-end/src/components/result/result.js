@@ -5,7 +5,7 @@ import Destination from './destination'
 
 const Result = () => {
   
-  const data = useSelector(state => state.fetchingTrips); 
+  const data = useSelector(state => state.tripResults); 
   console.log(data)
   
   
@@ -13,10 +13,10 @@ const Result = () => {
     <div className="wrapper">
       <div className="header"></div>
 
-      { data ? data.map( (destination, key) => {
+      {/* { data ? data.map( (destination, key) => {
         return <Destination key={key} destination={destination} />
         }
-      ) : null }
+      ) : null } */}
 
     </div>
   );

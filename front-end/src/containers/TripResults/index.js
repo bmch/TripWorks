@@ -41,7 +41,7 @@ const TripResults = () => {
             </div>
           ))}
       </div> */}
-      <div>
+      {/* <div>
         {photos.results &&
           photos.results.map(img => (
             <div
@@ -53,7 +53,7 @@ const TripResults = () => {
               <div className="bottom-left">{form && form.destination1}</div>
             </div>
           ))}
-      </div>
+      </div> */}
     </div>
   );
 };
