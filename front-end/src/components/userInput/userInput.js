@@ -8,6 +8,7 @@ import './userInput.css';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
+import { fetchPhotos } from '../../actions/photos';
 import { connect } from 'react-redux';
 import { giantAction } from '../../actions/index'
 import { weatherAction } from '../../actions/index'
@@ -46,8 +47,9 @@ const UserInput = ({ handleSubmit }) => {
     // dispatch(weatherAction())
 
     // this.props.history.push('/TripResults')
+    dispatch(fetchPhotos(formValues));
   };
-  
+
   return (
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)} className="error">
