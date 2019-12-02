@@ -13,10 +13,11 @@ const App = () => {
     return (
       <div>
       {/* <UserInput /> */}
-      {/* <TripResults /> */}
       <PackageResult/>
       {/* <Result/> */}
       {/* <LandingPage /> */}
+      {/* <UserInput2 /> */}
+      {/* <TripResults /> */}
       </div>
     );
 };

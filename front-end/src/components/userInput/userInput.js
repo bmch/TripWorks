@@ -12,6 +12,13 @@ import { connect } from 'react-redux';
 // import AvgForecast from '../weather/avgForecast.js'
 import { bigGiantAction } from '../../actions/index'
 
+import './userInput.css';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { fetchPhotos } from '../../actions/photos';
+// import { connect } from 'react-redux';
+import { giantAction } from '../../actions/index'
+import { weatherAction } from '../../actions/index'
+
 // fetchDataWeatherTwo
 const UserInput = ({ handleSubmit }) => {
   const dispatch = useDispatch();
@@ -41,25 +48,28 @@ const UserInput = ({ handleSubmit }) => {
   };
 
 
-
   const onSubmit = formValues => {
-    // const today = Date.now()
-    // const sixteen = 86400000 * 16
-    // // console.log(formValues);
-    // dispatch(bigGiantAction());
-    // this.props.history.push('/TripResults');
-  
-    // if (new Date(formValues.goDate).getTime() > (today + sixteen)) {
-    //   dispatch(fetchAvg())
-    // }
-    // dispatch(fetchHotelData(formValues));
+    dispatch(giantAction());
+    
     dispatch(fetchDataWeather(formValues.destination1))
     if (formValues.destination2) {
       dispatch(fetchDataWeatherTwo(formValues.destination2))
+      // dispatch(bigGiantAction());
+    // this.props.history.push('/TripResults');
+    // dispatch(fetchHotelData(formValues));
     }
 
     
-  }
+  
+
+    
+    // dispatch(weatherAction())
+
+ 
+
+    // this.props.history.push('/TripResults')
+    // dispatch(fetchPhotos());
+  };
 
   return (
     <div className="container">
@@ -85,8 +95,6 @@ const UserInput = ({ handleSubmit }) => {
             />
           </div>
         </div>
-
-        {/* <div className="Wrapper"><div></div> */}
         <div className="to">
           <div >
             <div>
@@ -137,24 +145,22 @@ const UserInput = ({ handleSubmit }) => {
       </form>
      
     </div>
-  );
+  )
 };
 
-
-const inputValidator = values => {
-  const errors = {};
-  if (!values.departure) {
-    errors.departure = 'departure city is required';
-  }
-  if (!values.destination) {
-    errors.destination = 'destination city is required';
-  }
-  return errors;
-};
+// const inputValidator = values => {
+//   const errors = {};
+//   if (!values.departure) {
+//     errors.departure = 'departure city is required';
+//   }
+//   if (!values.destination) {
+//     errors.destination = 'destination city is required';
+//   }
+//   return errors;
+// };
 
 export default reduxForm({
   form: 'userInput',
   validate: inputValidator,
   destroyOnUnmount: false
 })(UserInput);
-
