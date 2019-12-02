@@ -1,6 +1,6 @@
 import { getWeather } from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/services/weather/weather-api.js'
 // import { getClimate } from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/services/weather/weather-api.js'
-import climate from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/containers/TripResults/climate.json';
+// import climate from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/containers/TripResults/climate.json';
 // const Climate = require('/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/containers/TripResults/climate.json')
 // const Data = () => JSON.parse(JSON.stringify(Climate));
 

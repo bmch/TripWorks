@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Weather from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/components/weather/weather.js'
+
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Moment from 'moment'

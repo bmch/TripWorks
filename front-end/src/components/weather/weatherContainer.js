@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 // import Weather from './weather'
 import Forecast from './forecast';
-import ForecastTwo from './forecastTwo';
 import { fetchDataWeather } from '../../actions/weather';
 import { useSelector } from 'react-redux'
-import Weather from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/components/weather/weather.js'
+
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';

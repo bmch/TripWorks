@@ -1,16 +1,15 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import './userInput.css'
-import { fetchDataWeather, fetchDataWeatherTwo, fetchAvg } from '../../actions/weather';
-import Weather from '../weather/weather';
+import { fetchDataWeather, fetchDataWeatherTwo } from '../../actions/weather';
 import WeatherContainer from '../weather/weatherContainer';
 import './userInput.css';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
 import { connect } from 'react-redux';
-import Test from './test'
-import AvgForecast from '../weather/avgForecast.js'
+// import Test from './test'
+// import AvgForecast from '../weather/avgForecast.js'
 import { bigGiantAction } from '../../actions/index'
 
 // fetchDataWeatherTwo
@@ -136,9 +135,7 @@ const UserInput = ({ handleSubmit }) => {
         </div>
 
       </form>
-      {/* <Weather /> */}
-      {/* <WeatherContainer /> */}
-      {/* <AvgForecast /> */}
+     
     </div>
   );
 };
