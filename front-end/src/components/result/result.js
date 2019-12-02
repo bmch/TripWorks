@@ -3,6 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import './result.css';
 import Destination from './destination'
 import data from './tripList.json'
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
 
 const Result = () => {
   
@@ -11,15 +12,11 @@ const Result = () => {
   
   
   return (
-    <div className="wrapper">
-      {/* <div className="header"></div> */}
-
-      { data ? data.map( (destination, key) => {
-        return <Destination key2={key} destination={destination} />
-        }
-      ) : null }
-
-    </div>
+      <div className="wrapper">
+        { data ? data.map( (destination, key) => 
+          <Destination key2={key} destination={destination} />
+        ) : null }
+      </div>
   );
 }
 
