@@ -20,28 +20,30 @@ exports.createFlight = async ctx => {
 };
 
 exports.postFlights = async ctx => {
-  // try {
-    let options = ctx.request.body;
-    console.log('POST to skyscanner at ' + Date.now() + 'with data: ', options);
-    //await //new Promise (function (resolve, reject) {
-    await request(options, function (error, response, body) {
-      console.log(response.statusCode)
-        if (error) {
-          if (response.statusCode === 429) {
-            console.log('Too many requests.')
-            ctx.status = 429;
-            return null;
-          }
-        }
-        ctx.set('Access-Control-Expose-Headers', 'location');
-        ctx.set('location', response.headers.location);
-        ctx.status = 201;
-        console.log('RESPONSE: ', ctx.response);
-        // resolve();
-      });
-    // })
-  // } catch (error) {
-  //   ctx.status = 401;
-  //   console.log(error);
-  // }
+
+  let options = ctx.request.body;
+  
+  const wait = async (ms) => new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+
+  while (ctx.status !== 201) {
+    try {
+      console.log('POST to skyscanner for: ', options.form.destinationPlace);
+      await request(options, function (error, response, body) {
+    
+        console.log('Status Code: ', response.statusCode)
+        if (response.statusCode === 201) {
+          ctx.status = response.statusCode
+          ctx.set('Access-Control-Expose-Headers', 'location');
+          ctx.set('location', response.headers.location);
+          // ctx.response.body = response.headers.location
+          return true;
+        } else wait(2000);
+      })
+    } catch (error) {
+      console.log('Error caught, reattemping request')
+    }
+  }
+  console.log('Response success for', options.form.destinationPlace);
 };

@@ -1,106 +1,61 @@
+import React, { useEffect } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
-// // <<<<<<< HEAD
-// // // import React from 'react';
-// // // import {bindActionCreators} from 'redux';
-// // // import { connect } from 'react-redux';
-// // // import {fetchData, fetchDataFlights} from '../../actions';
-// // // import { rootURL } from '../../constants';
+// import 'TripResults.css'
 
-// // import React, { useEffect } from "react";
-// // import { shallowEqual, useDispatch, useSelector } from "react-redux";
-// // import { fetchDataFlights } from "../../actions/flights";
-// // import { fetchHotelData } from "../../actions/hotels";
+const TripResults = () => {  
 
+  const hotelAPIresults = useSelector(state => state.getCityId);
+    // const form = useSelector(state => state.form.userInput.values); 
+    //const hotels = useSelector(state => state.cityId);
+    // const flights = useSelector(state => state.flights);
+    // const dispatch = useDispatch();
+  return (
+    <div>
+      {/* <div>
+        {hotelAPIresults.result &&
+          hotelAPIresults.result.map(hotel => (
+            <div className="result" key={hotel.id}>
+              <div className="img-div">
+                <img src={hotel.main_photo_url} />
+              </div>
 
-// // const TripResults = () => {  
-// // <<<<<<< HEAD
-// //   const destination = useSelector(state => state.form.userInput.values); 
-// //   console.log(destination);
+              <div className="mid-div">
+                <div className="hotel-name">Hotel Name: {hotel.hotel_name}</div>
+                <div className="hotel-address">{hotel.address}</div>
+              </div>
 
+              <div className="price-div">
+                <div>
+                  {hotel.price_breakdown &&
+                    'Price: $' + hotel.price_breakdown.gross_price}
+                <div>
+                  {hotel.facilities_review_score &&
+                    'Fa
+                </div>cilities review score: ' +
+                      hotel.facilities_review_score.rating}
+                </div>
+              </div>
 
-// // import React from 'react';
-// // import {bindActionCreators} from 'redux';
-// // import { connect } from 'react-redux';
-// // import {fetchData, fetchDataFlights} from '../../actions';
-// // import { rootURL } from '../../constants';
+              <a href={hotel.url}>Click here to book</a>
+            </div>
+          ))}
+      </div> */}
+      {/* <div>
+        {photos.results &&
+          photos.results.map(img => (
+            <div
+              className="destination-photo"
+              // style={{ backgroundImage: 'url(' + img.urls.regular + ')' }}
+            >
+              <img src={img.urls.regular} alt="" />
 
-// import React, { useEffect } from "react";
-// import { shallowEqual, useDispatch, useSelector } from "react-redux";
-// // import { fetchDataFlights } from "../../actions/flights";
-// // import { fetchHotelData } from "../../actions/hotels";
-// // import 'TripResults.css'
+              <div className="bottom-left">{form && form.destination1}</div>
+            </div>
+          ))}
+      </div> */}
+    </div>
+  );
+};
 
-// const TripResults = () => {  
-//   const destination = useSelector(state => state.form.userInput.values); 
-//   console.log(destination);
-
-// //     const hotelCity = useSelector(state => state.getCityId);
-
-//     const flights = useSelector(state => state.flights);
-//     const dispatch = useDispatch();
-
-
-//     useEffect( () => {
-//         dispatch(fetchDataFlights())
-//         dispatch(fetchHotelData())
-      
-// 	}, [])
-
-
-//   return (
-//     <div>
-//         <div>TEST</div>
-//         {/* <div>{ JSON.stringify(flights) }</div>    */}
-//         <div>{JSON.stringify(hotelCity)}</div>
-
-// import './TripResults.css';
-// import React, { useEffect } from 'react';
-// import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-// import { fetchDataFlights } from '../../actions/flights';
-// import { fetchHotelData } from '../../actions/hotels';
-// // import hotels from './hotel.json';
-// ​
-// const TripResults = () => {
-//   const destination = useSelector(state => state.form.userInput.values);
-//   const form = useSelector(state => state.form.userInput.values);
-//   const hotelAPIresults = useSelector(state => state.getCityId);
-//   //const hotelAPIresults = hotels;
-//   console.log(hotelAPIresults);
-//   // const LoadingStatus = useSelector(state => state. )
-// ​
-//   return (
-//     <div>
-//       <div>
-//         {hotelAPIresults.result &&
-//           hotelAPIresults.result.map(hotel => (
-//             <div className="result" key={hotel.id}>
-//               <div className="img-div">
-//                 <img src={hotel.main_photo_url} />
-//               </div>
-// ​
-//               <div className="mid-div">
-//                 <div className="hotel-name">Hotel Name: {hotel.hotel_name}</div>
-//                 <div className="hotel-address">{hotel.address}</div>
-//               </div>
-// ​
-//               <div className="price-div">
-//                 <div>
-//                   {hotel.price_breakdown &&
-//                     'Price: $' + hotel.price_breakdown.gross_price}
-//                 </div>
-//                 <div>
-//                   {hotel.facilities_review_score &&
-//                     'Facilities review score: ' +
-//                       hotel.facilities_review_score.rating}
-//                 </div>
-//               </div>
-// ​
-//               <a href={hotel.url}>Click here to book</a>
-//             </div>
-//           ))}
-//       </div>
-//     </div>
-//   );
-// };
-// ​
-// export default TripResults;
+export default TripResults;
