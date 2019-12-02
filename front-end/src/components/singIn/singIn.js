@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -14,6 +13,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import './singIn.css'
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const useStyles = makeStyles(theme => ({
@@ -66,8 +67,22 @@ const theme = createMuiTheme({
   }
 });
 
-export default function SignIn() {
+export default function SignIn({ logUserIn }) {
   const classes = useStyles();
+  const [inputs, setInputs] = useState({});
+  let history = useHistory();
+
+  const handleInputChange = (e) => {
+    e.persist();
+    setInputs(inputs => ({...inputs, [e.target.name]: e.target.value}))
+    console.log(e.target.value);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    logUserIn(inputs, history);    
+    setInputs('');
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -79,18 +94,20 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleSubmit} className={classes.form} noValidate>
         <MuiThemeProvider theme={theme}> 
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="Username"
+            name="username"
+            autoComplete="username"
             autoFocus
+            onChange={handleInputChange}
+            value={inputs.username || ''}
           />
         </MuiThemeProvider>
           <TextField
@@ -103,6 +120,8 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handleInputChange}
+            value={inputs.password || ''}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -135,7 +154,7 @@ export default function SignIn() {
           </Grid>
           <Grid className={classes.buttonMargin} container justify="center" >
             <Grid item m={3}>
-              <Link style={{
+              <Link to="/register" style={{
                   color: "#000", fontWeight: "600", typography: {
       fontFamily: "'Montserrat', sans-serif",
       textTransform: "none",}}} href="#" variant="body2" >
@@ -148,3 +167,4 @@ export default function SignIn() {
     </Container>
   );
 }
+

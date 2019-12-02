@@ -1,4 +1,4 @@
-import { getWeather } from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/services/weather/weather-api.js'
+import { getWeather } from '../services/weather/weather-api.js'
 
 export const fetchDataWeather = (city) => (dispatch, getState) => {
   return getWeather(city).then(weather => {

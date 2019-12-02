@@ -5,13 +5,16 @@ import { fetchDataWeather, fetchDataWeatherTwo } from '../../actions/weather';
 import Weather from '../weather/weather';
 import WCont from '../weather/wCont';
 import './userInput.css';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector } from 'react-redux';
 import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Link, Redirect, useHistory } from 'react-router-dom';
+
 
 const UserInput = ({ handleSubmit }) => {
   const dispatch = useDispatch();
+  let history = useHistory();
 
   const renderError = ({ error, touched }) => {
     if (touched && error) {
@@ -44,6 +47,7 @@ const UserInput = ({ handleSubmit }) => {
     if (formValues.destination2) {
       dispatch(fetchDataWeatherTwo(formValues.destination2))
     }
+    history.push('/results');
     
   }
 

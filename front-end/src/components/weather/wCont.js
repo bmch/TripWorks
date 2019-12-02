@@ -4,7 +4,7 @@ import Forecast from './forecast';
 import ForecastTwo from './forecastTwo';
 import { fetchDataWeather } from '../../actions/weather';
 import { useSelector } from 'react-redux'
-import Weather from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/components/weather/weather.js'
+import Weather from './weather';
 
 
 
