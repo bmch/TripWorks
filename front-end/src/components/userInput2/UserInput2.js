@@ -1,21 +1,23 @@
 import 'date-fns';
 import React from 'react';
 import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker
-} from '@material-ui/pickers';
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import DestAirportAutocomplete from './DestAirportAutocomplete';
 import AddIcon from '@material-ui/icons/Add';
-import './UserInput2.css';
+
 import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import { addFormValues } from '../../actions/addFormValues';
 
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
+
+import './UserInput2.css';
+
 function UserInput2({ addFormValues }) {
   // The first commit of Material-UI
+  const history = useHistory()
 
   const initialState = {
     goDate: new Date(),
@@ -49,6 +51,8 @@ function UserInput2({ addFormValues }) {
     console.log('handle submit fired');
     console.log('form values', formData);
     addFormValues(formData);
+
+    history.push("/results")
 
     // setFormData(initialState);
     // setDestInputs(initDest);

@@ -13,7 +13,7 @@ export const fetchDataFlights = (data) => {
 
   return flightsAPI(data).then(flightsList => {
 
-    if (flightsList === 'Error') return Promise.resolve()
+    if (flightsList === 'Error') return Promise.reject()
     console.log('flights list', flightsList)
 
     const itineraries = flightsList.Itineraries
@@ -32,12 +32,12 @@ export const fetchDataFlights = (data) => {
       el.cheapestPrice = el.PricingOptions[0].Price
     })
 
-    let res = {
-      city: data.destination,
-      query: flightsList.Query,
-      flightsData: cheapest
-    }
-    console.log('cheapest ' + i + ' fights: ', res);
-    return res
+    // let res = {
+    //   city: data.destination,
+    //   query: flightsList.Query,
+    //   flightsData: cheapest
+    // }
+    console.log('cheapest ' + i + ' flights: ', cheapest);
+    return cheapest;
   })
 };
