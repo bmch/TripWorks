@@ -4,7 +4,7 @@ import Forecast from './forecast';
 import ForecastTwo from './forecastTwo';
 import { fetchDataWeather } from '../../actions/weather';
 import { useSelector } from 'react-redux'
-import Weather from './weather';
+import Weather from './weather'
 
 
 

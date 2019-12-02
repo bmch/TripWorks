@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import UserInput from "./components/userInput/userInput";
+import UserInput2 from "./components/userInput2/UserInput2";
 import { useSelector } from "react-redux";
 import TripResults from "./containers/TripResults/index";
 import Result from "./components/result/result";
@@ -47,11 +47,9 @@ const App = () => {
             path="/register"
             render={() => <SignUp createUser={createUser} />}
           />
-          {/* <Route path='/home' render={() => <UserInput />} /> */}
+          <Route path='/home' render={() => <UserInput2 />} />
           <Route path="/results" render={() => <Result />} />
-          <Route path="/PackageResult/:id" render={() => <PackageResult />} />
-          {/* TODO:add the city id in-between results and packageresults */}
-          {/* <TripResults /> */}
+          <Route path="/PackageResult" render={() => <PackageResult />} />
         </Switch>
       </div>
     </Router>

@@ -1,28 +1,22 @@
 import React from 'react';
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import './result.css';
-import { BrowserRouter as Router, Link, Redirect, useHistory } from 'react-router-dom';
-
+import Destination from './destination'
 
 const Result = () => {
   
- 
+  const data = useSelector(state => state.tripResults); 
+  console.log(data)
+  
   
   return (
     <div className="wrapper">
-      <div className="header">
+      <div className="header"></div>
 
-      </div>
-    <Link to='/PackageResult'>
-      <div className="resultBanner">
-        <h2>Barcelona</h2>
-      </div>
-    </Link>
-      <div className="resultBanner">
-      <h2>Madrid</h2>
-      </div>
-      <div className="resultBanner">
-      <h2>Paris</h2>
-      </div>
+      { data ? data.map( (destination, key) => {
+        return <Destination key={key} destination={destination} />
+        }
+      ) : null }
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Weather from './weather';
+import Weather from './weather'
 
 function Forecast(props) {
   // const weather = useSelector(state => state.weather.forecast);
