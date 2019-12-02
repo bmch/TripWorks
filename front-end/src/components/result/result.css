@@ -34,22 +34,41 @@
   /* position: fixed; */
   z-index: 2;
 }
-
-.resultBanner {
-  margin-top: 40px;
-  /* width: 100vw; */
-  height: 210px;
+.dest-container {
+  position: relative;
   border: 1px solid black;
   border-radius: 25px 25px 25px 25px;
+}
+
+.dest-img {
+  position: relative;
+}
+
+.resultBanner {
+  /* margin-top: 40px; */
+  /* width: 100vw; */
+  height: 120px;
+  border: none;
   display: flex;
   align-items: flex-end;
   /* background-image: url("../../assets/images/barcelona-lvXeO04CxwQ-unsplash.jpg"); */
 }
 
-.resultBanner > h2 {
+.resultBanner > h3 {
   margin-left: 20px;
   border: 1px solid black;
   border-radius: 5px 5px 5px 5px;
   padding: 1px;
 }
 
+.btn {
+  background-color: transparent;
+  position: absolute;
+  bottom: 15px;
+  right: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  border: none;
+  outline: none;
+  padding: 0px;
+}
