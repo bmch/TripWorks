@@ -9,8 +9,12 @@ import DestAirportAutocomplete from './DestAirportAutocomplete';
 import AddIcon from '@material-ui/icons/Add';
 import './UserInput2.css';
 import Fab from '@material-ui/core/Fab';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
+import { addFormValues } from '../../actions/addFormValues';
 
-export default function UserInput2() {
+function UserInput2({ addFormValues }) {
   // The first commit of Material-UI
 
   const initialState = {
@@ -38,6 +42,16 @@ export default function UserInput2() {
     setDestInputs(prevState => {
       return prevState.concat(prevState.length + 2);
     });
+  };
+
+  const handleSubmit = e => {
+    // e.preventDefault();
+    console.log('handle submit fired');
+    console.log('form values', formData);
+    addFormValues(formData);
+
+    // setFormData(initialState);
+    // setDestInputs(initDest);
   };
 
   return (
@@ -70,45 +84,61 @@ export default function UserInput2() {
         </Fab>
         <br></br>
         <br></br>
-        <KeyboardDatePicker
-          variant="outlined"
-          margin="normal"
-          id="date-picker-dialog"
-          label="Depart"
-          format="MM/dd/yyyy"
-          onChange={date => handleChange('goDate', date)}
-          inputVariant="outlined"
-          KeyboardButtonProps={{
-            'aria-label': 'change date'
-          }}
-          name="goData"
-          value={formData.goDate}
-        />
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <Grid container justify="space-around">
+            <KeyboardDatePicker
+              variant="outlined"
+              margin="normal"
+              id="date-picker-dialog"
+              label="Depart"
+              format="MM/dd/yyyy"
+              onChange={date => handleChange('goDate', date)}
+              inputVariant="outlined"
+              KeyboardButtonProps={{
+                'aria-label': 'change date'
+              }}
+              name="goData"
+              value={formData.goDate}
+            />
+
+            <KeyboardDatePicker
+              variant="outlined"
+              margin="normal"
+              id="date-picker-dialog"
+              label="Return"
+              format="MM/dd/yyyy"
+              onChange={date => handleChange('backDate', date)}
+              inputVariant="outlined"
+              KeyboardButtonProps={{
+                'aria-label': 'change date'
+              }}
+              name="backDate"
+              value={formData.backDate}
+            />
+          </Grid>
+        </MuiPickersUtilsProvider>
         <br></br>
         <br></br>
-        {JSON.stringify(formData.goDate)}
+        {/* {JSON.stringify(formData.backDate)} */}
         <br></br>
-        <br></br>
-        <KeyboardDatePicker
-          variant="outlined"
-          margin="normal"
-          id="date-picker-dialog"
-          label="Return"
-          format="MM/dd/yyyy"
-          onChange={date => handleChange('backDate', date)}
-          inputVariant="outlined"
-          KeyboardButtonProps={{
-            'aria-label': 'change date'
-          }}
-          name="backDate"
-          value={formData.backDate}
-        />
-        <br></br>
-        <br></br>
-        {JSON.stringify(formData.backDate)}
-        <br></br>
+        <Button
+          fullWidth
+          variant="contained"
+          onClick={handleSubmit}
+          color="primary"
+        >
+          Search
+        </Button>
         <br></br>
       </div>
     </MuiPickersUtilsProvider>
   );
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    addFormValues: data => dispatch(addFormValues(data))
+  };
+};
+UserInput2 = connect(null, mapDispatchToProps)(UserInput2);
+
+export default UserInput2;

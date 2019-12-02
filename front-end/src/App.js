@@ -11,9 +11,9 @@ const App = () => {
   return (
     <div>
       <UserInput />
-      <UserInput2 />
       {/* <TripResults /> */}
       <Result />
+      <UserInput2 />
     </div>
   );
 };

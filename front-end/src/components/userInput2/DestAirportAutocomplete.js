@@ -40,7 +40,7 @@ class DestAirportAutocomplete extends React.Component {
       console.log('coordinates ', coordinates);
 
       fetch(
-        `https://api.aerisapi.com/places/airports/closest/?p={${coordinates.lat},${coordinates.lng}}&limit=1&radius=120miles&filter=largeairport&client_id=wj6e05RGkQoJ8XteDpsZt&client_secret=gSvZSxpzDxUVdAwsMwG4ONJWCevkklVV25b3TKBd`
+        `https://api.aerisapi.com/places/airports/closest/?p={${coordinates.lat},${coordinates.lng}}&limit=1&radius=120miles&filter=largeairport&client_id=${process.env.REACT_APP_AERIS_API_ID}&client_secret=${process.env.REACT_APP_AERIS_API_SECRET}`
       )
         .then(res => res.json())
         // if successful response with data
