@@ -1,14 +1,16 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import './userInput.css'
-import { fetchDataWeather, fetchDataWeatherTwo } from '../../actions/weather';
+
 import Weather from '../weather/weather';
 import WCont from '../weather/wCont';
 import './userInput.css';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { fetchDataFlights } from '../../actions/flights';
-import { fetchHotelData } from '../../actions/hotels';
-import { connect } from 'react-redux';
+import { fetchPhotos } from '../../actions/photos';
+// import { connect } from 'react-redux';
+import { giantAction } from '../../actions/index'
+import { weatherAction } from '../../actions/index'
+
 
 const UserInput = ({ handleSubmit }) => {
   const dispatch = useDispatch();
@@ -38,19 +40,14 @@ const UserInput = ({ handleSubmit }) => {
   };
 
   const onSubmit = formValues => {
-    console.log(formValues);
-    // dispatch(fetchHotelData(formValues));
-    dispatch(fetchDataWeather(formValues.destination1))
-    if (formValues.destination2) {
-      dispatch(fetchDataWeatherTwo(formValues.destination2))
-    }
-    
-  }
 
+    dispatch(giantAction());
+    // dispatch(weatherAction())
 
- 
+    // this.props.history.push('/TripResults')
+    // dispatch(fetchPhotos());
+  };
 
-  
   return (
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)} className="error">
@@ -74,8 +71,6 @@ const UserInput = ({ handleSubmit }) => {
             />
           </div>
         </div>
-
-        {/* <div className="Wrapper"><div></div> */}
         <div className="to">
           <div >
             <div>
@@ -131,21 +126,19 @@ const UserInput = ({ handleSubmit }) => {
   );
 };
 
-
-const inputValidator = values => {
-  const errors = {};
-  if (!values.departure) {
-    errors.departure = 'departure city is required';
-  }
-  if (!values.destination) {
-    errors.destination = 'destination city is required';
-  }
-  return errors;
-};
+// const inputValidator = values => {
+//   const errors = {};
+//   if (!values.departure) {
+//     errors.departure = 'departure city is required';
+//   }
+//   if (!values.destination) {
+//     errors.destination = 'destination city is required';
+//   }
+//   return errors;
+// };
 
 export default reduxForm({
   form: 'userInput',
-  validate: inputValidator,
+  // validate: inputValidator,
   destroyOnUnmount: false
 })(UserInput);
-
