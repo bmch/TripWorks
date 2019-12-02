@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/components/landingPage/landingPage.css';
 
+
 function LandingPage(params) {
 
   return (
     <div>
       <div className='topSpacing'></div>
       <div className='imageContainer'>
-        <img src={require('./logos/default.png')} className='tripWorksLogo' />
+        <img src={require('./logos/defaultP.png')} className='tripWorksLogo' />
       </div>
       <div className='bottomSpacing'></div>
       <div className='buttonContainer'>

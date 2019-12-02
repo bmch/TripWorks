@@ -47,7 +47,7 @@ export const fetchDataWeather = ( {destination, goDate, backDate}) => {
   })
 }
 
-export const fetchDataWeather = (city) => (dispatch, getState) => {
+export const fetchDataWeatherE = (city) => (dispatch, getState) => {
   return getWeather(city).then(weather => {
 
     let theForecast;

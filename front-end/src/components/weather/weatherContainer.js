@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Forecast from './forecast';
 import { fetchDataWeather } from '../../actions/weather';
 import { useSelector } from 'react-redux'
-
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';

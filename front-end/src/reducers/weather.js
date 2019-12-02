@@ -1,5 +1,6 @@
 import { SET_WEATHER, SET_WEATHER_TWO } from '../constants';
 
+
 export const weather = (state = [], action) => {
   switch (action.type) {
     case SET_WEATHER:

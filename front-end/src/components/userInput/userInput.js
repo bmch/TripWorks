@@ -1,10 +1,10 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import './userInput.css'
-import { fetchDataWeather, fetchDataWeatherTwo } from '../../actions/weather';
+import { fetchDataWeatherE, fetchDataWeatherTwo } from '../../actions/weather';
 import WeatherContainer from '../weather/weatherContainer';
 import './userInput.css';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+
 import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
 import { connect } from 'react-redux';
@@ -51,7 +51,7 @@ const UserInput = ({ handleSubmit }) => {
   const onSubmit = formValues => {
     dispatch(giantAction());
     
-    dispatch(fetchDataWeather(formValues.destination1))
+    dispatch(fetchDataWeatherE(formValues.destination1))
     if (formValues.destination2) {
       dispatch(fetchDataWeatherTwo(formValues.destination2))
       // dispatch(bigGiantAction());
@@ -161,6 +161,6 @@ const UserInput = ({ handleSubmit }) => {
 
 export default reduxForm({
   form: 'userInput',
-  validate: inputValidator,
+  // validate: inputValidator,
   destroyOnUnmount: false
 })(UserInput);
