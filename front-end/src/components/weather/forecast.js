@@ -42,12 +42,15 @@ function Forecast(props) {
   return (
     <div>
       <GridListTile >
-        <div style={{ width: '200px', display: 'flex' }}>
+        <div style={{ width: '170px', display: 'flex', flexDirection: 'row' }}>
           {/* <Box component="div" style={{ display: "inline", backgroundColor: "white", fontFamily: 'Helvetica' }} p={5} m={5} boxShadow={3}> */}
-          <img src={require(`./icons/${icon}.png`)} />
-            <p>{Moment(props.e.valid_date).format("MMM Do")}</p><br/><br/>
-            <p>{Math.round(props.e.low_temp)}°-{Math.round(props.e.high_temp)}°</p>
-            
+          <div >
+          <img src={require(`./icons/${icon}.png`)} style={{height: '70px', width: '70px'}} />
+          </div>
+          <div style={{display: 'flex', alignItems: 'center', lineHeight: '80%'}}>
+            <p>{Moment(props.e.valid_date).format("MMM Do")}<br/><br/>
+            {Math.round(props.e.low_temp)}°-{Math.round(props.e.high_temp)}°</p>
+            </div>
             
             {/* <p>{props.e.weather.description}</p> */}
           {/* </Box> */}

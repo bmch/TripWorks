@@ -14,8 +14,8 @@ const App = () => {
       <div>
       {/* <UserInput /> */}
       {/* <TripResults /> */}
-      {/* <PackageResult/> */}
-      <Result/>
+      <PackageResult/>
+      {/* <Result/> */}
       </div>
     );
 };

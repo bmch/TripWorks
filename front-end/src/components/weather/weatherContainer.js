@@ -42,7 +42,7 @@ const WeatherContainer = () => {
 
   return (
     <>
-      <GridList className={classes.gridList} cols={2.5}>
+      <GridList className={classes.gridList} cols={1.5}>
         {forecastComponentOne}
       </GridList>
     </>
