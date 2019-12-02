@@ -31,14 +31,14 @@ console.log("TCL: fetchRequest -> url", url)
 const BASE_URL = 'https://apidojo-booking-v1.p.rapidapi.com/';
 const GET_CITYID_URL = 'locations/auto-complete?languagecode=en-us&text=';
 
-export default async ({ destination, goDate, backDate }) => {
+export default async ({ destination, goDate, backDate }, offset) => {
   console.log('fetching destination id', destination)
   let res;
   while (!res) {
     res = await fetchRequest(GET_CITYID_URL + destination)
   }
   const [id, type] = [res[0].dest_id, res[0].dest_type]
-  const GET_PROPERTY_LIST_URL = `properties/list?price_filter_currencycode=USD&travel_purpose=leisure&categories_filter=price%253A%253A9-40%252Cfree_cancellation%253A%253A1%252Cclass%253A%253A5%252Cclass%253A%253A4%252Cclass%253A%253A3&search_id=none&order_by=price&order_by=popularity&languagecode=en-us&search_type=${type}&offset=0&dest_ids=${id}&guest_qty=1&arrival_date=${goDate}&departure_date=${backDate}&room_qty=1`;
+  const GET_PROPERTY_LIST_URL = `properties/list?price_filter_currencycode=USD&travel_purpose=leisure&categories_filter=price%253A%253A9-100%252Cfree_cancellation%253A%253A1%252Cclass%253A%253A5%252Cclass%253A%253A4%252Cclass%253A%253A3&search_id=none&order_by=price&languagecode=en-us&search_type=${type}&offset=${offset}&dest_ids=${id}&guest_qty=1&arrival_date=${goDate}&departure_date=${backDate}&room_qty=1`;
   
   console.log('fetching hotels', GET_PROPERTY_LIST_URL)
   let hotelsList={};
