@@ -3,18 +3,19 @@ import { useSelector } from 'react-redux';
 import Box from '@material-ui/core/Box';
 import Moment from 'moment'
 
-const AvgForecastOne = () => {
+const AvgForecast = () => {
 
   const weather = useSelector(state => state.weather);
-
+  
   const tempu = weather && weather.filter(day => day.temp)
 
   // console.log(tempu)
   
     let total = 0
     let av
+    let icon = 'a01d'
     for (let i = 0; i < tempu.length; i++) {
-      total += tempu[i].temp;  
+      total += tempu[i].temp; 
     }
     
 //     let maxEl = tempu[0].weather.icon
@@ -46,15 +47,15 @@ const AvgForecastOne = () => {
 
   return (
 
-    <div style={{ width: '100%', display: 'flex' }}>
-      <Box component="div" style={{ display: "inline", backgroundColor: "white", fontFamily: 'typeface-roboto' }} p={1} m={1} boxShadow={3}>
-        <h4>Averages</h4>
-
+    <div style={{ width: '150px', height: '125px', display: 'flex' }}>
+      {/* <Box component="div" style={{ display: "inline", backgroundColor: "white", fontFamily: 'typeface-roboto' }} p={1} m={1} boxShadow={3}> */}
+        
+        <img src={require(`./icons/${icon}.png`)} /><br/>
         {/* <div>{tempu[0].weather.icon}</div> */}
-        <p>{Math.round(total/tempu.length)}</p>
-      </Box>
+        <p>{Math.round(total/tempu.length)}°</p>
+      {/* </Box> */}
     </div>
   )
 }
 
-export default AvgForecastOne;
+export default AvgForecast;

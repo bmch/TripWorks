@@ -1,15 +1,18 @@
 import React from 'react';
 import './packageResult.css';
+import WeatherContainer from '/Users/erincostello/Desktop/Tripz/TripWorks/front-end/src/components/weather/weatherContainer.js'
+import UserInput from '../userInput/userInput';
 
 const PackageResult = () => {
   
   
   return (
     <div className="wrapper">
+      
       <div className="header">
         <h1>Barcelona</h1>
         <div className="weather">
-          <h3>weather</h3>
+          <WeatherContainer />
         </div>
       </div>
       <div className="resultBanner">
@@ -108,6 +111,7 @@ const PackageResult = () => {
         <div>
         </div>
       </div>
+      <UserInput />
     </div>
   );
 }

@@ -3,14 +3,14 @@ import { Field, reduxForm } from 'redux-form';
 import './userInput.css'
 import { fetchDataWeather, fetchDataWeatherTwo, fetchAvg } from '../../actions/weather';
 import Weather from '../weather/weather';
-import ContainerOne from '../weather/containerOne';
+import WeatherContainer from '../weather/weatherContainer';
 import './userInput.css';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchDataFlights } from '../../actions/flights';
 import { fetchHotelData } from '../../actions/hotels';
 import { connect } from 'react-redux';
 import Test from './test'
-import AvgForecast from '../weather/avgForecast.js/index.js.js'
+import AvgForecast from '../weather/avgForecast.js'
 import { bigGiantAction } from '../../actions/index'
 
 // fetchDataWeatherTwo
@@ -47,7 +47,7 @@ const UserInput = ({ handleSubmit }) => {
     // const today = Date.now()
     // const sixteen = 86400000 * 16
     // // console.log(formValues);
-    dispatch(bigGiantAction());
+    // dispatch(bigGiantAction());
     // this.props.history.push('/TripResults');
   
     // if (new Date(formValues.goDate).getTime() > (today + sixteen)) {
@@ -137,8 +137,8 @@ const UserInput = ({ handleSubmit }) => {
 
       </form>
       {/* <Weather /> */}
-      <ContainerOne />
-      <AvgForecast />
+      {/* <WeatherContainer /> */}
+      {/* <AvgForecast /> */}
     </div>
   );
 };
