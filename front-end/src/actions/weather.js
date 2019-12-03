@@ -24,13 +24,16 @@ export const fetchDataWeather = ( {destination, goDate, backDate}) => {
       switch (el.weather.code) {
         case 800: score = 1; break;
         case 801: case 802: score = 0.9; break;
-        case 803: case 804: score = 0.75; break;
-        case 300: case 301: case 700: case 711: score = 0.55; break;
-        case 302: case 500: case 721: case 731: score = 0.35; break;
+        case 803: case 804: case 300: score = 0.75; break;
+        case 300: score = 0.67; break;
+        case 700: case 711: score = 0.55; break;
+        case 301: case 500: case 520: score = 0.44; break;
+        case 721: case 731: score = 0.35; break;
+        case 302: case 501: case 521: score = 0.22; break;
         default: score = 0; break;
       }
-      score = score + tempScore(el.app_max_temp, el.app_min_temp)
-      weatherScoreArr.push(score/2)
+      let totalScore = 0.67 * score + 0.33 * tempScore(el.app_max_temp, el.app_min_temp)
+      weatherScoreArr.push(totalScore)
     })
     
     let weatherScore = 0;
@@ -47,21 +50,27 @@ export const fetchDataWeather = ( {destination, goDate, backDate}) => {
   })
 }
 
+export const fetchDataWeatherOne = (city) => (dispatch, getState) => {
+  return getWeather(city).then(weather => {
+    let theForecast;
+    const { goDate, backDate } = getState().form.userInput.values
+    const forecast = weather.data.filter(el => new Date(el.valid_date).getTime() >= new Date(goDate).getTime() && new Date(el.valid_date).getTime() <= new Date(backDate).getTime())
+    theForecast = forecast
+    dispatch({
+      type: 'SET_WEATHER',
+      data: theForecast
+    })
+})}
+
 export const fetchDataWeatherTwo = (city) => (dispatch, getState) => {
   return getWeather(city).then(weather => {
-
     let theForecast;
-
     const { goDate, backDate } = getState().form.userInput.values
-
     const forecast = weather.data.filter(el => new Date(el.valid_date).getTime() >= new Date(goDate).getTime() && new Date(el.valid_date).getTime() <= new Date(backDate).getTime())
-
     theForecast = forecast
-
     dispatch({
       type: 'SET_WEATHER_TWO',
       data: theForecast
-    
     })
 })}
 

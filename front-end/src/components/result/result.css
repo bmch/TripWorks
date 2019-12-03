@@ -1,55 +1,86 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans';
   box-sizing: border-box;
 }
 
-@media only screen 
-    and (device-width: 414px) 
-    and (device-height: 896px) 
-    and (-webkit-device-pixel-ratio: 2) { 
-      .wrapper {
+@media only screen
+    and (device-width: 414px)
+    and (device-height: 896px)
+    and (-webkit-device-pixel-ratio: 2) {
+      .wrapperResult {
         max-height: 414px;
         max-width: 896px;
         left: 0px;
         right: 0px;
-        background: #ffffff;
+        background: #FFFFFF;
       }
   }
-
-.wrapper {
+.wrapperResult {
   height: 100vh;
   width: 100%;
-  left: 0px;
+  /* left: 0px;
   right: 0px;
-  margin: 0px;
-} 
-
+  margin: 0px; */
+}
 .header {
   height: 50px;
   width: 100%;
   border: 1px solid black;
   border-radius: 0px 0px 25px 25px;
-  /* position: fixed; */
   z-index: 2;
 }
 
+.dest-container {
+  margin-bottom: 30px; 
+  border-bottom: 3px solid #282829;
+  overflow: hidden;
+  border-radius: 0px 0px 25px 25px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.dest-img {
+  position: relative;
+}
+
+.dest-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px 25px 0px 0px;
+}
+
 .resultBanner {
-  margin-top: 40px;
-  /* width: 100vw; */
-  height: 210px;
-  border: 1px solid black;
-  border-radius: 25px 25px 25px 25px;
+  border: none;
   display: flex;
   align-items: flex-end;
-  /* background-image: url("../../assets/images/barcelona-lvXeO04CxwQ-unsplash.jpg"); */
+  justify-content: space-around;
+}
+.bottomPageInfo {
+  margin: 10px;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #282829;
+  border-radius: 0px 0px 7px 7px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  font-size: 20px;
+  text-decoration: none;
 }
 
-.resultBanner > h2 {
-  margin-left: 20px;
-  border: 1px solid black;
-  border-radius: 5px 5px 5px 5px;
-  padding: 1px;
+.star {
+  margin: 0px;
+  padding: 0px;
 }
 
+.btn {
+  background-color: transparent;
+  position: absolute;
+  bottom: 15px;
+  right: 5px;
+  cursor: pointer;
+  z-index: 5;
+  border: none;
+  outline: none;
+  padding: 0px;
+}
