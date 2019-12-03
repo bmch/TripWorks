@@ -6,25 +6,6 @@ import getCityId from './hotels';
 import { weather, weatherTwo } from './weather';
 import { formValues } from './formValues';
 
-
-export const weather = (state = {}, action) => {
-  switch (action.type) {
-    case SET_WEATHER:
-      return action.data
-    default:
-      return state;
-  }
-}
-
-export const weatherTwo = (state = {}, action) => {
-  switch (action.type) {
-    case SET_WEATHER_TWO:
-      return action.data
-    default:
-      return state;
-  }
-}
-
 export const holidays = (state = [], action) => {
   switch (action.type) {
     case FETCH_DATA_LOADING_SUCCESS:
