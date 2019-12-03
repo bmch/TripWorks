@@ -46,6 +46,10 @@ const UserInput = ({ handleSubmit }) => {
 
     // this.props.history.push('/TripResults')
     // dispatch(fetchPhotos());
+    dispatch(fetchDataWeatherOne(formValues.destination1))
+    if (formValues.destination2) {
+      dispatch(fetchDataWeatherTwo(formValues.destination2))
+    }
   };
 
   return (
