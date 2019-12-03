@@ -1,16 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './packageResult.css';
-// import WeatherContainer from '../weatherPage/weatherContainer';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
+import data from '../result/tripList.json'
+import { useParams } from "react-router-dom";
+import WeatherContainer from '../weatherPage/weatherContainer'
+import Background from './background'
 
 const PackageResult = () => {
-  
+
+  const [destination, setDestination] = useState({})
+  const history = useHistory()
+
+  // const data = useSelector(state => state.tripResults);
+  // console.log(data)
+
+  const { city } = useParams()
+  console.log(city)
+
+  let dest = data.find(destination => {
+    return destination.city.toLowerCase().replace(' ', '-') === city
+  })
+  useEffect( () => {
+    if (dest) {
+      setDestination(dest)
+    console.log(dest)
+  }
+    else history.push("/results")
+  })
   
   return (
     <div className="wrapperPR">
       <div className="headerPackageResult">
-        <h1>Barcelona</h1>
+        { destination.photos ? <Background data={destination.photos} /> : null }
+        <h1>{destination.city}</h1>
         <div className="weatherPR">
-          {/* <WeatherContainer/> */}
+          { destination.weather ? <WeatherContainer weather={destination.weather.weatherForecast}/> : null }
         </div>
       </div>
       <div className="resultBannerFlights">

@@ -1,6 +1,4 @@
 
-// <<<<<<< HEAD
-// <<<<<<< HEAD
 // // import React from 'react';
 // // import {bindActionCreators} from 'redux';
 // // import { connect } from 'react-redux';
@@ -90,10 +88,9 @@
 //               <a href={hotel.url}>Click here to book</a>
 //             </div>
 //           ))}
-// <<<<<<< HEAD
+//
 //       </div>
-// >>>>>>> 78aa0547646ca82a5b51952cb860e2b9efafd4d5
-// =======
+
 //       </div> */}
 //       {/* <div>
 //         {photos.results &&

@@ -1,76 +1,69 @@
 import 'date-fns';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import DestAirportAutocomplete from './DestAirportAutocomplete';
 import AddIcon from '@material-ui/icons/Add';
-
 import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import { connect } from 'react-redux';
-import { addFormValues } from '../../actions/addFormValues';
-
+// import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
+import { addFormValues } from '../../actions/index';
 
 import './UserInput2.css';
 
-function UserInput2({ addFormValues }) {
+function UserInput2() {
   // The first commit of Material-UI
+  const dispatch = useDispatch();
   const history = useHistory()
 
   const initialState = {
     goDate: new Date(),
     backDate: new Date(),
-    departure: null,
-    destination1: null
+    departure: null
   };
-
-  const initDest = [];
-
   const [formData, setFormData] = React.useState(initialState);
-  const [destInputs, setDestInputs] = React.useState(initDest);
+  const [destList, setDestList] = React.useState([]);
+  const [destInputs, setDestInputs] = React.useState([]);
 
-  const handleChange = (name, date) => {
-    console.log('the date being changed', date);
-    console.log('the name of the value to change', name);
-    setFormData({
-      ...formData,
-      [name]: date
-    });
+  const handleChange = (type, input) => {
+    setFormData({ ...formData, [type]: input });
   };
-
+  const handleChangeOrigin = (input) => {
+    setFormData( {...formData, departure: input });
+  };
+  const handleChangeDest = (input) => {
+    setDestList( [...destList, input] );
+  };
   const appendInput = () => {
-    setDestInputs(prevState => {
-      return prevState.concat(prevState.length + 2);
-    });
+    setDestInputs(prevState => prevState.concat(prevState.length + 2));
   };
-
+ 
+  const isEnabled = formData.departure && destList.length > 0;
   const handleSubmit = e => {
-    // e.preventDefault();
-    console.log('handle submit fired');
-    console.log('form values', formData);
-    addFormValues(formData);
-
-    history.push("/results")
-
-    // setFormData(initialState);
-    // setDestInputs(initDest);
+    console.log('handle submit fired=============');
+    console.log('form values', formData, destList);
+    history.push("/loading")
+    dispatch(addFormValues( {...formData, destList}, history));
   };
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <div className="suggest">
         <DestAirportAutocomplete
+          container justify="space-around"
+          defaultValue = "Barcelona, Spain"
           label="From"
           name="departure"
-          storeDestination={handleChange}
+          storeDestination={handleChangeOrigin}
         />
         <br></br>
         <DestAirportAutocomplete
           label="To"
           name="destination1"
-          storeDestination={handleChange}
+          storeDestination={handleChangeDest}
         />
         {destInputs.map((num, index) => (
           <div key={index}>
@@ -78,7 +71,7 @@ function UserInput2({ addFormValues }) {
             <DestAirportAutocomplete
               label={`Destination Option ${num}`}
               name={`destination${num}`}
-              storeDestination={handleChange}
+              storeDestination={handleChangeDest}
             />
           </div>
         ))}
@@ -91,33 +84,17 @@ function UserInput2({ addFormValues }) {
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Grid container justify="space-around">
             <KeyboardDatePicker
-              variant="outlined"
-              margin="normal"
-              id="date-picker-dialog"
-              label="Depart"
-              format="MM/dd/yyyy"
+              variant="outlined" margin="normal" id="date-picker-dialog"
+              label="Depart" format="dd/MM/yy"
               onChange={date => handleChange('goDate', date)}
-              inputVariant="outlined"
-              KeyboardButtonProps={{
-                'aria-label': 'change date'
-              }}
-              name="goData"
-              value={formData.goDate}
+              inputVariant="outlined" KeyboardButtonProps={ {'aria-label': 'change date'} }
+              name="goData"value={formData.goDate}
             />
-
             <KeyboardDatePicker
-              variant="outlined"
-              margin="normal"
-              id="date-picker-dialog"
-              label="Return"
-              format="MM/dd/yyyy"
-              onChange={date => handleChange('backDate', date)}
-              inputVariant="outlined"
-              KeyboardButtonProps={{
-                'aria-label': 'change date'
-              }}
-              name="backDate"
-              value={formData.backDate}
+              variant="outlined" margin="normal" id="date-picker-dialog"
+              label="Return" format="dd/MM/yy" onChange={date => handleChange('backDate', date)}
+              inputVariant="outlined" KeyboardButtonProps={ {'aria-label': 'change date'} }
+              name="backDate" value={formData.backDate}
             />
           </Grid>
         </MuiPickersUtilsProvider>
@@ -125,24 +102,18 @@ function UserInput2({ addFormValues }) {
         <br></br>
         {/* {JSON.stringify(formData.backDate)} */}
         <br></br>
-        <Button
-          fullWidth
-          variant="contained"
-          onClick={handleSubmit}
-          color="primary"
-        >
-          Search
-        </Button>
+        <Button fullWidth variant="contained" onClick={handleSubmit} disabled={!isEnabled}
+          color="primary" >Search</Button>
         <br></br>
       </div>
     </MuiPickersUtilsProvider>
   );
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    addFormValues: data => dispatch(addFormValues(data))
-  };
-};
-UserInput2 = connect(null, mapDispatchToProps)(UserInput2);
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     addFormValues: data => dispatch(addFormValues(data))
+//   };
+// };
+// UserInput2 = connect(null, mapDispatchToProps)(UserInput2);
 
 export default UserInput2;
