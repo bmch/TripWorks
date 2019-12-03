@@ -28,11 +28,11 @@ export const tripResults = (state = [], action) => {
 };
 
 export const rootReducer = combineReducers({
-  tripResults,
   flights,
   getCityId,
-  fetchingTrips,
   form: formReducer,
+  tripResults,
+  fetchingTrips,
   weather,
   weatherTwo,
   formValues

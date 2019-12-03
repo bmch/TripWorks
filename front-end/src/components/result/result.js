@@ -12,7 +12,7 @@ const Result = () => {
   
   
   return (
-      <div className="wrapper">
+      <div className="wrapperResult">
         { data ? data.map( (destination, key) => 
           <Destination key2={key} destination={destination} />
         ) : null }
