@@ -10,6 +10,8 @@ import { fetchPhotos } from '../../actions/photos';
 // import { connect } from 'react-redux';
 import { giantAction } from '../../actions/index'
 import { weatherAction } from '../../actions/index'
+import { fetchDataWeatherOne, fetchDataWeatherTwo } from '../../actions/weather'
+import PackageResult from '../packageResult/packageResult';
 
 
 const UserInput = ({ handleSubmit }) => {
@@ -41,7 +43,7 @@ const UserInput = ({ handleSubmit }) => {
 
   const onSubmit = formValues => {
 
-    dispatch(giantAction());
+    // dispatch(giantAction());
     // dispatch(weatherAction())
 
     // this.props.history.push('/TripResults')
@@ -123,9 +125,9 @@ const UserInput = ({ handleSubmit }) => {
         </div>
 
       </form>
-
-      <Weather />
-      <WCont />
+<div>
+      <PackageResult />
+      </div>
     </div>
   );
 };

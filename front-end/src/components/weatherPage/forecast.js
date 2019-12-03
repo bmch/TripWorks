@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
-import Moment from 'moment'
+import Moment from 'react-moment'
 import 'typeface-roboto'
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';

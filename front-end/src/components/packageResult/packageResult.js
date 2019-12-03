@@ -1,5 +1,7 @@
 import React from 'react';
 import './packageResult.css';
+import 'typeface-roboto';
+import WeatherContainer from '../weatherPage/weatherContainer'
 
 const PackageResult = () => {
   
@@ -9,7 +11,7 @@ const PackageResult = () => {
       <div className="header">
         <h1>Barcelona</h1>
         <div className="weather">
-          <h3>weather</h3>
+          <WeatherContainer />
         </div>
       </div>
       <div className="resultBanner">
