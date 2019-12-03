@@ -3,15 +3,12 @@ import { giantAction } from './giantAction'
 import moment from 'moment'
 
 export const addFormValues = ( {goDate, backDate, destList, departure}, history ) => async dispatch => {
-
-  // const wait = async (ms) => {
-  //   return new Promise(resolve => {
-  //     setTimeout(resolve, ms);
-  //   });
-  // }
-
-  // await wait(2000)
-  // dispatch(giantAction());
+  
+  const wait = async (ms) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, ms);
+    });
+  }
 
   const formData = {
     departureCity: departure.googleData.terms[0].value,
@@ -30,11 +27,15 @@ export const addFormValues = ( {goDate, backDate, destList, departure}, history 
     type: 'FETCHING_TRIPS',
     status: true
   })
-  const results = await giantAction(formData)
-  dispatch({
-    type: 'TRIP_RESULTS',
-    data: results
-  })
+
+  await wait(2000)
+
+  // const results = await giantAction(formData)
+  // dispatch({
+  //   type: 'TRIP_RESULTS',
+  //   data: results
+  // })
+
   dispatch({
     type: 'FETCHING_TRIPS',
     status: false

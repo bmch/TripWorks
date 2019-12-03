@@ -4,19 +4,19 @@ import './result.css';
 import Destination from './destination'
 import data from './tripList.json'
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
+import PackageResult from '../packageResult/packageResult';
 
 const Result = () => {
   
   // const data = useSelector(state => state.tripResults); 
   // console.log(data)
   
-  
   return (
-      <div className="wrapper">
-        { data ? data.map( (destination, key) => 
-          <Destination key2={key} destination={destination} />
-        ) : null }
-      </div>
+    <div className="wrapperResult">
+      { data ? data.map( (destination, index) => 
+        <Destination key={index} destination={destination} />
+      ) : null }
+    </div>
   );
 }
 

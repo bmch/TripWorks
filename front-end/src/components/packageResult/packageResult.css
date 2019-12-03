@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans';
   box-sizing: border-box;
 }
 
@@ -18,85 +20,216 @@
       }
   }
 
-.wrapper {
+.wrapperPR {
   height: 100vh;
   width: 100%;
-  left: 0px;
-  right: 0px;
-  margin: 0px;
+  /* display: flex;
+  flex-direction: column; */
 } 
 
-.header {
+.headerPackageResult {
   height: 270px;
   width: 100%;
-  border: 1px solid black;
-  border-radius: 25px 25px 25px 25px;
+  border-bottom: 3px solid #282829;
+  border-radius: 0px 0px 25px 25px;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
 }
 
-.header h1 {
+.background-img {
+  position: absolute;
+}
+
+.headerPackageResult > h1 {
   margin-left: 20px;
-  border: 1px solid black;
+  border: 2px solid #282829;
   border-radius: 15px 15px 15px 15px;
   padding: 2px;
 }
 
-.weather {
-  margin-top: 20px;
-  border: 1px solid black;
+.weatherPR {
+  margin-top: 75px;
+  border: 2px solid #282829;
   border-radius: 15px 15px 15px 15px;
   padding: 0px;
   width: 95%;
-  height: 70px;
+  height: 85px;
 }
 
-/* .resultBanner {
-  margin-top: 40px;
-  height: 140px;
-  border: 1px solid black;
+.resultBannerFlights {
+  margin-top: 30px;
+  width: 100%;
+  height: 150px;
+  border: 2px solid #282829;
   border-radius: 25px 25px 25px 25px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: row;
 } */
 
-.price {
-  width: 120px;
-  height: 100%;
-  border: 1px solid black;
-  border-radius: 25px 25px 25px 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.price h2 {
-  align-self: center;
-}
-
-.infoWrapper {
+.sidebarPackagePR {
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 40%;
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+  /* align-content: space-between; */
+
 }
 
-.cities {
+.infoWrapperPR {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 70%;
+}
+
+.airports {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
+  align-items: center;
+  height: 15%;
+  width: 82%;
+  margin-top: 15px;
 }
 
-.dates {
+.FlightTime {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 30%;
+  align-items: center;
+}
+
+.datesPR {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 15%;
+  width: 90%
+}
+
+.otherInfoflight {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid black;
+  /* border-radius: px 25px 25px 25px; */
+  height: 30%;
+  width: 100%;
+}
+
+.flightDuration {
+  /* margin-left: 95px; */
+  vertical-align: baseline;
+}
+
+/* ######### */
+.resultBannerHotels {
+  margin-top: 30px;
+  width: 100%;
+  height: 150px;
+  border: 2px solid #282829;
+  border-radius: 25px 25px 25px 25px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.sidebarHotels {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+  /* align-content: space-between; */
 
 }
+
+.infoWrapperHotel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 70%;
+}
+
+.hotelName {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 15%;
+  width: 90%;
+  margin-top: 15px;
+}
+
+.hotelDates {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 30%;
+  align-items: center;
+  width: 92%;
+}
+
+.direction-book {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 30%;
+  align-items: center;
+  width: 95%;
+}
+
+.otherInfohotel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #282829;
+  /* border-radius: px 25px 25px 25px; */
+  height: 30%;
+}
+
+
+.booking-button {
+  height: 35px;
+  width: 115px;
+  border-radius: 15px 15px 15px 15px;
+  font-size: .875rem;
+  font-weight: 600;
+  letter-spacing: .0107142857em;
+  margin: 0px;
+  right: 0px;
+  left: 0px;
+}
+
+.hotelDirection {
+  height: 35px;
+  width: 115px;
+  border-radius: 15px 15px 15px 15px;
+  font-size: .875rem;
+  font-weight: 600;
+  letter-spacing: .0107142857em;
+}
+
+.hotelRating {
+  align-self: center;
+}
+
+button {
+  background: #282829;
+  color: #ffffff;
+}
+
 
 
