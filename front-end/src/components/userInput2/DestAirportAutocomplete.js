@@ -82,9 +82,9 @@ class DestAirportAutocomplete extends React.Component {
           onSuggestionSelected={this.onSuggestionSelected}
           textFieldProps={{
             label: this.props.label,
-            variant: 'outlined',
+            variant: 'standard',
             style: {
-              width: 350,
+              width: 290,
               backgroundColor: 'white'
             },
             className: 'classes.textField'
@@ -93,9 +93,9 @@ class DestAirportAutocomplete extends React.Component {
         />
         <div>
           <br></br>
-          {this.state.airportName && this.state.airportName + ', '}
+          {/* {this.state.airportName && this.state.airportName + ', '}
           {this.state.iata && 'IATA code: ' + this.state.iata.toUpperCase()}
-          {this.state.errorMessage && 'Please try again '}
+          {this.state.errorMessage && 'Please try again '} */}
         </div>
       </div>
     );

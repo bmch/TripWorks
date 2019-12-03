@@ -8,7 +8,7 @@ function LandingPage(params) {
     <div>
       <div className='topSpacing'></div>
       <div className='imageContainer'>
-        <img src={require('./logos/defaultP.png')} className='tripWorksLogo' />
+        <img src={require('./logos/black-default.png')} className='tripWorksLogo' />
       </div>
       <div className='bottomSpacing'></div>
       <div className='buttonContainer'>
