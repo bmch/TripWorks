@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 * {
@@ -23,8 +22,6 @@
 .wrapperPR {
   height: 100vh;
   width: 100%;
-  /* display: flex;
-  flex-direction: column; */
 } 
 
 .headerPackageResult {
