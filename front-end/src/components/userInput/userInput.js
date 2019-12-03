@@ -8,7 +8,7 @@ import './userInput.css';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchPhotos } from '../../actions/photos';
 // import { connect } from 'react-redux';
-import { giantAction } from '../../actions/index'
+import { giantAction } from '../../actions/giantAction'
 import { weatherAction } from '../../actions/index'
 
 

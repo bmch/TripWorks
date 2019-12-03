@@ -25,17 +25,17 @@ const Destination = ( {key, destination} ) => {
   return (
     <div className="dest-container">
       <div className="dest-img">
-        <img src={destination.photos.ldscSmall[0]}/>
+        <img className="dest-img" src={destination.photos.ldscFull[0]}/>
         <AddButton type={buttonState} add={add} />
       </div>
-      <div className="resultBanner">
-        <Link to='/PackageResult'>
+      <Link to='/PackageResult'>
+        <div className="resultBanner">
           <h3>{destination.city}</h3>
-        </Link>
-        {/* <img src={destination.hotels[0].main_photo_url} /> */}
-        <h3>Score: {destination.finalScore.toFixed(1)}/10</h3>
-        <h3>Total Price: €{destination.lowestCombinedPrice.toFixed(2)}</h3>
-      </div>
+          {/* <img src={destination.hotels[0].main_photo_url} /> */}
+          <h3>Score: {destination.finalScore.toFixed(1)}/10</h3>
+          <h3>Starting from €{destination.lowestCombinedPrice.toFixed(0)}</h3>
+        </div>
+      </Link>
     </div>
   );
 }

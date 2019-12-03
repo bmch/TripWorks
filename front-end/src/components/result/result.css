@@ -34,20 +34,27 @@
   /* position: fixed; */
   z-index: 2;
 }
+
+.dest-img {
+  width: 100%;
+}
 .dest-container {
-  position: relative;
-  border: 1px solid black;
+  margin: 2px;
+  margin-bottom: 12px;
+  border: 3px solid black;
+  overflow: hidden;
   border-radius: 25px 25px 25px 25px;
 }
 
 .dest-img {
   position: relative;
+  z-index: -10;
 }
 
 .resultBanner {
   /* margin-top: 40px; */
   /* width: 100vw; */
-  height: 120px;
+  height: auto;
   border: none;
   display: flex;
   align-items: flex-end;
@@ -55,10 +62,8 @@
 }
 
 .resultBanner > h3 {
-  margin-left: 20px;
-  border: 1px solid black;
-  border-radius: 5px 5px 5px 5px;
-  padding: 1px;
+  margin: 10px;
+  margin-bottom: 20px;
 }
 
 .btn {

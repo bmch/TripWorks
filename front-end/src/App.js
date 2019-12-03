@@ -7,6 +7,7 @@ import SignIn from './components/singIn/singIn';
 import PackageResult from './components/packageResult/packageResult';
 import UserInput2 from './components/userInput2/UserInput2';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
+import Spinner from './components/spinner/index';
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
             render={() => <SignUp createUser={createUser} />}
           /> */}
           <Route path='/' render={() => <UserInput2 />} exact />
+          <Route path="/loading" render={() => <Spinner />} />
           <Route path="/results" render={() => <Result />} />
           <Route path="/PackageResult" render={() => <PackageResult />} />
           {/* TODO:add the city id in-between results and packageresults */}
