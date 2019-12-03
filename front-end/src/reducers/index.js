@@ -19,7 +19,8 @@ export const fetchingTrips = (state = false, action) => {
 export const tripResults = (state = [], action) => {
   switch (action.type) {
     case 'TRIP_RESULTS_COMPLETED':
-      console.log('Results in store');
+      console.log('Results in store')
+      // console.log(JSON.stringify(action.data))
       return action.data;
     default:
       return state;

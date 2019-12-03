@@ -12,27 +12,30 @@ import { fetchPhotos } from './photos';
 import { addFormValues } from './addFormValues';
 
 const formData = {
-  backDate: '2019-12-10',
-  departure: 'Barcelona',
+  backDate: "2019-12-13",
+  departure: "Barcelona",
   depAirport: 'BCN',
   // destination: "Madrid",
-  destinations: ['Madrid', 'Paris', 'Rome'],
-  airports: ['MAD', 'CDG', 'FCO'],
+  destinations: ['Paris', 'Rome', 'Athens', 'Los Angeles', 'Abu Dhabi'], 
+  airports: ['CDG', 'FCO', 'ATH', 'LAX', 'AUH'],
   // "Rome", "Paris", "Sydney", "Los Angeles", "Singapore"],
-  goDate: '2019-12-07'
-};
+  goDate: "2019-12-08"
+}
 
-let resultsArray = [];
+function processResults( {formData, flights, hotels, weather, photos} ) {
 
-function processResults({ formData, hotels, flights, weather, photos }) {
-  let days = weather.weatherForecast.length;
-  let lowestCombinedPrice =
-    hotels[0].price_breakdown.all_inclusive_price +
-    flights.flightsData[0].cheapestPrice;
+  let days = weather.weatherForecast.length
+  let hotelPrice = hotels[0].price_breakdown.all_inclusive_price;
+  let cheapestHotel;
+  switch (hotels[0].currency_code) {
+    case 'USD': cheapestHotel = hotelPrice*0.91; break;
+    case 'AED': cheapestHotel = hotelPrice*0.25; break;
+    default: cheapestHotel = hotelPrice; break;
+  }
+  let lowestCombinedPrice = cheapestHotel + flights[0].cheapestPrice
   let priceScore;
-  if (lowestCombinedPrice / days < 100)
-    priceScore = 0.7 + 0.03 * Math.sqrt(100 - lowestCombinedPrice / days);
-  else priceScore = 0.7 - 0.03 * Math.sqrt(100 * days - lowestCombinedPrice);
+  if (lowestCombinedPrice/days < 100) priceScore = 0.7 + 0.03 * Math.sqrt(100 - (lowestCombinedPrice/days))
+  else priceScore = 0.7 - 0.03 * Math.sqrt((lowestCombinedPrice/days) - 100)
 
   return {
     city: formData.destination,
@@ -48,38 +51,38 @@ function processResults({ formData, hotels, flights, weather, photos }) {
 }
 
 const allAPIsAction = async (dispatch, formData) => {
-  // flights, , weather, photos
-  const [hotels] = await Promise.all([
-    // fetchDataFlights(formData),
-    fetchHotelData(formData)
-    // fetchDataWeather(formData),
-    // fetchPhotos(formData)
-  ]);
-  console.log('Results for 1 destination', hotels);
-  // , hotels, weather, photos)
-  // dispatch({
-  //   type: 'SET_FLIGHTS',
-  //   data: flights,
-  // })
-  // dispatch({
-  //   type: 'SET_HOTELS',
-  //   data: hotels,
-  // })
-  // dispatch({
-  //   type: 'SET_WEATHER',
-  //   data: weather
-  // })
-  return hotels;
-  // return processResults({ formData, hotels, flights, weather, photos })
-};
+  const [flights, hotels, weather, photos] = await Promise.all([
+    fetchDataFlights(formData),
+    fetchHotelData(formData),
+    fetchDataWeather(formData),
+    fetchPhotos(formData)
+  ])
+  console.log('Results for 1 destination', flights, hotels, weather, photos)
+  dispatch({
+    type: 'SET_FLIGHTS', 
+    data: flights,
+  })
+  dispatch({
+    type: 'SET_HOTELS',
+    data: hotels,
+  })
+  dispatch({
+    type: 'SET_WEATHER',
+    data: weather
+  })
+  // return hotels
+  return processResults({ formData, flights, hotels, weather, photos })
+}
 
 export const giantAction = () => async dispatch => {
-  console.log('====================================');
-  let pendingPromises = formData.destinations.map((destination, index) => {
-    let airport = formData.airports[index];
-    allAPIsAction(dispatch, { ...formData, destination, airport });
-  });
+
+  console.log('====================================')
+  let pendingPromises = formData.destinations.map( (destination, index) => {
+    let airport = formData.airports[index]
+    return allAPIsAction(dispatch, { ...formData, destination, airport})
+  })
   const results = await Promise.all(pendingPromises);
+  results.sort((a, b) => b.finalScore - a.finalScore ) 
   dispatch({
     type: 'FETCHING_TRIPS_COMPLETED',
     status: true

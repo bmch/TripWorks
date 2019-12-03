@@ -33,7 +33,7 @@ const APIOptions = (userInput) =>  {
       infants: '0',
       country: 'US',
       currency: 'EUR',
-      locale: 'en-US',
+      locale: 'en-ES',
       originPlace: `${userInput.depAirport}-sky`,
       destinationPlace: `${userInput.airport}-sky`,
       outboundDate: userInput.goDate,
