@@ -9,14 +9,14 @@ export const addFormValues = ( {goDate, backDate, destList, departure}, history 
       setTimeout(resolve, ms);
     });
   }
-
   const formData = {
+    dates: [goDate, backDate],
     departureCity: departure.googleData.terms[0].value,
     depAirport: departure.iata,
     goDate: moment(goDate).format('YYYY-MM-DD'),
     backDate: moment(backDate).format('YYYY-MM-DD'),
     destAirports: destList.map(destination => destination.iata),
-    destinations: destList.map(destination => destination.googleData.terms[0].value)
+    destinations: destList.map(destination => destination.airportData.response[0].place.city)
   }
   console.log(formData)
   dispatch({
@@ -27,18 +27,22 @@ export const addFormValues = ( {goDate, backDate, destList, departure}, history 
     type: 'FETCHING_TRIPS',
     status: true
   })
+  history.push("/loading")
+  // await wait(2000)
 
-  await wait(2000)
-
-  // const results = await giantAction(formData)
-  // dispatch({
-  //   type: 'TRIP_RESULTS',
-  //   data: results
-  // })
+  const results = await giantAction(formData, dispatch)
+  console.log(results)
+  
+  dispatch({
+    type: 'TRIP_RESULTS',
+    data: results
+  })
+  
+  await wait(1000)
+  history.push("/results")
 
   dispatch({
     type: 'FETCHING_TRIPS',
     status: false
   })
-  history.push("/results")
 }

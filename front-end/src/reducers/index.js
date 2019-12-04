@@ -30,6 +30,15 @@ export const itemLoading = (state = false, action) => {
 }
 }
 
+export const loadingProgress = (state = 0, action) => {
+  switch (action.type) {
+    case 'LOG_PROGRESS':
+      return state + action.status;
+    default:
+      return state;
+  }
+};
+
 export const tripResults = (state = [], action) => {
   switch (action.type) {
     case 'TRIP_RESULTS':
@@ -42,6 +51,7 @@ export const tripResults = (state = [], action) => {
 };
 
 export const rootReducer = combineReducers({
+  loadingProgress,
   flights,
   getCityId,
   form: formReducer,

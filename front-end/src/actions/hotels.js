@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 
 
-export const fetchHotelData = async (formData) => {
+export const fetchHotelData = async (formData, dispatch) => {
   // const destination1 = useSelector(state => state.form.userInput.values);
 
   console.log(formData)
@@ -21,5 +21,9 @@ export const fetchHotelData = async (formData) => {
     hotelsFiltered = hotelList.result.filter( el => Number(el.distance_to_cc) < 8 && el.min_total_price > 0 && el.business_review_score > 7)
     console.log('filtered hotels', hotelsFiltered)
   }
+  dispatch({
+    type: 'LOG_PROGRESS',
+    status: 1,
+  })
   return hotelsFiltered
 };
