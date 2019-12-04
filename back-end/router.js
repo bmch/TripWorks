@@ -4,11 +4,12 @@ const Router = require('koa-router');
 const router = new Router();
 require('dotenv').config();
 
-const config = require('./config/config');
-const authorize = require('./middleware/authorize');
-const userCont = require('./controllers/userController');
-const flightCont = require('./controllers/flightsController');
-const passport = require('koa-passport');
+const config = require("./config/config");
+const authorize = require("./middleware/authorize");
+const userCont = require("./controllers/userController");
+const flightCont = require("./controllers/flightsController");
+const passport = require("./middleware/passport");
+const savedT = require("./controllers/savedTripsController");
 
 router
   .post('/login', userCont.signIn)
@@ -32,6 +33,18 @@ router
       })(ctx),
     userCont.signInWithPassport
   )
+
+  .get(
+    "/auth/google/callback",
+
+    passport.authenticate("google", {
+      failureRedirect: "http://localhost:3000/login",
+      successRedirect: "http://localhost:3000/home"
+    })
+  )
+
+  .get("/auth/google", passport.authenticate("google", { scope: ["profile"] }))
+
   .post(
     '/registerWithPassport',
     async (ctx, next) =>
@@ -46,9 +59,9 @@ router
       })(ctx),
     userCont.registerWithPassport
   )
-  .post('/register', userCont.createUser)
-  .post('/postFlights', flightCont.postFlights)
+  // .post('/register', userCont.createUser)
+  // .post('/postFlights', flightCont.postFlights)
   .post('/savedtrips', savedT.savedTripsAdd)
-  .get('/savedtrips', savedT.find);
+  // .get('/savedtrips', savedT.find);
 
 module.exports = router;

@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
+import Moment from 'react-moment'
+// import Moment from 'moment'
 import moment from 'moment'
 import 'typeface-roboto'
 import { makeStyles } from '@material-ui/core/styles';
@@ -32,6 +34,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
+
 function Forecast(props) {
 
   // const weather = useSelector(state => state.weather.forecast);
@@ -44,12 +48,16 @@ function Forecast(props) {
         <div style={{ width: '170px', display: 'flex', flexDirection: 'row' }}>
           {/* <Box component="div" style={{ display: "inline", backgroundColor: "white", fontFamily: 'Helvetica' }} p={5} m={5} boxShadow={3}> */}
           <div >
-          <img src={require(`./icons/${icon}.png`)} style={{height: '70px', width: '70px'}} />
+            <img src={require(`./icons/${icon}.png`)} style={{ height: '70px', width: '70px' }} />
           </div>
-          <div style={{display: 'flex', alignItems: 'center', lineHeight: '80%'}}>
+          <div style={{ display: 'flex', alignItems: 'center', lineHeight: '80%' }}>
+            <p>{Moment(props.e.valid_date).format("MMM Do")}<br /><br />
+              {Math.round(props.e.low_temp)}°-{Math.round(props.e.high_temp)}°</p>
+          </div>
+          {/* <div style={{display: 'flex', alignItems: 'center', lineHeight: '80%'}}>
             <p>{moment(props.e.valid_date).format("MMM Do")}<br/><br/>
             {Math.round(props.e.low_temp)}°-{Math.round(props.e.high_temp)}°</p>
-            </div>
+            </div> */}
             
             {/* <p>{props.e.weather.description}</p> */}
           {/* </Box> */}
@@ -62,6 +70,27 @@ function Forecast(props) {
 
 
 export default Forecast;
+
+
+
+
+{/* <div style={{ width: '170px', display: 'flex', flexDirection: 'row' }}>
+  <div >
+    <img src={require('./icons/a01d.png')} style={{ height: '70px', width: '70px' }} />
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', lineHeight: '80%' }}>
+    <p>December 5th<br /><br />5°-8°</p>
+  </div>
+</div> */}
+
+
+
+
+
+
+
+
+
 
 
 // return (
