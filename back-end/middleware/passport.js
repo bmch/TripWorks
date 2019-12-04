@@ -49,24 +49,20 @@ const googleStrategy = new GoogleStrategy(
     clientSecret: process.env.GOOGLE_CONSUMER_SECRET,
     callbackURL: "/auth/google/callback"
   },
-  async function(token, tokenSecret, profile, done) {
+  async function(ctx, token, tokenSecret, profile, done) {
     console.log(profile);
 
     try {
-      const user = await User.findOneAndUpdate({ oauthID: profile.id },{
+      const user = await User.findOneAndUpdate({ oauthID: profile.id }, profile, {
 
         new: true, // return new Document
         upsert: true // CREATE NEW IF DOESNT EXISt
       })
       console.log(user);
+    
       
       done(null, user)
-      // if (!user) {
-      //   await User.create({
-      //     oauthID: profile.id,
-      //     username: profile.displayName
-      //  e });
-      // }
+     
     } catch (error) {
       console.log(error);
     }

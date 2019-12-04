@@ -1,6 +1,7 @@
 import { authHeader } from '../../helper/auth_header';
 const BASE_URL = `http://localhost:3002`;
 
+
 export default {
 
   postUser(inputs) {
@@ -42,21 +43,31 @@ export default {
     const option = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': authHeader()
       },
       body: JSON.stringify(destination)
     };
+
     return fetch(`${BASE_URL}/savedtrips`, option)
       .then(handleResponse)
       .then(data => {
         return data;
       });
   },
-  
+
   getUserTrips() {
-    return fetch(`${BASE_URL}/savedtrips`)
+    const option = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': authHeader()
+      },
+    };
+
+    return fetch(`${BASE_URL}/getSavedTrips`, option)
       .then(handleResponse)
       .then(data => {
+        console.log('returned');
         return data;
       });
   }

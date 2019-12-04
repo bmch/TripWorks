@@ -5,16 +5,21 @@ import apiClient from '../../services/user/apiClient';
 
 export default function UserProfile() {
   const [trips, setTrips] = useState([]);
-
+  console.log("TCL: UserProfile -> trips", trips)
+  
+  
   useEffect(() => {
-    updateTrips();
+    // updateTrips();
+    apiClient.getUserTrips().then(data => {
+      setTrips(data);
+    });
   }, []);
 
-  const updateTrips = () => {
-    apiClient.getUserTrips().then(data => {
-      setTrips([...data]);
-    });
-  };
+  // const updateTrips = () => {
+  //   apiClient.getUserTrips().then(data => {
+  //     setTrips([...data]);
+  //   });
+  // };
 
   return (
     <div className="wrapper">

@@ -12,6 +12,7 @@ import UserProfile from "./components/userProfile/userProfile";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import Spinner from './components/spinner/index'
 import WeatherContainer from './components/weatherPage/weatherContainer'
+import LandingPage from './components/landingPage/landingPage';
 
 const App = () => {
   const createUser = (inputs, history) => {
@@ -43,13 +44,14 @@ const App = () => {
     <Router>
       <div>
         <Switch>
-          <PrivateRoute exact path="/home" component={UserInput2} />
+          <PrivateRoute  path="/home" component={UserInput2} />
+          <Route exact path="/" render={() => <LandingPage />} />
+          <Route exact path="/profile" render={() => <UserProfile />} />
           <Route path="/login" render={() => <LogIn logUserIn={logUserIn} />} />
           <Route
             path="/register"
             render={() => <SignUp createUser={createUser} />}
           /> 
-          <Route path='/' render={() => <UserInput2 />} exact />
           <Route path="/loading" render={() => <Spinner />} />
           <Route path="/results" render={() => <Result />} exact />
           <Route path="/results/:city" render={() => <PackageResult />} />

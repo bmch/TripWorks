@@ -4,18 +4,31 @@ const SavedTrip = require('../models/savedTrip');
 
 exports.savedTripsAdd = async ctx => {
   try {
-    console.log('ctx.request.body ---->', ctx.request.body);
-    console.log('ctx.params ---->', ctx.params);
-    const trip = new SavedTrip(ctx.request.body);
-    const result = await trip.save();
-    ctx.body = result;
+    const userTrip = ctx.request.body;
+    const user = ctx.user.username;
+
+    const trip = await SavedTrip.create({savedtrips: userTrip, username: user});
+    ctx.body = trip;
     ctx.status = 201;
+    console.log('success');
+    console.log(ctx.body);
   } catch (error) {
     ctx.status = 401;
     console.log('unable to save trip to the database');
   }
 };
 
-exports.find = async ctx => {
-  ctx.body = await SavedTrip.find();
+exports.findTrip = async ctx => {
+  const user = ctx.user.username;
+
+  try {
+    ctx.body = await SavedTrip.findOne({'username':user})
+    ctx.status = 200;
+  } catch (error) {    
+    ctx.body = {
+      status: 'unsuccessful',
+      message: 'unable to return from database',
+      data: error
+    }
+  }
 };
