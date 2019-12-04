@@ -9,11 +9,13 @@ const bodyParser = require('koa-bodyparser');
 const router = require('./router');
 const session = require('koa-session');
 const passport = require('koa-passport');
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+
 
 const config = require('./config/config');
-const { configurePassport } = require('./middleware/passport')
+require('./middleware/passport')
 
-configurePassport();
+
 app.keys = ['super-secret-key'];
 
 app

@@ -30,7 +30,7 @@ const Destination = ({ key, destination }) => {
   return (
     <div className="dest-container">
       <div className="dest-img">
-        <img src={destination.photos.ldscSmall[0]} />
+        <img src={destination.photos.ldscFull[0]}/>
         <AddButton type={buttonState} add={add} />
       </div>
       <Link to={endPoint}>

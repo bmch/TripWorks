@@ -6,7 +6,7 @@ const Background = ( {data} ) => {
   console.log(data)
 
   return (
-  <div>
+  <div className="trip-img">
     { data ? <img className="background-img" src={data.ldscSmall[0]} /> : null }
   </div>)
 }
