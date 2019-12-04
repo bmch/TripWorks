@@ -41,7 +41,8 @@ export default function UserProfile() {
             src="https://picsum.photos/id/1011/500/500"
             class="avatar__image"
           />
-          <h2>Regina Cooper</h2>
+          <h2>Henry Shen</h2>
+          <h3>Platinum Member</h3>
         </div>
       </div>
 
