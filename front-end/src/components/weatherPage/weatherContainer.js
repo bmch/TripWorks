@@ -50,6 +50,14 @@ const WeatherContainer = () => {
 
 export default WeatherContainer;
 
+
+
+
+
+
+
+
+
 // return (
   //   weather.map((e) => <Forecast e={e} />)
   //   weatherTwo.map((e) => <ForecastTwo e={e} />)

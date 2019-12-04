@@ -8,14 +8,16 @@ import PackageResult from './components/packageResult/packageResult';
 import UserInput2 from './components/userInput2/UserInput2';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
 import WeatherContainer from './components/weatherPage/forecast'
+import LandingPage from './components/landingPage/landingPage'
 
 
 const App = () => {
   return (
     <Router>
       <div>
+        {/* <LandingPage /> */}
         <UserInput2 />
-        
+        {/* <PackageResult/> */}
       </div>
     </Router>
   );
@@ -35,4 +37,4 @@ export default App;
           <Route path="/PackageResult" render={() => <PackageResult />} /> */}
           {/* TODO:add the city id in-between results and packageresults */}
           {/* <TripResults /> */}
-        // </Switch>
+          {/* </Switch> */}
