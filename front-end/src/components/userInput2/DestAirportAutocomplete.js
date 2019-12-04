@@ -3,10 +3,73 @@ import MUIPlacesAutocomplete, {
   geocodeBySuggestion
 } from 'mui-places-autocomplete';
 
+import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
+
+// const styles = theme => ({
+//   container: {
+//     display: 'flex',
+//     flexWrap: 'wrap',
+//   },
+//   textField: {
+//     marginLeft: theme.spacing.unit,
+//     marginRight: theme.spacing.unit,
+//     width: 200,
+//   },
+
+//   cssLabel: {
+//     color : 'green'
+//   },
+
+//   cssOutlinedInput: {
+//     '&$cssFocused $notchedOutline': {
+//       borderColor: `${theme.palette.primary.main} !important`,
+//     }
+//   },
+
+//   cssFocused: {},
+
+//   notchedOutline: {
+//     borderLeft: '5px',
+//     borderRight: '5px',
+//     // borderWidth: '1px',
+//     borderColor: 'green !important'
+//   },
+
+// });
+
+const styles = makeStyles(theme => ({
+  root: {
+    // borderTop: '1px',
+    // borderBottom: '1px',
+    background: '#282829',
+    '&$focused': {
+      background: '#282829'
+    },
+
+    color: 'white',
+    boxShadow: '0 3px 5px 2px rgba(40, 40, 41 .3)',
+
+  },
+
+  focused: {
+    // background: '#282829'
+  },
+  
+  // notchedOutline: {
+  //   borderLeft: '1px',
+  //   borderRight: '1px',
+  //   // borderWidth: '1px',
+  //   borderColor: 'green !important'
+  // },
+}));
+
+
 class DestAirportAutocomplete extends React.Component {
   constructor() {
     super();
     this.state = {
+      name: 'InputMode',
       coordinates: null,
       errorMessage: null,
       googleData: null,
@@ -16,6 +79,7 @@ class DestAirportAutocomplete extends React.Component {
 
     this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
   }
+  
 
   onSuggestionSelected(googleData) {
     // functions to get the latitude and longitude for the selected suggestion.
@@ -76,19 +140,39 @@ class DestAirportAutocomplete extends React.Component {
   }
 
   render() {
+    // const classes = styles();
+    // const { classes } = this.props;
     return (
       <div>
         <MUIPlacesAutocomplete
           onSuggestionSelected={this.onSuggestionSelected}
           textFieldProps={{
             label: this.props.label,
-            variant: 'standard',
+            variant: 'outlined',
             style: {
-              width: 290,
-              backgroundColor: 'white'
-            },
+              width: 320,
+              backgroundColor: 'white',
+            },      
             className: 'classes.textField'
           }}
+          // classes={{
+          //   root: classes.root,
+          //   notchedOutline: classes.notchedOutline
+          // }}
+          // InputLabelProps={{
+          //   classes: {
+          //     root: classes.cssLabel,
+          //     focused: classes.cssFocused,
+          //   },
+          // }}
+          // InputProps={{
+          //   classes: {
+          //     // root: classes.cssOutlinedInput,
+          //     // focused: classes.cssFocused,
+          //     notchedOutline: classes.notchedOutline,
+          //   },
+          //   inputMode: "numeric"
+          // }}
           renderTarget={() => <div />}
         />
         <div>
@@ -106,3 +190,8 @@ DestAirportAutocomplete.description =
   'Geocoding (i.e. latitude/longitude) a selected suggestion';
 
 export default DestAirportAutocomplete;
+
+// borderLeft: '1px',
+              // borderRight: '1px',
+              // borderTop: '0px',
+              // borderBottom: '0px'

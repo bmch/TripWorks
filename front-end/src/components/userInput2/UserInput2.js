@@ -30,17 +30,33 @@ import MailIcon from '@material-ui/icons/Mail';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import grey from '@material-ui/core/colors/grey';
+// import HUE from '@material-ui/core/colors/HUE';
 
-const theme1 = createMuiTheme({
-  overrides: {
-    MuiSelect: {
-      select: {
-        "&:focus": {
-          background: "#282829"
-        }
-      }
-    }
-  }
+
+// const theme1 = createMuiTheme({
+//   overrides: {
+//     MuiFocused: {
+//       focused: {
+//         "&:focus": {
+//           background: "primary"
+//         }
+//       }
+//     }
+//   }
+// });
+// const primary = grey[900];
+const muiTheme = createMuiTheme({
+  // palette: {
+  // 	primary: {
+  // 		main: grey[900],
+  // 		light:  grey[900],
+  // 		dark:  grey[900],
+  // 	},
+  // 	secondary: {
+  // 		main: grey[900],
+  // 	},
+  // },
 });
 
 const useStyles = makeStyles(theme => ({
@@ -49,14 +65,26 @@ const useStyles = makeStyles(theme => ({
     // borderBottom: '1px',
     background: '#282829',
     '&$focused': {
-      background: '#282829'
+      background: '#212121'
     },
+
     color: 'white',
     boxShadow: '0 3px 5px 2px rgba(40, 40, 41 .3)',
+
   },
+
   focused: {
     // background: '#282829'
   },
+  // overrides: {
+  //   MuiSelect: {
+  //     select: {
+  //       "&:focus": {
+  //         background: "#282829"
+  //       }
+  //     }
+  //   }
+  // }
   // label: {
   //   textTransform: 'capitalize',
   // },
@@ -185,7 +213,6 @@ function UserInput2({ addFormValues }) {
 
 
   return (
-    <MuiThemeProvider theme={theme1}>
     <div>
       <Button onClick={toggleDrawer('left', true)}>
         <IconButton edge="start" aria-label="menu">
@@ -196,6 +223,7 @@ function UserInput2({ addFormValues }) {
         {sideList('left')}
       </Drawer>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        {/* <MuiThemeProvider theme={theme1}> */}
         <div className='spacing-top'></div>
         <div className="suggest">
 
@@ -208,10 +236,10 @@ function UserInput2({ addFormValues }) {
                 label="From"
                 name="departure"
                 storeDestination={handleChange}
-                classes={{
-                  root: classes.root,
-                  notchedOutline: classes.notchedOutline
-                }}
+              // classes={{
+              //   root: classes.root,
+              //   notchedOutline: classes.notchedOutline
+              // }}
               />
             </Grid>
 
@@ -251,11 +279,12 @@ function UserInput2({ addFormValues }) {
             <Grid item xs={5}></Grid>
             <Grid item xs={2}>
               <div className="fab-space-left"></div>
-
+              {/* <MuiThemeProvider theme={theme1}> */}
               <Fab classes={{
                 root: classes.root,
-                selected: classes.selected,
+                focused: classes.focused,
                 label: classes.label,
+                // overrides: classes.overrides.MuiSelect 
               }} aria-label="add">
                 <AddIcon onClick={() => appendInput()} />
               </Fab>
@@ -271,9 +300,12 @@ function UserInput2({ addFormValues }) {
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Grid container spacing={1} justify="space-around">
               <Grid item xs={6}>
+                {/* <MuiThemeProvider muiTheme={muiTheme}> */}
                 <KeyboardDatePicker
-                  classes={{
-                    // root: classes.root,
+                disableToolbar='true'
+                allowKeyboardControl='true'
+                  className={{
+                    root: classes.root,
                     notchedOutline: classes.notchedOutline
                   }}
                   variant="outlined"
@@ -289,9 +321,12 @@ function UserInput2({ addFormValues }) {
                   name="goData"
                   value={formData.goDate}
                 />
+                {/* </MuiThemeProvider> */}
               </Grid>
               <Grid item xs={6}>
                 <KeyboardDatePicker
+                  disableToolbar='true'
+                  allowKeyboardControl='true'
                   variant="outlined"
                   margin="normal"
                   id="date-picker-dialog"
@@ -330,9 +365,9 @@ function UserInput2({ addFormValues }) {
         </button>
           <br></br>
         </div>
+        {/* </MuiThemeProvider> */}
       </MuiPickersUtilsProvider >
     </div >
-    </MuiThemeProvider>
   );
 }
 
