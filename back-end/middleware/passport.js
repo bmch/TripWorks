@@ -4,15 +4,18 @@ const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const User = require("../models/user");
 
 passport.serializeUser((user, done) => {
+  console.log(user,'--------');
+  
   console.log(`[passport.serializeUser] ${user} -> ${user.id}`);
   done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
   console.log(`[passport.deserializeUser] ${id} -> userData`);
-
+   
   try {
-    const user = await User.findOneById(id);
+    const user = await User.findById(id);
+
     done(null, user);
   } catch (error) {
     done(error);
@@ -50,13 +53,20 @@ const googleStrategy = new GoogleStrategy(
     console.log(profile);
 
     try {
-      const user = await User.findOne({ oauthID: profile.id });
-      if (!user) {
-        await User.create({
-          oauthID: profile.id,
-          username: profile.displayName
-        });
-      }
+      const user = await User.findOneAndUpdate({ oauthID: profile.id },{
+
+        new: true, // return new Document
+        upsert: true // CREATE NEW IF DOESNT EXISt
+      })
+      console.log(user);
+      
+      done(null, user)
+      // if (!user) {
+      //   await User.create({
+      //     oauthID: profile.id,
+      //     username: profile.displayName
+      //  e });
+      // }
     } catch (error) {
       console.log(error);
     }

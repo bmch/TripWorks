@@ -17,7 +17,7 @@ const App = () => {
   const createUser = (inputs, history) => {
     apiClient.postUser(inputs)
     .then(data => {
-      history.push('/');
+      history.push('/home');
 
       console.log(data);
     })
@@ -30,7 +30,7 @@ const App = () => {
     apiClient
       .logUserIn(inputs)
       .then(data => {
-        history.push("./");
+        history.push("./home");
 
         console.log(data);
       })
