@@ -1,6 +1,38 @@
-/* body {
-  background: #efefef;
+body {
+  background: white;
   padding: 20px;
+}
+
+.take-off {
+  height: 100px
+}
+
+.spacing-top {
+  height: 65px;
+}
+
+.spacing-middle {
+  height: 45px;
+}
+
+.spacing-middle-two {
+  height: 25px;
+}
+
+/* .spacing-bottom {
+  height: 5px;
+} */
+
+.fab-space-left {
+  width: 100px;
+}
+
+.fab-space-right {
+  width: 100px;
+}
+
+.fab {
+  background-color: #282829;
 }
 
 .App {
@@ -11,4 +43,34 @@
 .suggest {
   max-width: 500px;
   margin: 0 auto;
-} */
+}
+
+.searchButton {
+  background-color: #282829;
+  border-radius: 3px;
+  border: 0px;
+  color: white;
+  width: 36vh;
+  height: 7vh;
+  margin: 2vh;
+  font-size: 2.2vh;
+  font-family: Helvetica, sans-serif;
+  font-weight: 100;
+  padding: 0px 40px;
+  border-radius: 10px;
+}
+
+.searchButton:focus {
+  outline: 0;
+}
+
+.inline-icon {
+  font-size: 16px;
+  vertical-align: middle;
+  position: relative;
+  top: 15px;
+}
+
+.inputs {
+  padding: 10px
+}
