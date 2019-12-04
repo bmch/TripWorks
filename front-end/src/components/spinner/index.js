@@ -1,23 +1,84 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
+import flightSpinner from '../../assets/gifs/flight-spinner-trimmed.gif'
+import './spinner.css'
+import { withThemeCreator } from '@material-ui/styles';
+import { Line } from 'rc-progress'
+
 
 const Spinner = () => {
-
-  const history = useHistory();
   
-  // const fetchingStatus = useSelector(state => state.fetchingTrips); 
-  // // console.log(data)
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const progress = useSelector(state => state.loadingProgress)
+  const formData = useSelector(state => state.formValues)
+  const fetchStatus = useSelector(state => state.fetchingTrips)
 
-  // if (fetchingStatus === false) history.push("/results")
+  const [departure, setDeparture] = useState('empty')
+  const [destination, setDestination] = useState('empty')
+  const [prog2, setProg2] = useState(0)
+  // const formData = {
+  //   depAirport: 'BCN',
+  //   destinations: ['Paris', 'Athens', 'Madrid'],
+  //   destAirports: ['CDG', 'ATH', 'MAD']
+  // }
+  let message2;
+  if(formData.destinations) {
+    let message = ''
+    formData.destinations.forEach(destination => {
+      message = message + ' ' + destination + ','
+    })
+    message2 = message.slice(0, message.length-1).concat('...')
+    // console.log(message2)
+  }
+
+  let modifier=1;
+  if (formData.destinations) modifier = 40/formData.destinations.length
+  const wait = async (ms) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, ms);
+    });
+  }
+
+  useEffect( () =>  {
+    if (fetchStatus === false) {
+      history.push('./home')
+      return null
+    }
+    if (departure === 'empty') { 
+      console.log(formData)
+      setDeparture(formData.depAirport)
+      for (let i = 0; i < formData.destAirports.length; i++) {
+        console.log('setting airports')
+        wait(i * 8888 + 1).then(() => setDestination(formData.destAirports[i]))
+      }
+      wait(2000).then(() => setProg2(10))
+        .then(() => wait(2000)).then(() => setProg2(20))
+    }
+    // else {
+    //   wait(2000).then(() => dispatch({
+    //     type: 'LOG_PROGRESS',
+    //     status: 1,
+    //   }))
+    // }
+  })
   
   // https://giphy.com/gifs/omio-brand-loop-plane-omio-PkLrYFJT9KVwkkvpjO/fullscreen
 
   return (
-    <div>
-        <div>SPINNER</div>
-      <img src='https://media.giphy.com/media/PkLrYFJT9KVwkkvpjO/giphy.gif' />
+    <div className='spinner-page'>
+      {/* <div className='summary-message'>{message2}</div> */}
+      <div className='loading-message'>Searching for awesome trips to{message2}</div>
+      <div className='spinner-cont'>
+        <img className="plane" src={flightSpinner} />
+        <div className="spinner-airports-cont">
+          <div>{departure}</div><div>{destination}</div>
+        </div>
+      </div>
+      <div className="loading-bar">
+        <Line strokeWidth="3" percent={progress*modifier+prog2} />
+      </div>
     </div>
   )
 }
