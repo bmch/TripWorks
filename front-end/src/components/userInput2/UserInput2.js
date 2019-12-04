@@ -27,26 +27,47 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import PersonIcon from '@material-ui/icons/Person';
-import FaceIcon from '@material-ui/icons/Face';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme1 = createMuiTheme({
+  overrides: {
+    MuiSelect: {
+      select: {
+        "&:focus": {
+          background: "#282829"
+        }
+      }
+    }
+  }
+});
 
 const useStyles = makeStyles(theme => ({
-  
   root: {
+    // borderTop: '1px',
+    // borderBottom: '1px',
     background: '#282829',
-    '&$selected' : { 
+    '&$focused': {
       background: '#282829'
-    }, 
+    },
     color: 'white',
     boxShadow: '0 3px 5px 2px rgba(40, 40, 41 .3)',
   },
-  selected: {},
-  label: {
-    textTransform: 'capitalize',
+  focused: {
+    // background: '#282829'
   },
+  // label: {
+  //   textTransform: 'capitalize',
+  // },
+  // notchedOutline: {
+  //   borderLeft: '1px',
+  //   borderRight: '1px',
+  //   // borderWidth: '1px',
+  //   borderColor: 'green !important'
+  // },
 }));
+
 
 function UserInput2({ addFormValues }) {
   const dispatch = useDispatch();
@@ -83,15 +104,10 @@ function UserInput2({ addFormValues }) {
 
   const handleSubmit = e => {
     // e.preventDefault();
-    
     console.log('handle submit fired');
     console.log('form values', formData);
     addFormValues(formData);
-
-    
-
     history.push("/results")
-
     // setFormData(initialState);
     // setDestInputs(initDest);
   };
@@ -122,54 +138,54 @@ function UserInput2({ addFormValues }) {
       <List>
         {['Profile'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{<AccountCircleIcon/>}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      {/* <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List> */}
-    </div>
-  );
-
-  const fullList = side => (
-    <div
-      className={classes.fullList}
-      role="presentation"
-      onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}
-    >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>{<AccountCircleIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['Log Out'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>{<ExitToAppIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
       </List>
     </div>
   );
+
+  // const fullList = side => (
+  //   <div
+  //     className={classes.fullList}
+  //     role="presentation"
+  //     onClick={toggleDrawer(side, false)}
+  //     onKeyDown={toggleDrawer(side, false)}
+  //   >
+  //     <List>
+  //       {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+  //         <ListItem button key={text}>
+  //           <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+  //           <ListItemText primary={text} />
+  //         </ListItem>
+  //       ))}
+  //     </List>
+  //     <Divider />
+  //     <List>
+  //       {['All mail', 'Trash', 'Spam'].map((text, index) => (
+  //         <ListItem button key={text}>
+  //           <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+  //           <ListItemText primary={text} />
+  //         </ListItem>
+  //       ))}
+  //     </List>
+  //   </div>
+  // );
   /// ^^^ drawer ^^^
 
-  
 
   return (
+    <MuiThemeProvider theme={theme1}>
     <div>
       <Button onClick={toggleDrawer('left', true)}>
         <IconButton edge="start" aria-label="menu">
@@ -184,23 +200,27 @@ function UserInput2({ addFormValues }) {
         <div className="suggest">
 
           <Grid container spacing={1} >
-            <Grid item xs={2}>
+            <Grid item xs={1}>
               <FlightTakeoffIcon className="inline-icon" />
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs={11}>
               <DestAirportAutocomplete
                 label="From"
                 name="departure"
                 storeDestination={handleChange}
+                classes={{
+                  root: classes.root,
+                  notchedOutline: classes.notchedOutline
+                }}
               />
             </Grid>
 
             <br></br><br></br>
 
-            <Grid item xs={2}>
-              <FlightLandIcon className="inline-icon"/>
+            <Grid item xs={1}>
+              <FlightLandIcon className="inline-icon" />
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs={11}>
               <DestAirportAutocomplete
                 label="To"
                 name="destination1"
@@ -213,10 +233,10 @@ function UserInput2({ addFormValues }) {
             <div key={index}>
               <br></br>
               <Grid container spacing={1} >
-                <Grid item xs={2}>
-                  <FlightLandIcon className="inline-icon"/>
+                <Grid item xs={1}>
+                  <FlightLandIcon className="inline-icon" />
                 </Grid>
-                <Grid item xs={10}>
+                <Grid item xs={11}>
                   <DestAirportAutocomplete
                     label={'To'}
                     name={`destination${num}`}
@@ -231,12 +251,12 @@ function UserInput2({ addFormValues }) {
             <Grid item xs={5}></Grid>
             <Grid item xs={2}>
               <div className="fab-space-left"></div>
-              
+
               <Fab classes={{
-        root: classes.root,
-        selected: classes.selected, 
-        label: classes.label, 
-      }} aria-label="add">
+                root: classes.root,
+                selected: classes.selected,
+                label: classes.label,
+              }} aria-label="add">
                 <AddIcon onClick={() => appendInput()} />
               </Fab>
               {/* </MuiThemeProvider> */}
@@ -252,6 +272,10 @@ function UserInput2({ addFormValues }) {
             <Grid container spacing={1} justify="space-around">
               <Grid item xs={6}>
                 <KeyboardDatePicker
+                  classes={{
+                    // root: classes.root,
+                    notchedOutline: classes.notchedOutline
+                  }}
                   variant="outlined"
                   margin="normal"
                   id="date-picker-dialog"
@@ -280,6 +304,12 @@ function UserInput2({ addFormValues }) {
                   }}
                   name="backDate"
                   value={formData.backDate}
+                  style={{
+                    borderLeft: '1px',
+                    borderRight: '1px',
+                    borderTop: '0px',
+                    borderBottom: '0px'
+                  }}
                 />
               </Grid>
             </Grid>
@@ -294,7 +324,7 @@ function UserInput2({ addFormValues }) {
             fullWidth
             variant="contained"
             onClick={handleSubmit}
-            styles={{backgroundColor: '#282829', fontWeight: '100'}}
+            styles={{ backgroundColor: '#282829', fontWeight: '100' }}
           >
             SEARCH
         </button>
@@ -302,6 +332,7 @@ function UserInput2({ addFormValues }) {
         </div>
       </MuiPickersUtilsProvider >
     </div >
+    </MuiThemeProvider>
   );
 }
 
@@ -317,3 +348,5 @@ export default UserInput2;
 // justify="center"
 
 //`Destination ${num}`
+
+//<ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
