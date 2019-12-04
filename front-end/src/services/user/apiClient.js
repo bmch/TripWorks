@@ -1,4 +1,4 @@
-import { authHeader } from '../../helper/auth_header';
+import { authHeader, authHeaderMid } from '../../helper/auth_header';
 const BASE_URL = `http://localhost:3002`;
 
 
@@ -22,29 +22,34 @@ export default {
       });
   },
 
-  logUserIn(inputs) {
+   logUserIn(inputs) {
+  console.log("TCL: logUserIn -> inputs", inputs)
+    
     const option = {
       method: 'POST',
       headers: {
-        Authorization: 'Basic ' + btoa(`${inputs.username}:${inputs.password}`)
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + btoa(`${inputs.username}:${inputs.password}`)
       },
       body: JSON.stringify(`${inputs.username}:${inputs.password}`)
     };
-
+    console.log("TCL: logUserIn -> inputs", inputs)
     return fetch(`${BASE_URL}/login`, option)
       .then(handleResponse)
       .then(user => {
+      console.log("TCL: logUserIn -> user", user)
         localStorage.setItem('user', JSON.stringify(user));
-
+          
         return user;
-      });
+      }); 
   },
+  
   postUserTrips(destination) {
     const option = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': authHeader()
+        'Authorization': authHeaderMid()
       },
       body: JSON.stringify(destination)
     };
@@ -55,12 +60,11 @@ export default {
         return data;
       });
   },
-
   getUserTrips() {
     const option = {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': authHeader()
+        'Authorization': authHeaderMid()
       },
     };
 
@@ -88,13 +92,14 @@ const fetchRequest = (url, option) => {
 
 function handleResponse(response) {
   return response.text().then(text => {
+    console.log("TCL: handleResponse -> text", text)
     const data = text && JSON.parse(text);
     if (!response.ok) {
       if (response.status === 401) {
         logout();
         window.location.reload(true);
       }
-
+      
       const error = (data && data.message) || response.statusText;
       return Promise.reject(error);
     }

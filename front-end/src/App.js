@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
-import UserInput2 from "./components/userInput2/UserInput2";
-import { useSelector } from "react-redux";
-import TripResults from "./containers/TripResults/index";
-import Result from "./components/result/result";
-import LogIn from "./components/singIn/singIn";
-import PackageResult from "./components/packageResult/packageResult";
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import Result from './components/result/result';
+import PackageResult from './components/packageResult/packageResult';
+import UserInput2 from './components/userInput2/UserInput2';
+import SignIn from "./components/singIn/singIn";
 import SignUp from "./components/singUp/singUp";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom";
 import apiClient from "./services/user/apiClient";
 import UserProfile from "./components/userProfile/userProfile";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
@@ -28,10 +27,11 @@ const App = () => {
   };
 
   const logUserIn = (inputs, history) => {
-    apiClient
-      .logUserIn(inputs)
+  console.log("TCL: logUserIn -> inputs", inputs)
+    
+    apiClient.logUserIn(inputs)
       .then(data => {
-        history.push("./home");
+        history.push("/home");
 
         console.log(data);
       })
@@ -47,13 +47,13 @@ const App = () => {
           <PrivateRoute  path="/home" component={UserInput2} />
           <Route exact path="/" render={() => <LandingPage />} />
           <Route exact path="/profile" render={() => <UserProfile />} />
-          <Route path="/login" render={() => <LogIn logUserIn={logUserIn} />} />
+          <Route path="/login" render={() => <SignIn logUserIn={logUserIn} />} />
           <Route
             path="/register"
             render={() => <SignUp createUser={createUser} />}
           /> 
           <Route path="/loading" render={() => <Spinner />} />
-          <Route path="/results" render={() => <Result />} exact />
+          <Route path="/results" render={() => <Result />} />
           <Route path="/results/:city" render={() => <PackageResult />} />
           <Route path="/weather" render={() => <WeatherContainer />} />
         </Switch>

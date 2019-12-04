@@ -59,6 +59,7 @@ router
       })(ctx),
     userCont.registerWithPassport
   )
+  
   .post('/savedtrips', savedT.savedTripsAdd)
   .get('/getSavedTrips', savedT.findTrip);
 

@@ -58,9 +58,6 @@ const googleStrategy = new GoogleStrategy(
         new: true, // return new Document
         upsert: true // CREATE NEW IF DOESNT EXISt
       })
-      console.log(user);
-    
-      
       done(null, user)
      
     } catch (error) {

@@ -20,19 +20,24 @@ function processResults( {formData, flights, hotels, weather, photos} ) {
 
   let days = weather.weatherForecast.length
   let hotelPrice = hotels[0].price_breakdown.all_inclusive_price;
-  let cheapestHotel;
+  let exchangeRate = 1
   switch (hotels[0].currency_code) {
-    case 'USD': cheapestHotel = hotelPrice*0.91; break;
-    case 'AED': cheapestHotel = hotelPrice*0.25; break;
-    default: cheapestHotel = hotelPrice; break;
+    case 'USD': exchangeRate = 0.91; break;
+    case 'AED': exchangeRate = 0.25; break;
+    case 'RMB': exchangeRate = 0.13; break;
+    case 'HKD': exchangeRate = 0.12; break;
+    default: exchangeRate = 1; break;
   }
-  let lowestCombinedPrice = cheapestHotel + flights[0].cheapestPrice
+  let lowestCombinedPrice = exchangeRate*hotelPrice + flights[0].cheapestPrice
   let priceScore;
   if (lowestCombinedPrice/days < 100) priceScore = 0.7 + 0.03 * Math.sqrt(100 - (lowestCombinedPrice/days))
   else priceScore = 0.7 - 0.03 * Math.sqrt((lowestCombinedPrice/days) - 100)
 
   return {
     city: formData.destination,
+    dates: formData.dates,
+    exchangeRate: exchangeRate,
+    airports: [formData.depAirport, formData.airport],
     lowestCombinedPrice: lowestCombinedPrice,
     hotels: hotels,
     flights: flights,
@@ -44,10 +49,10 @@ function processResults( {formData, flights, hotels, weather, photos} ) {
   };
 }
 
-const allAPIsAction = async (formData) => {
+const allAPIsAction = async (formData, dispatch) => {
   const [flights, hotels, weather, photos] = await Promise.all([
-    fetchDataFlights(formData),
-    fetchHotelData(formData),
+    fetchDataFlights(formData, dispatch),
+    fetchHotelData(formData, dispatch),
     fetchDataWeather(formData),
     fetchPhotos(formData)
   ])
@@ -68,12 +73,12 @@ const allAPIsAction = async (formData) => {
   return processResults({ formData, flights, hotels, weather, photos })
 }
 
-export const giantAction = async (formData) => {
+export const giantAction = async (formData, dispatch) => {
 
   console.log('====================================')
   let pendingPromises = formData.destinations.map( (destination, index) => {
     // let airport = formData.airports[index]
-    return allAPIsAction( { ...formData, destination, airport: formData.destAirports[index]} )
+    return allAPIsAction( { ...formData, destination, airport: formData.destAirports[index]}, dispatch)
   })
   const results = await Promise.all(pendingPromises);
   results.sort((a, b) => b.finalScore - a.finalScore ) 

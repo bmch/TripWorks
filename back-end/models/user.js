@@ -5,7 +5,9 @@ const mongoose = require('../db');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  oauthID: Number,
+  oauthID: {
+    type: Number
+  },
   username: {
     type: String,
     // require: true

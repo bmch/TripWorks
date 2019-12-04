@@ -8,12 +8,15 @@ const User = require('../models/user');
 const filterProps = require('../services/utils').filterProps;
 
 exports.signIn = async ctx => {
+console.log("TCL: ctx", typeof ctx.request.body)
+  
   const authenticate = ctx.request.headers.authorization.split(' ');  
   const decoded = atob(authenticate[1]).split(':');
 
   const user = await User.findOne({"username":decoded[0]});
   if (user) {
     const matchPass = await bcrypt.compare(decoded[1], user.password);
+    console.log("TCL: matchPass", matchPass)
     
     if (matchPass) {
       ctx.user = {};

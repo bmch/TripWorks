@@ -11,6 +11,8 @@ import Grid from '@material-ui/core/Grid';
 // import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
 import { addFormValues } from '../../actions/index';
+import Drawer from './drawer'
+
 
 import './UserInput2.css';
 
@@ -49,7 +51,12 @@ function UserInput2() {
     dispatch(addFormValues( {...formData, destList}, history));
   };
 
+  
+
   return (
+  <div>
+    <Drawer />
+  
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <div className="suggest">
         <DestAirportAutocomplete
@@ -107,13 +114,8 @@ function UserInput2() {
         <br></br>
       </div>
     </MuiPickersUtilsProvider>
+    </div>
   );
 }
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     addFormValues: data => dispatch(addFormValues(data))
-//   };
-// };
-// UserInput2 = connect(null, mapDispatchToProps)(UserInput2);
 
 export default UserInput2;
