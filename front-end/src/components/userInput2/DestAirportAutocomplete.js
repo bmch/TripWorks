@@ -7,37 +7,7 @@ import MUIPlacesAutocomplete, {
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 
-// const styles = theme => ({
-//   container: {
-//     display: 'flex',
-//     flexWrap: 'wrap',
-//   },
-//   textField: {
-//     marginLeft: theme.spacing.unit,
-//     marginRight: theme.spacing.unit,
-//     width: 200,
-//   },
 
-//   cssLabel: {
-//     color : 'green'
-//   },
-
-//   cssOutlinedInput: {
-//     '&$cssFocused $notchedOutline': {
-//       borderColor: `${theme.palette.primary.main} !important`,
-//     }
-//   },
-
-//   cssFocused: {},
-
-//   notchedOutline: {
-//     borderLeft: '5px',
-//     borderRight: '5px',
-//     // borderWidth: '1px',
-//     borderColor: 'green !important'
-//   },
-
-// });
 
 const styles = makeStyles(theme => ({
   root: {
@@ -57,12 +27,6 @@ const styles = makeStyles(theme => ({
     // background: '#282829'
   },
   
-  // notchedOutline: {
-  //   borderLeft: '1px',
-  //   borderRight: '1px',
-  //   // borderWidth: '1px',
-  //   borderColor: 'green !important'
-  // },
 }));
 
 

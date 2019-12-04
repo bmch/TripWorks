@@ -32,32 +32,10 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
 
-// import HUE from '@material-ui/core/colors/HUE';
 
 
-// const theme1 = createMuiTheme({
-//   overrides: {
-//     MuiFocused: {
-//       focused: {
-//         "&:focus": {
-//           background: "primary"
-//         }
-//       }
-//     }
-//   }
-// });
-// const primary = grey[900];
 const muiTheme = createMuiTheme({
-  // palette: {
-  // 	primary: {
-  // 		main: grey[900],
-  // 		light:  grey[900],
-  // 		dark:  grey[900],
-  // 	},
-  // 	secondary: {
-  // 		main: grey[900],
-  // 	},
-  // },
+  
 });
 
 const useStyles = makeStyles(theme => ({
@@ -77,24 +55,7 @@ const useStyles = makeStyles(theme => ({
   focused: {
     // background: '#282829'
   },
-  // overrides: {
-  //   MuiSelect: {
-  //     select: {
-  //       "&:focus": {
-  //         background: "#282829"
-  //       }
-  //     }
-  //   }
-  // }
-  // label: {
-  //   textTransform: 'capitalize',
-  // },
-  // notchedOutline: {
-  //   borderLeft: '1px',
-  //   borderRight: '1px',
-  //   // borderWidth: '1px',
-  //   borderColor: 'green !important'
-  // },
+  
 }));
 
 
@@ -179,34 +140,6 @@ function UserInput2({ addFormValues }) {
       </List>
     </div>
   );
-
-  // const fullList = side => (
-  //   <div
-  //     className={classes.fullList}
-  //     role="presentation"
-  //     onClick={toggleDrawer(side, false)}
-  //     onKeyDown={toggleDrawer(side, false)}
-  //   >
-  //     <List>
-  //       {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-  //         <ListItem button key={text}>
-  //           <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-  //           <ListItemText primary={text} />
-  //         </ListItem>
-  //       ))}
-  //     </List>
-  //     <Divider />
-  //     <List>
-  //       {['All mail', 'Trash', 'Spam'].map((text, index) => (
-  //         <ListItem button key={text}>
-  //           <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-  //           <ListItemText primary={text} />
-  //         </ListItem>
-  //       ))}
-  //     </List>
-  //   </div>
-  // );
-  /// ^^^ drawer ^^^
 
 
   return (
