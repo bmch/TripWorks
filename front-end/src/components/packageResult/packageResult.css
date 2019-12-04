@@ -25,36 +25,55 @@
 } 
 
 .headerPackageResult {
-  height: 270px;
+  height: 300px;
   width: 100%;
-  border-bottom: 3px solid #282829;
+  border-bottom: 6px solid #282829;
   border-radius: 0px 0px 25px 25px;
-  z-index: 2;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  
+  position: relative;
+}
+
+.trip-img {
+  width: 100%;
+  height: 100%;
+}
+
+.background-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px 25px 25px 25px;
+  position: relative;
 }
 
 .headerPackageResult > h1 {
-  margin-left: 20px;
   border-bottom: 2px solid #282829;
   border-top: 2px solid #282829;
   border-radius: 15px 15px 15px 15px;
   padding: 2px;
+  position: absolute;
+  top: 7px;
+  color: #fff;
 }
 
+/* weather styling */
 .weatherPR {
-  margin-top: 20px;
+  margin-top: 90px;
   border-bottom: 2px solid #282829;
   border-top: 2px solid #282829;
   border-radius: 15px 15px 15px 15px;
   padding: 0px;
   width: 95%;
-  height: 70px;
+  height: 85px;
+  position: absolute;
+  color: #fff;
+  font-weight: 600;
 }
 
+/* Flights styling*/
 .resultBannerFlights {
   margin-top: 30px;
   width: 100%;
@@ -65,7 +84,7 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
-}
+} 
 
 .sidebarPackagePR {
   display: flex;
@@ -74,8 +93,7 @@
   width: 25%;
   justify-content: center;
   align-items: center;
-  /* align-content: space-between; */
-
+  align-content: space-between;
 }
 
 .infoWrapperPR {
@@ -241,10 +259,12 @@ button {
 
  .button-cover {
    width: 190px;
-   height: 30px;
+   height: 40px;
    margin-top: 25px;    
    margin-right: auto;
    margin-left: auto;
+   background: #fff;
+
  }
 
  .switch { 
@@ -254,30 +274,32 @@ button {
   flex-direction: row;
   position : relative ;
   margin: 4px;
-  /* display : inline-block; */
   width : 190px;
-  height : 30px;
+  height : 40px;
   background-color: #eee;
   border-radius: 20px;
+  font-weight: 600;
+  font-size: 1.3rem;
 }
 
 .switch::after {
   content: '';
   position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background-color: white;
-  top: 1px; 
-  left: 1px;
-  transition: all 0.2s;
+  border-radius: 14px;
+  background-color: #fff;
+  opacity: 0.4;
+  border-radius: 10px;
+  border: 1px solid black;
+  top: 2px;
+  left: 2px;
+  width: 79px;
+  height: 36px;
+  z-index: 2;
+  transition: all 0.15s ease-in;
 }
 
 .checkbox:checked + .switch::after {
-  left : 160px; 
-}
-.checkbox:checked + .switch {
-  background-color: #7983ff;
+  left : 107px; 
 }
 
 .checkbox { 

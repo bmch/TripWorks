@@ -1,9 +1,30 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './packageResult.css';
-// import WeatherContainer from '../weatherPage/weatherContainer';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
+import data from '../result/tripList.json'
+import { useParams } from "react-router-dom";
+import WeatherContainer from '../weatherPage/weatherContainer'
+import Background from './background'
 
 const PackageResult = () => {
   const [isFlightMode, setIsFlightMode] = useState(false)
+
+  const [destination, setDestination] = useState({})
+  const history = useHistory()
+
+  const { city } = useParams()
+  console.log(city)
+
+  let dest = data.find(destination => {
+    return destination.city.toLowerCase().replace(' ', '-') === city
+  })
+  useEffect( () => {
+    if (dest) {
+      setDestination(dest)
+  }
+    else history.push("/results")
+  })
 
   const renderBannerFlights = () => {
     return (
@@ -130,15 +151,15 @@ const PackageResult = () => {
   return (
     <div className="wrapperPR">
       <div className="headerPackageResult">
-        <h1>Barcelona</h1>
+      { destination.photos ? <Background data={destination.photos} /> : null }
+        <h1>{destination.city}</h1>
         <div className="weatherPR">
-          {/* <WeatherContainer/> */}
+        { destination.weather ? <WeatherContainer weather={destination.weather.weatherForecast}/> : null }
         </div>
       </div>
       <div className="button-cover">
         <input onClick={handleClick} type="checkbox" id="toggle" class="checkbox" />
         <label for="toggle" class="switch">
-          {/* <div class="slider round"> */}
             <div class="on">Flights</div>
             <div class="off">Hotels</div>
         </label>

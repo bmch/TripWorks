@@ -55,7 +55,7 @@ class DestAirportAutocomplete extends React.Component {
               airportName: res.response[0].place.name,
               errorMessage: null
             });
-            this.props.storeDestination(this.props.name, {
+            this.props.storeDestination({
               iata: res.response[0].profile.iata.toUpperCase(),
               googleData: googleData,
               airportData: res,

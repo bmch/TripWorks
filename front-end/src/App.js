@@ -10,6 +10,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import apiClient from "./services/user/apiClient";
 import UserProfile from "./components/userProfile/userProfile";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
+import Spinner from './components/spinner/index'
+import WeatherContainer from './components/weatherPage/weatherContainer'
 
 const App = () => {
   const createUser = (inputs, history) => {
@@ -41,15 +43,17 @@ const App = () => {
     <Router>
       <div>
         <Switch>
-          <PrivateRoute exact path="/" component={UserProfile} />
+          <PrivateRoute exact path="/home" component={UserInput2} />
           <Route path="/login" render={() => <LogIn logUserIn={logUserIn} />} />
           <Route
             path="/register"
             render={() => <SignUp createUser={createUser} />}
-          />
-          <Route path='/home' render={() => <UserInput2 />} />
-          <Route path="/results" render={() => <Result />} />
-          <Route path="/PackageResult" render={() => <PackageResult />} />
+          /> 
+          <Route path='/' render={() => <UserInput2 />} exact />
+          <Route path="/loading" render={() => <Spinner />} />
+          <Route path="/results" render={() => <Result />} exact />
+          <Route path="/results/:city" render={() => <PackageResult />} />
+          <Route path="/weather" render={() => <WeatherContainer />} />
         </Switch>
       </div>
     </Router>

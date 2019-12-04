@@ -5,20 +5,16 @@
 // // import Weather from '../weather/weather';
 // // import WCont from '../weather/wCont';
 // // import './userInput.css';
-// // <<<<<<< HEAD
 // // import {useDispatch, useSelector } from 'react-redux';
 // // import { fetchDataFlights } from '../../actions/flights';
 // // import { fetchHotelData } from '../../actions/hotels';
 // // import { connect } from 'react-redux';
-// <<<<<<< HEAD
 // // import { BrowserRouter as Router, Link, Redirect, useHistory } from 'react-router-dom';
-// // =======
 // // import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 // // import { fetchPhotos } from '../../actions/photos';
 // // // import { connect } from 'react-redux';
 // // import { giantAction } from '../../actions/index'
 // // import { weatherAction } from '../../actions/index'
-// // >>>>>>> master
 
 
 // // const UserInput = ({ handleSubmit }) => {
