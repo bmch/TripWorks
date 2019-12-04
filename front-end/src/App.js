@@ -17,7 +17,7 @@ const App = () => {
   const createUser = (inputs, history) => {
     apiClient.postUser(inputs)
     .then(data => {
-      history.push('/');
+      history.push('/home');
 
       console.log(data);
     })
@@ -30,7 +30,7 @@ const App = () => {
     apiClient
       .logUserIn(inputs)
       .then(data => {
-        history.push("./");
+        history.push("./home");
 
         console.log(data);
       })
@@ -43,12 +43,12 @@ const App = () => {
     <Router>
       <div>
         <Switch>
-          <PrivateRoute exact path="/profile" component={UserProfile} />
+          <PrivateRoute exact path="/home" component={UserInput2} />
           <Route path="/login" render={() => <LogIn logUserIn={logUserIn} />} />
           <Route
             path="/register"
             render={() => <SignUp createUser={createUser} />}
-          /> */}
+          /> 
           <Route path='/' render={() => <UserInput2 />} exact />
           <Route path="/loading" render={() => <Spinner />} />
           <Route path="/results" render={() => <Result />} exact />
@@ -61,12 +61,3 @@ const App = () => {
 };
 
 export default App;
-
-// <Router>
-//         <Switch>
-//           { data ? data.map( (destination, index) =>
-//             <Route path={'/results/' + destination.city.toLowerCase().replace(' ', '-')} render={() =>
-//               <PackageResult key2={index} destination={destination}/>} exact />
-//             ) : null }
-//         </Switch>
-//       </Router>
