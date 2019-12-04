@@ -5,14 +5,12 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import DestAirportAutocomplete from './DestAirportAutocomplete';
 import AddIcon from '@material-ui/icons/Add';
-import { useDispatch } from 'react-redux';
 import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
-import { addFormValues } from '../../actions/addFormValues';
+// import { addFormValues } from '../../actions/addFormValues';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
-import { addFormValues } from '../../actions/index';
 
 import './UserInput2.css';
 import IconButton from '@material-ui/core/IconButton';
@@ -100,7 +98,6 @@ const useStyles = makeStyles(theme => ({
 
 
 function UserInput2({ addFormValues }) {
-  const dispatch = useDispatch();
   const classes = useStyles();
   // The first commit of Material-UI
   const dispatch = useDispatch();
@@ -372,7 +369,7 @@ function UserInput2({ addFormValues }) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addFormValues: data => dispatch(addFormValues(data))
+    // addFormValues: data => dispatch(addFormValues(data))
   };
 };
 UserInput2 = connect(null, mapDispatchToProps)(UserInput2);

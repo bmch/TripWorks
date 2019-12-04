@@ -9,7 +9,6 @@ import UserInput2 from './components/userInput2/UserInput2';
 
 import LandingPage from './components/landingPage/landingPage'
 
-import UserInput2 from "./components/userInput2/UserInput2";
 import LogIn from "./components/singIn/singIn";
 
 import SignUp from "./components/singUp/singUp";
@@ -49,7 +48,6 @@ const App = () => {
   return (
     <Router>
       <div>
-<<<<<<< HEAD
         {/* <LandingPage /> */}
         <UserInput2 />
         {/* <PackageResult/> */}
@@ -62,15 +60,12 @@ export default App;
 
 {/* <Switch> */}
           {/* <PrivateRoute exact path="/" component={UserInput} exact />
-=======
         <Switch>
           <PrivateRoute exact path="/home" component={UserInput2} />
->>>>>>> master
           <Route path="/login" render={() => <LogIn logUserIn={logUserIn} />} />
           <Route
             path="/register"
             render={() => <SignUp createUser={createUser} />}
-<<<<<<< HEAD
           /> */}
           {/* <Route path='/' render={() => <UserInput2 />} exact />
           <Route path="/results" render={() => <Result />} />
@@ -78,18 +73,15 @@ export default App;
           {/* TODO:add the city id in-between results and packageresults */}
           {/* <TripResults /> */}
           {/* </Switch> */}
-=======
-          /> 
-          <Route path='/' render={() => <UserInput2 />} exact />
-          <Route path="/loading" render={() => <Spinner />} />
-          <Route path="/results" render={() => <Result />} exact />
-          <Route path="/results/:city" render={() => <PackageResult />} />
-          <Route path="/weather" render={() => <WeatherContainer />} />
-        </Switch>
-      </div>
-    </Router>
-  );
-};
+//           /> 
+//           <Route path='/' render={() => <UserInput2 />} exact />
+//           <Route path="/loading" render={() => <Spinner />} />
+//           <Route path="/results" render={() => <Result />} exact />
+//           <Route path="/results/:city" render={() => <PackageResult />} />
+//           <Route path="/weather" render={() => <WeatherContainer />} />
+//         </Switch>
+//       </div>
+//     </Router>
+//   );
+// };
 
-export default App;
->>>>>>> master
