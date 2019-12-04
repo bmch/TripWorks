@@ -1,5 +1,6 @@
 import 'date-fns';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import DestAirportAutocomplete from './DestAirportAutocomplete';
@@ -11,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import { addFormValues } from '../../actions/addFormValues';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
+import { addFormValues } from '../../actions/index';
 
 import './UserInput2.css';
 import IconButton from '@material-ui/core/IconButton';
@@ -101,35 +103,32 @@ function UserInput2({ addFormValues }) {
   const dispatch = useDispatch();
   const classes = useStyles();
   // The first commit of Material-UI
+  const dispatch = useDispatch();
   const history = useHistory()
 
   const initialState = {
     goDate: new Date(),
     backDate: new Date(),
-    departure: null,
-    destination1: null
+    departure: null
   };
-
-  const initDest = [];
-
   const [formData, setFormData] = React.useState(initialState);
-  const [destInputs, setDestInputs] = React.useState(initDest);
+  const [destList, setDestList] = React.useState([]);
+  const [destInputs, setDestInputs] = React.useState([]);
 
-  const handleChange = (name, date) => {
-    console.log('the date being changed', date);
-    console.log('the name of the value to change', name);
-    setFormData({
-      ...formData,
-      [name]: date
-    });
+  const handleChange = (type, input) => {
+    setFormData({ ...formData, [type]: input });
   };
-
+  const handleChangeOrigin = (input) => {
+    setFormData( {...formData, departure: input });
+  };
+  const handleChangeDest = (input) => {
+    setDestList( [...destList, input] );
+  };
   const appendInput = () => {
-    setDestInputs(prevState => {
-      return prevState.concat(prevState.length + 2);
-    });
+    setDestInputs(prevState => prevState.concat(prevState.length + 2));
   };
-
+ 
+  const isEnabled = formData.departure && destList.length > 0;
   const handleSubmit = e => {
     // e.preventDefault();
     console.log('handle submit fired');

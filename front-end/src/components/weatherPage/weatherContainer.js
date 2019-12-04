@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
+import data from '../result/tripList.json'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,11 +32,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const WeatherContainer = () => {
+const WeatherContainer = ( {weather} ) => {
   const classes = useStyles();
 
-  const weather = useSelector(state => state.weather);
-
+  // const weather = useSelector(state => state.tripResults[0].weather.weatherForecast);
+  // const weather = data[0].weather.weatherForecast
   const forecastComponentOne = weather && weather.map((e) => <Forecast e={e} />)
 
   return (

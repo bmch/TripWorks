@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Moment from 'react-moment'
 // import Moment from 'moment'
+import moment from 'moment'
 import 'typeface-roboto'
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
@@ -53,8 +54,12 @@ function Forecast(props) {
             <p>{Moment(props.e.valid_date).format("MMM Do")}<br /><br />
               {Math.round(props.e.low_temp)}°-{Math.round(props.e.high_temp)}°</p>
           </div>
-
-          {/* <p>{props.e.weather.description}</p> */}
+          {/* <div style={{display: 'flex', alignItems: 'center', lineHeight: '80%'}}>
+            <p>{moment(props.e.valid_date).format("MMM Do")}<br/><br/>
+            {Math.round(props.e.low_temp)}°-{Math.round(props.e.high_temp)}°</p>
+            </div> */}
+            
+            {/* <p>{props.e.weather.description}</p> */}
           {/* </Box> */}
         </div>
       </GridListTile>

@@ -8,8 +8,7 @@ import { formValues } from './formValues';
 
 export const fetchingTrips = (state = false, action) => {
   switch (action.type) {
-    case 'FETCHING_TRIPS_COMPLETED':
-      console.log('Fetching complete');
+    case 'FETCHING_TRIPS':
       return action.status;
     default:
       return state;
@@ -18,7 +17,7 @@ export const fetchingTrips = (state = false, action) => {
 
 export const tripResults = (state = [], action) => {
   switch (action.type) {
-    case 'TRIP_RESULTS_COMPLETED':
+    case 'TRIP_RESULTS':
       console.log('Results in store')
       // console.log(JSON.stringify(action.data))
       return action.data;
@@ -28,11 +27,11 @@ export const tripResults = (state = [], action) => {
 };
 
 export const rootReducer = combineReducers({
-  tripResults,
   flights,
   getCityId,
-  fetchingTrips,
   form: formReducer,
+  tripResults,
+  fetchingTrips,
   weather,
   weatherTwo,
   formValues

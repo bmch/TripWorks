@@ -5,29 +5,30 @@ const mongoose = require('../db');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+  oauthID: Number,
   username: {
     type: String,
-    require: true
+    // require: true
   },
   password: {
     type: String,
-    require: true
+    // require: true
   },
   firstName: {
     type: String,
-    require: true
+    // require: true
   },
   lastName: {
     type: String,
-    require: true
+    // require: true
   },
   email: {
     type: String,
-    require: true
+    // require: true
   },
   profilePic: {
     type: String,
-    require: true
+    // require: true
   }
 });
 

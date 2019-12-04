@@ -30,6 +30,7 @@ exports.postFlights = async ctx => {
   while (ctx.status !== 201) {
     try {
       console.log('POST to skyscanner for: ', options.form.destinationPlace);
+      console.log(options)
       await request(options, function (error, response, body) {
     
         console.log('Status Code: ', response.statusCode)
