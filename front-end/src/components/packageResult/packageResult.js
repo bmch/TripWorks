@@ -15,7 +15,7 @@ const PackageResult = () => {
   const [destination, setDestination] = useState('empty')
   const history = useHistory()
 
-  // const data = useSelector(state => state.tripResults);
+  const data = useSelector(state => state.tripResults);
   // console.log(data)
 
   const { city } = useParams()
@@ -32,8 +32,8 @@ const PackageResult = () => {
   const renderBannerFlights = () => {
     return (
       <div>
-        { dest.hotels.map((element, key) => {
-          if (key === 6) return true
+        { dest.flights.map((element, key) => {
+          if (key >= 6) return true
           return <FlightsDisp i={key} dest={dest} />
           })
         }
@@ -45,7 +45,7 @@ const PackageResult = () => {
     return (
       <div>
         { dest.hotels.map((element, key) => {
-          if (key === 6) return true
+          if (key >= 6) return true
           return <HotelsDisp i={key} dest={dest} />
           })
         }

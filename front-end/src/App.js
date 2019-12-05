@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Result from './components/result/result';
 import SignIn from './components/singIn/singIn';
 import PackageResult from './components/packageResult/packageResult';
-import UserInput2 from './components/userInput2/UserInput2';
+// import UserInput2 from './components/userInput2/UserInput2';
 import LandingPage from './components/landingPage/landingPage'
 import LogIn from "./components/singIn/singIn";
 import SignUp from "./components/singUp/singUp";
@@ -13,6 +13,7 @@ import UserProfile from "./components/userProfile/userProfile";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import Spinner from './components/spinner/index'
 import WeatherContainer from './components/weatherPage/weatherContainer'
+import UserInput from './components/userInput3/UserInput2';
 
 const App = () => {
   const createUser = (inputs, history) => {
@@ -45,10 +46,10 @@ const App = () => {
       <div>
         <Switch>
           <Route exact path="/" render={() => <LandingPage />} exact />
-          <Route exact path="/home" render={() => <UserInput2 />} />
+          <Route exact path="/home" render={() => <UserInput />} />
           <Route path="/login" render={() => <LogIn logUserIn={logUserIn} />} />
           <Route path="/register" render={() => <SignUp createUser={createUser} />} />
-          <Route path='/' render={() => <UserInput2 />} exact />
+          {/* <Route path='/' render={() => <UserInput2 />} exact /> */}
           <Route path="/loading" render={() => <Spinner />} />
           <Route path="/results" render={() => <Result />} exact />
           <Route path="/results/:city" render={() => <PackageResult />} />

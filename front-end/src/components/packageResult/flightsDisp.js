@@ -25,7 +25,7 @@ const flightsDisp = ({i, dest}) => {
         </div>
         <div className="price">
           <h2>
-€{dest.flights[i].cheapestPrice}</h2>
+€{dest.flights[i].cheapestPrice.toFixed(0)}</h2>
         </div>
         <div className="hotelIcon">
           <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
