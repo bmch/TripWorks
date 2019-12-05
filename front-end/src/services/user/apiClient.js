@@ -23,6 +23,8 @@ export default {
   },
 
    logUserIn(inputs) {
+     const username = inputs.username;
+     const password = inputs.password;
   console.log("TCL: logUserIn -> inputs", inputs)
     
     const option = {

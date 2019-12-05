@@ -8,7 +8,8 @@ const User = require('../models/user');
 const filterProps = require('../services/utils').filterProps;
 
 exports.signIn = async ctx => {
-console.log("TCL: ctx", typeof ctx.request.body)
+console.log("TCL: ctx", ctx.request.body)
+console.log("TCL: ctx", ctx.request.headers)
   
   const authenticate = ctx.request.headers.authorization.split(' ');  
   const decoded = atob(authenticate[1]).split(':');
