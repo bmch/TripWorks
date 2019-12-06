@@ -61,6 +61,8 @@ router
   )
   
   .post('/savedtrips', savedT.savedTripsAdd)
-  .get('/getSavedTrips', savedT.findTrip);
+  .get('/getSavedTrips', savedT.findTrip)
+  .post('/postFlights', flightCont.postFlights)
+  .post('/savedtrips', savedT.savedTripsAdd)
 
 module.exports = router;

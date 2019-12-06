@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Result from './components/result/result';
 import PackageResult from './components/packageResult/packageResult';
-import UserInput2 from './components/userInput2/UserInput2';
+import UserInput2 from './components/userInput3/UserInput2';
 import SignIn from "./components/singIn/singIn";
 import SignUp from "./components/singUp/singUp";
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom";
@@ -53,7 +53,7 @@ const App = () => {
             render={() => <SignUp createUser={createUser} />}
           /> 
           <Route path="/loading" render={() => <Spinner />} />
-          <Route path="/results" render={() => <Result />} />
+          <Route path="/results" render={() => <Result />} exact />
           <Route path="/results/:city" render={() => <PackageResult />} />
           <Route path="/weather" render={() => <WeatherContainer />} />
         </Switch>

@@ -4,14 +4,22 @@
 /* 
  * BASICS
  */
- html,
+  /* html,
  .body {
 	 height: 100%;
+	 width: 100vw;
 	 margin: 0;
+ } */
+
+ @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap');
+
+ * {
+	font-family: 'Source Sans Pro',
  }
- 
+  
  .wrapperProfile {
-	height: 100vh; 
+	height: 100%; 
+	width: 100%;
 	/* margin-top: 90px; */
 	align-items: center;
 	background-color: #ffffff;
@@ -50,6 +58,10 @@
 	 border-radius: 50%;
  }
 
+ .avatar > h2 {
+	 margin-left: 28px;
+ }
+
  .avatar::before, .avatar::after {
 	 border: 5px solid transparent;
 	 border-radius: 50%;
@@ -75,20 +87,20 @@
  /* Trips */
  .trips {
 	 	width: 100%;
-		margin-top: 30px;
+		margin-top: 20px;
 		height: calc(100vh - 50vh - 160px);
-		border-bottom: 2px solid #282829;
+		/* border-bottom: 2px solid #282829; */
 		border-radius: 25px 25px 25px 25px;
 		display: flex;
 		justify-content: space-between;
 		flex-direction: row;
 }
 
-.dest-trip-img {
+/* .dest-trip-img {
   width: 100%;
   height: 100%;
   border-radius: 25px 25px 0px 0px;
-}
+} */
 
 .trip-resultBanner {
 	border: none;
@@ -98,7 +110,7 @@
 	width: 90%;
 }
 
-.trip-bottomPage {
+/* .trip-bottomPage {
   margin: 10px;
   margin-bottom: 15px;
   border-bottom: 3px solid #282829;
@@ -106,6 +118,27 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   font-size: 20px;
   text-decoration: none;
+} */
+
+.trips img {
+  width: 100%;
+  height: 300px;
+  border-radius: 22px;
+}
+
+.container {
+  position: relative;
+	text-align: center;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 39px;
+  left: 16px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.7rem;
 }
 
  

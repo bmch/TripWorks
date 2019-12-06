@@ -8,7 +8,7 @@ import PackageResult from '../packageResult/packageResult';
 
 const Result = () => {
   
-  // const data = useSelector(state => state.tripResults); 
+  const data = useSelector(state => state.tripResults); 
   // console.log(data)
   
   return (

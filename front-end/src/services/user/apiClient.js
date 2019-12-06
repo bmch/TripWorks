@@ -33,7 +33,7 @@ export default {
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + btoa(`${inputs.username}:${inputs.password}`)
       },
-      body: JSON.stringify(`${inputs.username}:${inputs.password}`)
+      body: JSON.stringify({ username, password })
     };
     console.log("TCL: logUserIn -> inputs", inputs)
     return fetch(`${BASE_URL}/login`, option)
@@ -93,6 +93,8 @@ const fetchRequest = (url, option) => {
 };
 
 function handleResponse(response) {
+console.log("TCL: handleResponse -> response", response)
+  
   return response.text().then(text => {
     console.log("TCL: handleResponse -> text", text)
     const data = text && JSON.parse(text);
