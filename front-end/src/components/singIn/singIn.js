@@ -87,6 +87,8 @@ export default function SignIn({ logUserIn }) {
   const handleSubmit = e => {
     e.preventDefault();
     logUserIn(inputs, history);
+    console.log("TCL: SignIn -> inputs", inputs)
+    
     setInputs("");
   };
 

@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   focused: {
-    // background: '#282829'
+    background: '#282829'
   },
 
 }));
@@ -78,7 +78,7 @@ function UserInput() {
 
 
   return (
-    <div>
+    <div className="userinputDiv" autoFocus={false}>
       <Drawer />
 
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -153,7 +153,7 @@ function UserInput() {
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             {/* <Grid container justify="space-around"> */}
             <Grid container spacing={1} justify="space-around">
-              <Grid item xs={6}>
+              <Grid item xs={5}>
                 <KeyboardDatePicker
                   disableToolbar='true'
                   allowKeyboardControl='true'
@@ -164,7 +164,7 @@ function UserInput() {
                   name="goData" value={formData.goDate}
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={5}>
                 <KeyboardDatePicker
                   disableToolbar='true'
                   allowKeyboardControl='true'
@@ -181,7 +181,7 @@ function UserInput() {
           {/* {JSON.stringify(formData.backDate)} */}
           <br></br>
           <button
-            disabled={!isEnabled}
+            /* disabled={!isEnabled} */
             className="searchButton"
             fullWidth
             variant="contained"

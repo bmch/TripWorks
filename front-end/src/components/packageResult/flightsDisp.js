@@ -1,8 +1,6 @@
 import React from 'react'
 import moment from 'moment'
 
-//"OutboundLegId":"9772-1912070755--32222-0-13554-1912070925",
-//"InboundLegId":"13554-1912111550--32222-0-9772-1912111900",
 
 const flightsDisp = ({i, dest}) => {
 
@@ -47,8 +45,8 @@ const flightsDisp = ({i, dest}) => {
               <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </div>
             <div className="LandingTime">
-              <h3>
-{b}</h3>
+              <h3>{`${b}`}</h3>
+              {/* <span className="timediff">+1</span> */}
             </div>
           </div>
           <div className="datesPR">

@@ -6,8 +6,12 @@ const Schema = mongoose.Schema;
 
 const savedTripSchema = new Schema({
   // user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  savedtrips: Schema.Types.Mixed,
-  dates: Schema.Types.Mixed
+  savedtrips: {
+    type: Schema.Types.Mixed
+  },
+  username: {
+    type: String,
+  }
 });
 
 //compile our schema to the model

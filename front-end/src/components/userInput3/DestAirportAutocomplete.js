@@ -2,6 +2,7 @@ import React from 'react';
 import MUIPlacesAutocomplete, {
   geocodeBySuggestion
 } from 'mui-places-autocomplete';
+import { fontSize } from '@material-ui/system';
 
 class DestAirportAutocomplete extends React.Component {
   constructor() {
@@ -39,10 +40,14 @@ class DestAirportAutocomplete extends React.Component {
       };
       console.log('coordinates ', coordinates);
 
+      const check = console.log(`https://api.aerisapi.com/places/airports/closest/?p={${coordinates.lat},${coordinates.lng}}&limit=1&radius=120miles&filter=largeairport&client_id=${process.env.REACT_APP_AERIS_API_ID}&client_secret=${process.env.REACT_APP_AERIS_API_SECRET}`)
+
       fetch(
         `https://api.aerisapi.com/places/airports/closest/?p={${coordinates.lat},${coordinates.lng}}&limit=1&radius=120miles&filter=largeairport&client_id=${process.env.REACT_APP_AERIS_API_ID}&client_secret=${process.env.REACT_APP_AERIS_API_SECRET}`
       )
-        .then(res => res.json())
+        .then(res =>{
+          console.log('this is the res!!',res);
+          return res.json()})
         // if successful response with data
         .then(res => {
           console.log('airport res', res);
@@ -84,10 +89,13 @@ class DestAirportAutocomplete extends React.Component {
             label: this.props.label,
             variant: 'outlined',
             style: {
-              width: 320,
-              backgroundColor: 'white'
+              width: 400,
+              backgroundColor: 'white',
+              fontSize: '16px',
+        
             },
             className: 'classes.textField'
+
           }}
           renderTarget={() => <div />}
         />

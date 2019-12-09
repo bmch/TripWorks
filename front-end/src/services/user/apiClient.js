@@ -1,5 +1,6 @@
-import { authHeader } from '../../helper/auth_header';
+import { authHeader, authHeaderMid } from '../../helper/auth_header';
 const BASE_URL = `http://localhost:3002`;
+
 
 export default {
 
@@ -21,42 +22,58 @@ export default {
       });
   },
 
-  logUserIn(inputs) {
+   logUserIn(inputs) {
+     const username = inputs.username;
+     const password = inputs.password;
+  console.log("TCL: logUserIn -> inputs", inputs)
+    
     const option = {
       method: 'POST',
       headers: {
-        Authorization: 'Basic ' + btoa(`${inputs.username}:${inputs.password}`)
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + btoa(`${inputs.username}:${inputs.password}`)
       },
-      body: JSON.stringify(`${inputs.username}:${inputs.password}`)
+      body: JSON.stringify({ username, password })
     };
-
+    console.log("TCL: logUserIn -> inputs", inputs)
     return fetch(`${BASE_URL}/login`, option)
       .then(handleResponse)
       .then(user => {
+      console.log("TCL: logUserIn -> user", user)
         localStorage.setItem('user', JSON.stringify(user));
-
+          
         return user;
-      });
+      }); 
   },
+  
   postUserTrips(destination) {
     const option = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': authHeaderMid()
       },
       body: JSON.stringify(destination)
     };
+
     return fetch(`${BASE_URL}/savedtrips`, option)
       .then(handleResponse)
       .then(data => {
         return data;
       });
   },
-  
   getUserTrips() {
-    return fetch(`${BASE_URL}/savedtrips`)
+    const option = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': authHeaderMid()
+      },
+    };
+
+    return fetch(`${BASE_URL}/getSavedTrips`, option)
       .then(handleResponse)
       .then(data => {
+        console.log('returned');
         return data;
       });
   }
@@ -76,14 +93,17 @@ const fetchRequest = (url, option) => {
 };
 
 function handleResponse(response) {
+console.log("TCL: handleResponse -> response", response)
+  
   return response.text().then(text => {
+    console.log("TCL: handleResponse -> text", text)
     const data = text && JSON.parse(text);
     if (!response.ok) {
       if (response.status === 401) {
         logout();
         window.location.reload(true);
       }
-
+      
       const error = (data && data.message) || response.statusText;
       return Promise.reject(error);
     }

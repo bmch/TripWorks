@@ -59,6 +59,10 @@
   color: #fff;
 }
 
+.stars {
+  font-size: 22px;
+}
+
 /* weather styling */
 .weatherPR {
   margin-top: 90px;
@@ -304,4 +308,12 @@ button {
 
 .checkbox { 
   display : none;
+}
+
+.timediff {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 10px;
+  position: relative;
+  top: -6px;
 }

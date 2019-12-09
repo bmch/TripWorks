@@ -158,7 +158,7 @@ export default function SignUp({ createUser }) {
           </Button>
           <Grid container justify="center">
             <Grid item>
-              <Link to="/" style={{
+              <Link to="/login" style={{
                   color: "#000", fontWeight: "600", typography: {
       fontFamily: "'Montserrat', sans-serif",
       textTransform: "none",}}} href="#" variant="body2">

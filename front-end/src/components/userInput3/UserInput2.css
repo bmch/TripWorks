@@ -1,4 +1,32 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap');
+
+* {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* @media screen and (device-aspect-ratio: 9/16) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"]{ font-size: 16px; }
+} */
+
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) { 
+      .wrapper {
+        max-width: 414px;
+        max-height: 896px;
+        left: 0px;
+        right: 0px;
+        background: #ffffff;
+      }
+  }
+
+.userinputDiv {
   background: white;
   padding: 20px;
 }
@@ -47,17 +75,14 @@ body {
 
 .searchButton {
   background-color: #282829;
-  border-radius: 3px;
   border: 0px;
   color: white;
-  width: 36vh;
-  height: 7vh;
+  width: 413px;
+  height: 6vh;
   margin: 2vh;
   font-size: 2.2vh;
-  font-family: Helvetica, sans-serif;
-  font-weight: 100;
-  padding: 0px 40px;
   border-radius: 10px;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .searchButton:focus {

@@ -59,9 +59,10 @@ router
       })(ctx),
     userCont.registerWithPassport
   )
-  // .post('/register', userCont.createUser)
+  
+  .post('/savedtrips', savedT.savedTripsAdd)
+  .get('/getSavedTrips', savedT.findTrip)
   .post('/postFlights', flightCont.postFlights)
   .post('/savedtrips', savedT.savedTripsAdd)
-  // .get('/savedtrips', savedT.find);
 
 module.exports = router;

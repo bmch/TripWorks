@@ -10,6 +10,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom";
 
 function DrawerComp() {
   const [state, setState] = React.useState({
@@ -34,7 +35,8 @@ function DrawerComp() {
       <List>
         {['Profile'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{<AccountCircleIcon />}</ListItemIcon>
+            <ListItemIcon>{<Link to="/profile"><AccountCircleIcon /></Link>}
+            </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
