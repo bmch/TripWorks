@@ -10,7 +10,7 @@ The app calculates a score based on the price of flights and hotels and targeted
 ## Screenshots
 
 <p align="center">
-  <img src="https://ibb.co/dQM79mq" />
+  <img src="https://i.ibb.co/4RsbBpH/group2-333.png" />
 </p>
 
 ## GEtting started 
