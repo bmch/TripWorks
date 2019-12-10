@@ -18,11 +18,7 @@ const Spinner = () => {
   const [departure, setDeparture] = useState('empty')
   const [destination, setDestination] = useState('empty')
   const [prog2, setProg2] = useState(0)
-  // const formData = {
-  //   depAirport: 'BCN',
-  //   destinations: ['Paris', 'Athens', 'Madrid'],
-  //   destAirports: ['CDG', 'ATH', 'MAD']
-  // }
+
   let message2;
   if(formData.destinations) {
     let message = ''
@@ -30,7 +26,6 @@ const Spinner = () => {
       message = message + ' ' + destination + ','
     })
     message2 = message.slice(0, message.length-1).concat('...')
-    // console.log(message2)
   }
 
   let modifier=1;
@@ -41,7 +36,7 @@ const Spinner = () => {
     });
   }
 
-  useEffect( () =>  {
+  useEffect( () => {
     if (fetchStatus === false) {
       history.push('./home')
       return null
@@ -56,19 +51,11 @@ const Spinner = () => {
       wait(2000).then(() => setProg2(10))
         .then(() => wait(2000)).then(() => setProg2(20))
     }
-    // else {
-    //   wait(2000).then(() => dispatch({
-    //     type: 'LOG_PROGRESS',
-    //     status: 1,
-    //   }))
-    // }
   })
   
-  // https://giphy.com/gifs/omio-brand-loop-plane-omio-PkLrYFJT9KVwkkvpjO/fullscreen
 
   return (
     <div className='spinner-page'>
-      {/* <div className='summary-message'>{message2}</div> */}
       <div className='loading-message'>Searching for awesome trips to{message2}</div>
       <div className='spinner-cont'>
         <img className="plane" src={flightSpinner} />

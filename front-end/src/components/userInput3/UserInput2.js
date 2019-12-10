@@ -26,7 +26,6 @@ const useStyles = makeStyles(theme => ({
     color: 'white',
     boxShadow: '0 3px 5px 2px rgba(40, 40, 41 .3)',
   },
-
   focused: {
     background: '#282829'
   },
@@ -38,7 +37,6 @@ function UserInput() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory()
-
   const initialState = {
     goDate: new Date(),
     backDate: new Date(),
@@ -61,7 +59,6 @@ function UserInput() {
   const appendInput = () => {
     setDestInputs(prevState => prevState.concat(prevState.length + 2));
   };
-
   const isEnabled = formData.departure && destList.length > 0;
   const handleSubmit = e => {
     console.log('handle submit fired=============');
@@ -168,7 +165,7 @@ function UserInput() {
           <br></br>
 
           <button
-            /* disabled={!isEnabled} */
+            disabled={!isEnabled}
             className="searchButton"
             fullWidth
             variant="contained"

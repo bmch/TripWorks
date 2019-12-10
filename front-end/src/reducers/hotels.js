@@ -8,13 +8,4 @@ export const getCityId = (state = [], action) => {
   }
 }
 
-// export default (state = INITIAL_STATE, action) => {
-//   switch(action.type) {
-//     case 'GET_CITY_ID':
-//         return getCityId(state, );
-//     default:
-//         return state;
-//   }
-// }
-
 export default getCityId;

@@ -1,7 +1,5 @@
 import React from 'react';
 
-//import ButtonAdd from './images/btn-add.svg';
-
 function AddButton ( {type, add} ) {
 
   return (type === 'add' ?

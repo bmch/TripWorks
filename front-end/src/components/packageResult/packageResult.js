@@ -16,7 +16,6 @@ const PackageResult = () => {
   const history = useHistory()
 
   const data = useSelector(state => state.tripResults);
-  // console.log(data)
 
   const { city } = useParams()
   console.log(city)

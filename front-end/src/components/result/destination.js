@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
 import AddButton from './add-trip-button';
 import apiClient from '../../services/user/apiClient';
 import './result.css';
 
 const Destination = ({ key, destination }) => {
-  const endPoint =
-    '/results/' + destination.city.toLowerCase().replace(' ', '-');
+  const endPoint = '/results/' + destination.city.toLowerCase().replace(' ', '-');
   const [buttonState, setButtonState] = useState('add');
   const formData = useSelector(state => state.formData);
   const add = () => {
