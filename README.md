@@ -10,7 +10,7 @@ The app calculates a score based on the price of flights and hotels and targeted
 ## Screenshots
 
 <p align="center">
-  <img src="https://ibb.co/1GsCHTk" />
+  <img src="https://ibb.co/dQM79mq" />
 </p>
 
 ## GEtting started 
@@ -32,7 +32,6 @@ $ npm install
 $ npm start
 ```
 
-4. 
 
 
 
