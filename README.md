@@ -10,7 +10,7 @@ The app calculates a score based on the price of flights and hotels and targeted
 ## Screenshots
 
 <p align="center">
-  <img src="https://i.ibb.co/4RsbBpH/group2-333.png" />
+  <img src="https://i.ibb.co/brm7hbZ/group2-333.png" />
 </p>
 
 ## Getting started 
@@ -27,17 +27,27 @@ $ cd TripWorks
 $ npm install
 ```
 
-3. Start frontend development server
+3. Start client development server
+
 ```
+$ cd front-end
 $ npm start
 ```
-4. Connection client with server
-start backend development server followring instructions of ```LINK OF THE SERVER SIDE ```
+4. Start server development server
+```
+$ cd back-end
+$ nodemon
+```
 
 ## Built with
 
 * [React](https://reactjs.org) - Front end library for building user interfaces
 * [Redux](https://redux.js.org) - Storage to share data inside the app
+* [Koa]() -
+* [Passport](http://passportjs.org) - Authentication middleware with facebook and google
+* [Jwt]() -
+* [Bycrpt]() -
+
 *API USED: 
   *
 
