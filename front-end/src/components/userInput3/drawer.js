@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -27,7 +27,6 @@ function DrawerComp() {
   };
   const sideList = side => (
     <div
-      // className={classes.list}
       role="presentation"
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}

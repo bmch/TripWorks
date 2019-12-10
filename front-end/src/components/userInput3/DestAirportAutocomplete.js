@@ -19,7 +19,6 @@ class DestAirportAutocomplete extends React.Component {
   }
 
   onSuggestionSelected(googleData) {
-    // functions to get the latitude and longitude for the selected suggestion.
 
     console.log('googles suggestion -', googleData);
     geocodeBySuggestion(googleData).then(results => {
@@ -31,8 +30,6 @@ class DestAirportAutocomplete extends React.Component {
         });
         return;
       }
-
-      // Just use the first result in the list to get the geometry coordinates
       const { geometry } = results[0];
       const coordinates = {
         lat: geometry.location.lat().toFixed(7),
@@ -45,10 +42,7 @@ class DestAirportAutocomplete extends React.Component {
       fetch(
         `https://api.aerisapi.com/places/airports/closest/?p={${coordinates.lat},${coordinates.lng}}&limit=1&radius=120miles&filter=largeairport&client_id=${process.env.REACT_APP_AERIS_API_ID}&client_secret=${process.env.REACT_APP_AERIS_API_SECRET}`
       )
-        .then(res =>{
-          console.log('this is the res!!',res);
-          return res.json()})
-        // if successful response with data
+        .then(res => res.json())
         .then(res => {
           console.log('airport res', res);
           if (res.response[0]) {
@@ -101,7 +95,6 @@ class DestAirportAutocomplete extends React.Component {
         />
         <div>
           <br></br>
-          {/* {this.state.airportName && this.state.airportName + ', '} */}
           {this.state.iata && 'IATA code: ' + this.state.iata.toUpperCase()}
           {this.state.errorMessage && 'Please try again '}
         </div>
