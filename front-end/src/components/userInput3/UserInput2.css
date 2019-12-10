@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap');
+
+* {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* @media screen and (device-aspect-ratio: 9/16) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"]{ font-size: 16px; }
+} */
+
+
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) { 
+      .wrapper {
+        max-width: 414px;
+        max-height: 896px;
+        left: 0px;
+        right: 0px;
+        background: #ffffff;
+      }
+  }
+
+.userinputDiv {
+  background: white;
+  padding: 20px;
+}
+
+.take-off {
+  height: 100px
+}
+
+.spacing-top {
+  height: 65px;
+}
+
+.spacing-middle {
+  height: 45px;
+}
+
+.spacing-middle-two {
+  height: 25px;
+}
+
+.fab-space-left {
+  width: 100px;
+}
+
+.fab-space-right {
+  width: 100px;
+}
+
+.fab {
+  background-color: #282829;
+}
+
+.App {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.suggest {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.searchButton {
+  background-color: #282829;
+  border: 0px;
+  color: white;
+  width: 413px;
+  height: 6vh;
+  margin: 2vh;
+  font-size: 2.2vh;
+  border-radius: 10px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.searchButton:focus {
+  outline: 0;
+}
+
+.inline-icon {
+  font-size: 16px;
+  vertical-align: middle;
+  position: relative;
+  top: 15px;
+}
+
+.inputs {
+  padding: 10px
+}

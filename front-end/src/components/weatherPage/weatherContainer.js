@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
-// import Weather from './weather'
 import Forecast from './forecast';
-import { fetchDataWeather } from '../../actions/weather';
-import { useSelector } from 'react-redux'
-import Paper from "@material-ui/core/Paper";
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import data from '../result/tripList.json'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,7 +13,6 @@ const useStyles = makeStyles(theme => ({
   },
   gridList: {
     flexWrap: 'nowrap',
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
   },
   title: {
@@ -35,8 +27,6 @@ const useStyles = makeStyles(theme => ({
 const WeatherContainer = ( {weather} ) => {
   const classes = useStyles();
 
-  // const weather = useSelector(state => state.tripResults[0].weather.weatherForecast);
-  // const weather = data[0].weather.weatherForecast
   const forecastComponentOne = weather && weather.map((e) => <Forecast e={e} />)
 
   return (
@@ -46,7 +36,6 @@ const WeatherContainer = ( {weather} ) => {
       </GridList>
     </>
   );
-
 }
 
 export default WeatherContainer;

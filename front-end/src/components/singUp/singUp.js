@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { BrowserRouter as Router, Link, Redirect, useHistory } from 'react-router-dom';
 import { InputBase } from '@material-ui/core';
-import userInput from '../userInput/userInput';
+// import userInput from '../userInput/userInput';
 
 
 
@@ -158,7 +158,7 @@ export default function SignUp({ createUser }) {
           </Button>
           <Grid container justify="center">
             <Grid item>
-              <Link to="/" style={{
+              <Link to="/login" style={{
                   color: "#000", fontWeight: "600", typography: {
       fontFamily: "'Montserrat', sans-serif",
       textTransform: "none",}}} href="#" variant="body2">
