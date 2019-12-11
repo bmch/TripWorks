@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.ibb.co/MgFRkPD/new-black-profile.png" />
+  <img src="https://i.ibb.co/1bCMgKT/new-Trip-work.png" />
 </p>
 
 TripWorks is an app that searches and aggregates accommodation, flight and weather data for travelers looking to streamline their travel planning experience, saving time and money. TripWorks gathers data for a list of destinations the user wishes to travel and ranks them based on the Trip score, in just a matter of minutes.
@@ -8,7 +8,7 @@ The app calculates a score based on the price of flights and hotels and targeted
 
 ## Screenshots
 <p align="center">
-  <img src="https://i.ibb.co/brm7hbZ/group2-333.png" />
+  <img src="https://i.ibb.co/ftYc3T8/group2-333.png" />
 </p>
 
 ## Getting started 
