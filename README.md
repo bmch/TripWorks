@@ -1,7 +1,6 @@
-
-
-
-## TripWorks
+<p align="center">
+  <img src="https://i.ibb.co/MgFRkPD/new-black-profile.png" />
+</p>
 
 TripWorks is an app that searches and aggregates accommodation, flight and weather data for travelers looking to streamline their travel planning experience, saving time and money. TripWorks gathers data for a list of destinations the user wishes to travel and ranks them based on the Trip score, in just a matter of minutes.
 
