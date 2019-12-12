@@ -1,14 +1,5 @@
 import flightsAPI from '../services/flights/flights-api'
 
-
-// const userInput = {
-//   startingLocation: 'BCN',
-//   destinations: ['Madrid', 'Paris', 'Rome'],
-//   airports: ['MAD', 'CDG', 'FCO'],
-//   leaveDate: '2019-12-07',
-//   returnDate: '2019-12-10'
-// }
-
 export const fetchDataFlights = (data, dispatch) => { 
 
   return flightsAPI(data).then(flightsList => {

@@ -3,18 +3,6 @@ import { fetchHotelData } from './hotels';
 import { fetchDataFlights } from './flights';
 import { fetchDataWeather } from './weather';
 import { fetchPhotos } from './photos';
-// import { addFormValues } from './addFormValues';
-
-// const formData = {
-//   backDate: "2019-12-13",
-//   departure: "Barcelona",
-//   depAirport: 'BCN',
-//   // destination: "Madrid",
-//   destinations: ['Paris', 'Rome', 'Athens', 'Los Angeles', 'Abu Dhabi'], 
-//   airports: ['CDG', 'FCO', 'ATH', 'LAX', 'AUH'],
-//   // "Rome", "Paris", "Sydney", "Los Angeles", "Singapore"],
-//   goDate: "2019-12-08"
-// }
 
 function processResults( {formData, flights, hotels, weather, photos} ) {
 
@@ -57,19 +45,6 @@ const allAPIsAction = async (formData, dispatch) => {
     fetchPhotos(formData)
   ])
   console.log('Results for 1 destination', flights, hotels, weather, photos)
-  // dispatch({
-  //   type: 'SET_FLIGHTS', 
-  //   data: flights,
-  // })
-  // dispatch({
-  //   type: 'SET_HOTELS',
-  //   data: hotels,
-  // })
-  // dispatch({
-  //   type: 'SET_WEATHER',
-  //   data: weather
-  // })
-  // return hotels
   return processResults({ formData, flights, hotels, weather, photos })
 }
 
@@ -83,13 +58,5 @@ export const giantAction = async (formData, dispatch) => {
   const results = await Promise.all(pendingPromises);
   results.sort((a, b) => b.finalScore - a.finalScore ) 
   console.log('Fetching complete')
-  // dispatch({
-  //   type: 'FETCHING_TRIPS',
-  //   status: false
-  // });
-  // dispatch({
-  //   type: 'TRIP_RESULTS',
-  //   data: results
-  // });
   return results
 };

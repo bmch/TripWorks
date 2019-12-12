@@ -1,7 +1,5 @@
 import React from 'react';
-import MUIPlacesAutocomplete, {
-  geocodeBySuggestion
-} from 'mui-places-autocomplete';
+import MUIPlacesAutocomplete, { geocodeBySuggestion } from 'mui-places-autocomplete';
 import { fontSize } from '@material-ui/system';
 
 class DestAirportAutocomplete extends React.Component {
@@ -103,7 +101,6 @@ class DestAirportAutocomplete extends React.Component {
   }
 }
 
-DestAirportAutocomplete.description =
-  'Geocoding (i.e. latitude/longitude) a selected suggestion';
+DestAirportAutocomplete.description = 'Geocoding (i.e. latitude/longitude) a selected suggestion';
 
 export default DestAirportAutocomplete;
